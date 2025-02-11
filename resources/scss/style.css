@@ -1,0 +1,293 @@
+@import "tailwindcss/base.css";
+@import "tailwindcss/components.css";
+@import "tailwindcss/utilities.css";
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+.Section1 {
+  @apply flex gap-[62px];
+}
+.Section1 ._left {
+  @apply flex-1;
+}
+.Section1 ._left .truyenHot ._container {
+  @apply grid md:grid-cols-4 grid-cols-1 gap-[27px];
+}
+.Section1 ._left .truyenMoi {
+  @apply pt-[80px];
+}
+.Section1 ._left .truyenMoi ._headSection {
+  @apply flex items-center justify-between pb-[30px];
+}
+.Section1 ._left .truyenMoi ._headSection .-sortBtn {
+  @apply px-[10px] py-1 flex items-center gap-2 rounded-lg bg-sectionTitle text-white;
+}
+.Section1 ._left .truyenMoi ._headSection .-sortBtn span {
+  @apply text-[21px] leading-[30px] font-medium;
+}
+.Section1 ._left .truyenMoi ._content {
+  @apply flex flex-col gap-[15px] py-[20px] border-b border-grayy;
+}
+.Section1 ._left .truyenMoi ._content .-item {
+  @apply flex gap-[15px];
+}
+.Section1 ._left .truyenMoi ._content .-item .image {
+  @apply w-[90px] h-[110px] rounded-md overflow-hidden;
+}
+.Section1 ._left .truyenMoi ._content .-item .image img {
+  @apply object-cover w-full h-full;
+}
+.Section1 ._left .truyenMoi ._content .-item .-info {
+  @apply flex flex-col justify-between flex-1 py-[14px];
+}
+.Section1 ._left .truyenMoi ._content .-item .-info .-title {
+  @apply flex;
+}
+.Section1 ._left .truyenMoi ._content .-item .-info .-title span {
+  @apply border-r border-grayy px-[18px];
+}
+.Section1 ._left .truyenMoi ._content .-item .-info .-title span:first-child {
+  @apply ps-0 text-grayy text-[21px] leading-[28px] font-medium line-clamp-1 w-[61%];
+}
+.Section1 ._left .truyenMoi ._content .-item .-info .-title span:nth-child(2) {
+  @apply text-bluee text-[21px] leading-[30px] font-normal;
+}
+.Section1 ._left .truyenMoi ._content .-item .-info .-title span:last-child {
+  @apply border-0 pe-0 text-grayy text-[21px] leading-[30px];
+}
+.Section1 ._left .truyenMoi ._content .-item .-bot {
+  @apply flex items-center gap-[24px];
+}
+.Section1 ._left .truyenMoi ._content .-item .-bot ._cate {
+  @apply flex gap-[5px];
+}
+.Section1 ._left .truyenMoi ._content .-item .-bot ._cate span {
+  @apply text-grayyLight text-[16px] leading-[23px] font-medium;
+}
+.Section1 ._left .truyenMoi ._content .-item .-bot ._cate span:after {
+  content: ", ";
+}
+.Section1 ._left .truyenMoi ._content .-item .-bot ._cate span:last-child:after {
+  content: "";
+}
+.Section1 ._left .truyenMoi ._content .-item .-bot ._tag {
+  @apply flex items-center gap-[10px];
+}
+.Section1 ._left .truyenMoi ._content .-item .-bot ._tag .item {
+  @apply px-[10px] py-[2px] rounded-md text-white text-[14px] leading-[20px];
+}
+.Section1 ._left .truyenMoi ._content:first-child {
+  @apply pt-0;
+}
+.Section1 ._left .truyenMoi ._content:last-child {
+  @apply pb-0 border-0;
+}
+
+.nav {
+  @apply bg-bgNavbar border-b;
+}
+.nav ._container {
+  @apply mx-auto flex flex-wrap items-center justify-between;
+}
+.nav ._logo {
+  @apply flex items-center space-x-3 rtl:space-x-reverse;
+}
+.nav ._logo img {
+  @apply max-sm:h-8;
+}
+.nav ._menu {
+  @apply hidden w-full items-center justify-between md:flex md:w-auto;
+}
+.nav ._menu ._search {
+  @apply relative mt-3 md:hidden;
+}
+.nav ._menu ._search .-box {
+  @apply pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3;
+}
+.nav ._menu ._search input {
+  @apply block w-full rounded-lg border border-gray-300 bg-gray-50 p-2 ps-10 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500;
+}
+.nav ._menu ._list {
+  @apply flex flex-col rounded-lg bg-transparent px-4 font-medium md:flex-row md:space-x-2 md:border-0;
+}
+.nav ._menu ._list .-item {
+  @apply flex items-center py-[24px] gap-[5px] rounded-sm px-3 text-grayy text-[21px] font-normal hover:text-bluee relative;
+}
+.nav ._menu ._list .-itemDropdown {
+  @apply flex w-full items-center justify-between px-3 py-2 text-grayy text-[21px] font-normal hover:bg-gray-100 md:w-auto md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700;
+}
+.nav ._menu ._list .-dropdownMenu {
+  @apply z-10 w-44 divide-y divide-gray-100 rounded-lg bg-white font-normal shadow-sm;
+}
+.nav ._menu ._list .-dropdownMenu ul {
+  @apply py-2 text-sm text-gray-700;
+}
+.nav ._menu ._list .-dropdownMenu ul a {
+  @apply block px-4 py-2 hover:bg-gray-100;
+}
+.nav ._menuMobile {
+  @apply flex md:order-2;
+}
+
+.carousel {
+  @apply flex items-center justify-center py-[80px];
+}
+.carousel ._container {
+  @apply relative w-full max-w-[1280px] mx-auto h-[403px] overflow-visible;
+}
+.carousel ._slide-container {
+  @apply relative w-full h-full;
+}
+.carousel ._slide-container .slide {
+  @apply absolute rounded-2xl overflow-hidden;
+}
+.carousel .prev-btn {
+  @apply absolute left-10 top-1/2 -translate-y-1/2 translate-x-[-35%] z-[15] w-10 h-10 flex items-center justify-center text-white bg-white/30 rounded-full hover:bg-bluee transition-colors;
+}
+.carousel .next-btn {
+  @apply absolute right-10 top-1/2 -translate-y-1/2 -translate-x-[-35%] z-[15] w-10 h-10 flex items-center justify-center text-white  bg-white/30 rounded-full hover:bg-bluee transition-colors;
+}
+
+.card {
+  @apply flex flex-col;
+}
+.card ._banner {
+  @apply rounded-md h-[260px] relative overflow-hidden;
+}
+.card ._banner img {
+  @apply w-full h-full object-cover rounded-md;
+  transition: transform 0.3s ease;
+}
+.card ._banner .-tag {
+  @apply absolute top-4 left-4 text-[14px] text-tagHome px-[10px] py-[2px] rounded-md;
+}
+.card ._banner:hover img {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+.card ._title h3 {
+  @apply text-[21px] line-clamp-2 font-semibold leading-[30px];
+}
+.card ._storyGenre {
+  @apply pt-2;
+}
+.card ._storyGenre span {
+  @apply text-grayy text-[14px] pe-[5px] border-r border-grayy;
+}
+.card ._storyGenre span:last-child {
+  @apply border-0;
+}
+
+* {
+  font-family: "Roboto", sans-serif;
+}
+
+.my_container {
+  width: 100%;
+  max-width: 1290px;
+  margin: 0 auto;
+}
+
+.page-wrapper {
+  @apply mt-[80px];
+}
+
+.sectionTitle {
+  @apply mb-[40px] inline-block overflow-hidden;
+}
+.sectionTitle ._box {
+  @apply flex flex-col;
+}
+.sectionTitle ._box h2 {
+  @apply text-[38px] font-semibold leading-[50px] capitalize text-sectionTitle;
+}
+.sectionTitle ._box .line {
+  @apply w-full h-[1px] relative;
+}
+.sectionTitle ._box .line .line-active {
+  @apply w-full h-[1px] bg-bluee absolute bottom-0;
+}
+
+.subTitle {
+  @apply text-[21px] font-semibold;
+}
+
+._sectionRight {
+  @apply flex flex-col gap-[50px] w-[378px] pb-[24px];
+}
+._sectionRight ._topStory {
+  @apply border border-grayy flex flex-col;
+}
+._sectionRight ._topStory .-selection {
+  @apply grid grid-cols-3;
+}
+._sectionRight ._topStory .-selection span {
+  @apply subTitle text-grayy capitalize py-[10px] px-[13px] bg-[#DDE1EA];
+}
+._sectionRight ._topStory .-selection span:nth-child(2) {
+  @apply border-l border-r border-grayy;
+}
+._sectionRight ._topStory .-selection .active {
+  @apply bg-white;
+}
+._sectionRight ._topStory ._content {
+  @apply p-[15px];
+}
+._sectionRight ._topStory ._content .-box {
+  @apply flex items-center gap-[18px] px-[18px] py-[24px] border-b border-[#b3b3b3];
+}
+._sectionRight ._topStory ._content .-box .-circle {
+  @apply text-[21px] font-semibold leading-[30px] py-[7px] px-[10px] rounded-full bg-bluee text-white;
+}
+._sectionRight ._topStory ._content .-box img {
+  @apply w-[82px] h-[82px] rounded-md object-cover;
+}
+._sectionRight ._topStory ._content .-box .-info {
+  @apply flex flex-col gap-[15px];
+}
+._sectionRight ._topStory ._content .-box .-info h3 {
+  @apply text-[21px] font-medium leading-[28px] text-grayy capitalize line-clamp-1;
+}
+._sectionRight ._topStory ._content .-box .-info .-chapter {
+  @apply flex items-center justify-between text-[14px] leading-[20px] text-grayyLight;
+}
+._sectionRight ._topStory ._content .-box .-info .-chapter .-watch {
+  @apply flex items-center gap-1 italic;
+}
+._sectionRight ._topStory ._content .-box:last-child {
+  @apply pb-0 border-0;
+}
+._sectionRight ._topStory ._content .-box:first-child {
+  @apply pt-0;
+}
+._sectionRight ._readingStory {
+  @apply flex flex-col;
+}
+._sectionRight ._readingStory ._title {
+  @apply px-[30px] py-[10px] bg-[#DDE1EA] border border-grayy;
+}
+._sectionRight ._readingStory ._title h3 {
+  @apply text-[28px] leading-[40px] font-semibold text-grayy;
+}
+._sectionRight ._readingStory ._content {
+  @apply border border-grayy border-t-0;
+}
+._sectionRight ._readingStory ._content table {
+  @apply w-full;
+}
+._sectionRight ._readingStory ._content table tbody tr {
+  @apply border-b border-grayy border-dashed;
+}
+._sectionRight ._readingStory ._content table tbody tr td {
+  @apply text-grayy text-[21px] leading-[30px];
+}
+._sectionRight ._readingStory ._content table tbody tr td:first-child {
+  @apply py-2 px-4 border-r border-dashed border-gray-400 hover:underline w-7/12;
+}
+._sectionRight ._readingStory ._content table tbody tr td:first-child a {
+  @apply line-clamp-1 capitalize;
+}
+._sectionRight ._readingStory ._content table tbody tr td:last-child {
+  @apply py-2 px-4 text-blue-500 hover:underline w-5/12;
+}
+._sectionRight ._readingStory ._content table tbody tr:last-child {
+  @apply border-0;
+}/*# sourceMappingURL=style.css.map */

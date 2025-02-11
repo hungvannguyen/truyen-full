@@ -1,0 +1,42 @@
+.card{
+    @apply flex flex-col;
+
+    ._banner{
+        @apply rounded-md h-[260px] relative overflow-hidden;
+
+
+        img{
+            @apply w-full h-full object-cover rounded-md;
+            transition: transform 0.3s ease;
+        }
+
+        .-tag{
+            @apply absolute top-4 left-4 text-[14px] text-tagHome px-[10px] py-[2px] rounded-md;
+        }
+    }
+
+    ._banner:hover{
+        img{
+            transform: scale(1.05);
+            transition: transform 0.3s ease;
+        }
+    }
+
+    ._title{
+        h3{
+            @apply text-[21px] line-clamp-2 font-semibold leading-[30px];
+        }
+    }
+
+    ._storyGenre{
+        @apply pt-2;
+
+        span{
+            @apply text-grayy text-[14px] pe-[5px] border-r border-grayy;
+        }
+
+        span:last-child{
+            @apply border-0;
+        }
+    }
+}

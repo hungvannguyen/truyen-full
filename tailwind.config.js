@@ -14,7 +14,19 @@ export default {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+            colors: {
+                'bgNavbar': '#EEF0F5',
+                'grayy': '#5C6471',
+                'grayyLight': '#7C838F',
+                'bluee': '#4C99F9',
+                'tagHome': '#FBFEFD',
+                'greenTag': '#448C74',
+                'sectionTitle': '#1C68BF',
+                'Danger09':'#ED5050',
+            },
         },
     },
-    plugins: [],
+    plugins: [
+        require('flowbite/plugin')
+    ],
 };
