@@ -1,0 +1,40 @@
+.footer{
+    @apply py-[35px] bg-white dark:bg-bgNavbar;
+
+    ._container{
+        @apply my_container flex max-sm:flex-wrap justify-between;
+
+        ._left{
+            @apply flex flex-col gap-[15px] max-w-[550px];
+
+            .-logo{
+
+            }
+
+            .-intro{
+                @apply text-Neutral12 text-[18px] dark:text-white11 leading-[30px];
+
+                a{
+                    @apply hover:underline;
+                }
+            }
+
+            .-contact{
+                @apply text-[16px] leading-[23px] pt-[15px] text-Neutral12 font-medium dark:text-white11;
+            }
+        }
+
+        ._right{
+            @apply flex flex-col justify-center max-w-[638px];
+
+            .-box{
+                @apply flex flex-wrap text-[18px] text-grayy dark:text-white11 leading-[30px];
+
+                a{
+                    @apply pe-[15px] pb-[5px] hover:text-bluee dark:hover:text-green09 hover:underline;
+                }
+            }
+        }
+    }
+
+}

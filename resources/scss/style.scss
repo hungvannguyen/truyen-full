@@ -6,3 +6,4 @@
 @import "components/_all.scss";
 
 @import "_common.scss";
+@custom-variant dark (&:where(.dark, .dark *));

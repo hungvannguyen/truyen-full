@@ -12,6 +12,14 @@
     @vite(['resources/scss/style.scss', 'resources/js/app.js'])
 	@include('partials.css')
 	@yield('head')
+    <script>
+        // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+    </script>
 </head>
 
 <body id="body">
@@ -39,9 +47,9 @@
 	</svg>
 	<i class="ai-arrow-up"></i>
 </a> --}}
-@include('partials.footer')
 
 </main>
+@include('partials.footer')
 
 @yield('foot')
 

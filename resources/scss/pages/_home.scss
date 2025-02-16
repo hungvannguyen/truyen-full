@@ -1,6 +1,5 @@
-
 .Section1{
-    @apply flex gap-[62px];
+    @apply flex gap-[62px] max-sm:flex-col max-sm:gap-[10px];
 
     ._left{
         @apply flex-1;
@@ -12,7 +11,6 @@
             }
         }
 
-
         .truyenMoi{
             @apply pt-[80px];
 
@@ -20,90 +18,26 @@
                 @apply flex items-center justify-between pb-[30px];
 
                 .-sortBtn{
-                    @apply px-[10px] py-1 flex items-center gap-2 rounded-lg bg-sectionTitle text-white;
+                    @apply px-[10px] py-1 flex items-center gap-1 rounded-lg bg-bluee text-white hover:bg-Accents11;
 
                     span{
-                        @apply text-[21px] leading-[30px] font-medium;
+                        @apply text-[16px] leading-[23px] font-medium;
+                    }
+
+                    svg{
+                        @apply w-5 h-5 font-bold;
                     }
                 }
             }
+        }
+    }
+}
 
-
-            ._content{
-                @apply flex flex-col gap-[15px] py-[20px] border-b border-grayy;
-
-                .-item{
-                    @apply flex gap-[15px];
-
-                    .image{
-                        @apply w-[90px] h-[110px] rounded-md overflow-hidden;
-
-                        img{
-                            @apply object-cover w-full h-full;
-                        }
-                    }
-
-                    .-info{
-                        @apply flex flex-col justify-between flex-1 py-[14px];
-
-                        .-title{
-                            @apply flex;
-
-                            span{
-                                @apply border-r border-grayy px-[18px];
-                            }
-
-                            span:first-child{
-                                @apply ps-0 text-grayy text-[21px] leading-[28px] font-medium line-clamp-1 w-[61%];
-                            }
-
-                            span:nth-child(2){
-                                @apply text-bluee text-[21px] leading-[30px] font-normal;
-                            }
-
-                            span:last-child{
-                                @apply border-0 pe-0 text-grayy text-[21px] leading-[30px];
-                            }
-
-                        }
-                    }
-
-                    .-bot{
-                        @apply flex items-center gap-[24px];
-
-                        ._cate{
-                            @apply flex gap-[5px];
-                            span{
-                                @apply text-grayyLight text-[16px] leading-[23px] font-medium;
-                            }
-
-                            span:after{
-                               content: ', ';
-                            }
-
-                            span:last-child:after{
-                                content: '';
-                            }
-                        }
-
-                        ._tag{
-                            @apply flex items-center gap-[10px];
-
-                            .item{
-                                @apply px-[10px] py-[2px] rounded-md text-white text-[14px] leading-[20px];
-                            }
-                        }
-                    }
-                }
-            }
-
-            ._content:first-child{
-                @apply pt-0;
-            }
-
-            ._content:last-child{
-                @apply pb-0 border-0;
-            }
+.Section2{
+    .truyenFull{
+        @apply pb-[70px];
+        ._container{
+            @apply grid md:grid-cols-6 grid-cols-1 gap-[27px];
         }
     }
 }

@@ -72,7 +72,7 @@
     </div>
 </nav> --}}
 
-<nav class="nav fixed left-0 right-0 top-0 z-[40]">
+<nav class="nav ">
     <div class="_container my_container">
         <div class="_logo">
             <a href="/">
@@ -82,24 +82,32 @@
 
         <div class="_menu">
             <ul class="_list">
-                <li class="-item">
-                    <div class="flex items-center gap-[5px]">
-                        <a href="#" class="name">Danh sách</a>
-                        <svg class="h-5 w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
+                <li x-data="{dropDown: false}" class="relative">
+                    <div @mouseenter="dropDown = true" @mouseleave="dropDown = false" class="-item">
+                        <span class="name">Danh sách</span>
+                        <svg class="" :class="{'rotate-180': dropDown}" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
                             height="24" fill="none" viewBox="0 0 24 24">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="m19 9-7 7-7-7" />
                         </svg>
                     </div>
-                    {{-- <div class="absolute inset-0 top-full z-[99] h-[300px] w-[200px] bg-bgNavbar rounded-b-md">
-                        <ul class="capitalize">
-                            <li><a href="">truyên mới cập nhật</a></li>
+                    <div x-show="dropDown"
+                    @mouseenter="dropDown = true" @mouseleave="dropDown = false"
+                    x-transition:enter="transition ease-out duration-300"
+                    x-transition:enter-start="opacity-0"
+                    x-transition:enter-end="opacity-100"
+                    x-transition:leave="transition ease-in duration-300"
+                    x-transition:leave-start="opacity-100"
+                    x-transition:leave-end="opacity-0"
+                    class="-dropdownMenu">
+                        <ul class="_box capitalize">
+                            <li><a href="">truyện mới cập nhật</a></li>
                             <li><a href="">Truyện hot</a></li>
                             <li><a href="">truyện full</a></li>
                             <li><a href="">tiên hiệp hay</a></li>
                             <li><a href="">truyện teen hay</a></li>
                         </ul>
-                    </div> --}}
+                    </div>
                 </li>
                 <li class="-item">
                     <a href="#" class="">Thể loại</a>
@@ -118,7 +126,7 @@
                     </svg>
                 </li>
                 <li class="-item">
-                    <a href="#" class="">Truyên tranh</a>
+                    <a href="#" class="">Truyện tranh</a>
                     <svg class="h-5 w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
                         height="24" fill="none" viewBox="0 0 24 24">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -128,25 +136,38 @@
             </ul>
         </div>
 
-        <div class="_user flex hidden items-center gap-[20px] md:flex">
-            <div class="_search cursor-pointer">
-                <svg class="h-[28px] w-[28px] text-grayy" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                    width="24" height="24" fill="none" viewBox="0 0 24 24">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-width="2"
-                        d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z" />
-                </svg>
+        <div class="_user">
+            <div class="wrapper">
+                <button id="theme-toggle" type="button" class="-themeToggle">
+                    <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                    <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+                </button>
+    
+                <div class="_search cursor-pointer">
+                    <a href="/search" class="">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                          </svg>                          
+                    </a>
+                </div>
+    
+                {{-- <div class="_avatar cursor-pointer">
+                    <img src="{{ asset('/images/home-hero/Home-hero-1.png') }}" alt="" class="w-[28px] h-[28px] rounded-full object-cover">
+                </div> --}}
             </div>
 
-            <div class="-user cursor-pointer">
-                <svg class="h-[28px] w-[28px] text-grayy" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                    width="24" height="24" fill="none" viewBox="0 0 24 24">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Zm0 0a8.949 8.949 0 0 0 4.951-1.488A3.987 3.987 0 0 0 13 16h-2a3.987 3.987 0 0 0-3.951 3.512A8.948 8.948 0 0 0 12 21Zm3-11a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                </svg>
-            </div>
+            {{-- <div class="_postBtn">
+                <a href="#">Đăng tác phẩm</a>
+            </div> --}}
 
-            <div class="inline-block rounded-lg bg-bluee px-[10px] py-[5px]">
-                <a href="#" class="text-[21px] font-medium leading-[30px] text-white">Đăng tác phẩm</a>
+            <div class="_notLogin">
+                <div class="_loginBtn">
+                    <a href="#">Đăng Nhập</a>
+                </div>
+
+                <div class="_regisBtn">
+                    <a href="#">Đăng Ký</a>
+                </div>
             </div>
         </div>
     </div>

@@ -9,6 +9,16 @@
         object-fit: cover;
         border-radius: inherit;
     }
+
+    @media (max-width: 768px) {
+            .slide {
+                width: 100% !important;
+                height: 100% !important;
+                left: 0 !important;
+                transform: none !important;
+                opacity: 1 !important;
+            }
+        }
 </style>
 
 <div class="carousel">
