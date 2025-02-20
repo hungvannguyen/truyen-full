@@ -3,8 +3,10 @@
     font-family: 'Roboto', sans-serif;
 }
 
+[x-cloak] { display: none !important; }
+
 body{
-    @apply bg-white11 dark:bg-Neutral12;
+    @apply bg-white11 dark:bg-Neutral12 relative;
 }
 
 .my_container{
@@ -15,7 +17,59 @@ body{
 }
 
 .page-wrapper{
-    @apply mt-[80px];
+    @apply mt-[87px] max-sm:mt-[60px];
+}
+
+.text-caption{
+    @apply text-[14px] leading-[20px];
+}
+
+.text-blockquote{
+    @apply text-[16px] leading-[23px] italic;
+}
+
+.text-button2{
+    @apply text-[16px] leading-[23px] font-medium;
+}
+
+.text-button1{
+    @apply text-[21px] leading-[30px] font-medium;
+}
+
+.text-body{
+    @apply text-[21px] leading-[30px];
+}
+
+.text-body2{
+    @apply text-[18px] leading-[30px];
+}
+
+.text-subtitle{
+    @apply text-[21px] leading-[28px] font-medium;
+}
+
+.text-h6{
+    @apply text-[21px] leading-[30px] font-semibold;
+}
+
+.text-h5{
+    @apply text-[28px] leading-[40px] font-semibold;
+}
+
+.text-h4{
+    @apply text-[38px] leading-[50px] font-semibold;
+}
+
+.text-h3{
+    @apply text-[51px] leading-[70px] font-bold;
+}
+
+.text-h2{
+    @apply text-[67px] leading-[98px] font-bold;
+}
+
+.text-h1{
+    @apply text-[90px] leading-[130px] font-bold;
 }
 
 .sectionTitle1{

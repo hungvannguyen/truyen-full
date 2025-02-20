@@ -22,7 +22,7 @@
     </script>
 </head>
 
-<body id="body">
+<body x-data="{openModal: 'login' }" id="body">
     @include('partials.navbar')
 
 
@@ -35,7 +35,7 @@
 </div>
 
 <!-- Page wrapper-->
-<main class="page-wrapper my_container">
+<main class="page-wrapper">
 
 @yield('content')
 
@@ -52,7 +52,8 @@
 @include('partials.footer')
 
 @yield('foot')
-
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 </body>
 
 </html>

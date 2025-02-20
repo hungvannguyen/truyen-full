@@ -1,7 +1,5 @@
 .search-wrapper{
-    max-width: 1070px;
-    margin: 0 auto;
-    @apply w-full max-sm:px-[15px] mb-[110px] mt-[150px] max-sm:mb-[20px];
+    @apply w-full max-sm:px-[15px] mb-[110px] mt-[150px] max-sm:mb-[20px] max-w-[1070px] mx-auto;
 }
 
 

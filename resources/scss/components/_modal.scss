@@ -1,0 +1,113 @@
+
+.modal_login{
+    @apply overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%)] max-h-full bg-gray-500/50;
+    
+    .background-container{
+        @apply z-[10] bg-white dark:bg-gray01 shadow-lg w-full px-[70px] py-[70px] max-w-[500px] mx-auto relative overflow-hidden rounded-md min-h-[732px];
+    
+        .-form[x-show="true"]{
+            @apply transition-all duration-300 ease-in-out opacity-100;
+        }
+    }
+    
+    .background-container::before {
+        content: "";
+        position: absolute;
+        top: -25%;
+        left: -3%;
+        width: 123%;
+        height: 82%;
+        background-image: url(../../../public/images/home-hero/bg-login.png);
+        background-size: cover;
+        background-position: center;
+        filter: opacity(0.2);
+        transform: rotate(13.75deg);
+        z-index: -1;
+    }
+
+    .close_btn{
+        @apply absolute right-[10%] top-[6%] text-gray-400 hover:text-gray-600 dark:text-white11 dark:hover:text-white09;
+    }
+
+    .-logo{
+        @apply flex justify-center items-center mb-6;
+    }
+
+    .-form{
+        @apply space-y-6;
+
+        .head_title{
+            @apply text-[28px] leading-[40px] font-semibold text-center text-gray-800 dark:text-white11 max-w-[300px] mx-auto;
+        }
+
+        .logged_yet{
+            @apply text-center text-[16px] leading-[23px];
+            margin-top: 20px !important;
+            span{
+                @apply text-gray10 dark:text-white10;
+            }
+
+            p{
+                @apply inline-block text-bluee dark:text-green09 hover:underline cursor-pointer;
+            }
+        }
+
+        .input{
+            
+            label{
+                @apply block text-gray02 mb-2 dark:text-white11;
+            }
+            
+            ._box{
+                @apply flex items-center px-4 py-2 border border-gray02 dark:border-white10 dark:text-white11 rounded-lg focus:outline-none ring-transparent;
+
+                svg{
+                    @apply w-5 h-5 text-gray02/40 dark:text-white09/40; 
+                }
+
+                input{
+                    @apply border-0 w-full text-gray02 dark:text-white12 focus:outline-none bg-transparent p-0;
+                }
+
+                input::placeholder{
+                    @apply text-gray09/40 dark:text-white09/40;
+                }
+            }
+        }
+
+        .submit_btn{
+            @apply mt-[50px] w-full rounded-lg bg-bluee dark:bg-green09  py-2.5 font-medium text-white12 transition-colors hover:bg-blue11 dark:hover:bg-green11 ;
+        }
+
+        .forgot_pass{
+            @apply flex items-center justify-between;
+
+            label{
+                @apply flex items-center;
+
+                input{
+                    @apply rounded border-gray02 ring-transparent bg-transparent focus:outline-none;
+                }
+
+                span{
+                    @apply ml-2 text-[16px] font-light text-grayyLight dark:text-white10;
+                }
+            }
+
+            a{
+                @apply text-bluee dark:text-green09 hover:underline;
+            }
+        }
+
+        .social_login{
+            @apply grid grid-cols-2 gap-4;
+
+            button{
+                @apply flex items-center justify-center rounded-lg border border-gray02 px-4 py-1 transition-colors hover:bg-gray-50 dark:text-white11 dark:hover:bg-grayyLight dark:border-white11;
+            }
+        }
+
+    }
+
+    
+}

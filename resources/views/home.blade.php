@@ -4,6 +4,8 @@
 @endsection
 
 @section('content')
+
+<div class="my_container">
     @include ('components.home-slide')
 
     <div class="Section1">
@@ -216,16 +218,16 @@
                     </div>
                 </div>
                 <div class="_content">
-                    <a href="">Đam mỹ</a>
-                    <a href="">xuyên nhanh</a>
-                    <a href="">Ngôn tình</a>
-                    <a href="">Bách hợp</a>
-                    <a href="">đam mỹ</a>
-                    <a href="">ngôn tình</a>
-                    <a href="">Ngược</a>
-                    <a href="">kiếm hiệp</a>
-                    <a href="">tiên hiệp</a>
-                    <a href="">hệ thống</a>
+                    <a href="/category">Đam mỹ</a>
+                    <a href="/category">xuyên nhanh</a>
+                    <a href="/category">Ngôn tình</a>
+                    <a href="/category">Bách hợp</a>
+                    <a href="/category">đam mỹ</a>
+                    <a href="/category">ngôn tình</a>
+                    <a href="/category">Ngược</a>
+                    <a href="/category">kiếm hiệp</a>
+                    <a href="/category">tiên hiệp</a>
+                    <a href="/category">hệ thống</a>
                 </div>
             </div>
         </div>
@@ -234,7 +236,7 @@
     <div class="Section2 pt-[90px]">
         <div class="truyenFull">
             <div x-data="{ line: false }" class="sectionTitle1 sectionTitle">
-                <a href="#" @mouseover="line = true" @mouseleave="line = false" class="_box">
+                <a href="/category" @mouseover="line = true" @mouseleave="line = false" class="_box">
                     <h2>Truyện đã hoàn thành</h2>
                     <div class="line">
                         <div x-show="line" x-transition:enter="transition ease-out duration-300"
@@ -254,7 +256,7 @@
 
         <div class="truyenFull">
             <div x-data="{ line: false }" class="sectionTitle1 sectionTitle">
-                <a href="#" @mouseover="line = true" @mouseleave="line = false" class="_box">
+                <a href="/category" @mouseover="line = true" @mouseleave="line = false" class="_box">
                     <h2>Truyện đã kiếm hiệp</h2>
                     <div class="line">
                         <div x-show="line" x-transition:enter="transition ease-out duration-300"
@@ -274,7 +276,7 @@
 
         <div class="truyenFull">
             <div x-data="{ line: false }" class="sectionTitle1 sectionTitle">
-                <a href="#" @mouseover="line = true" @mouseleave="line = false" class="_box">
+                <a href="/category" @mouseover="line = true" @mouseleave="line = false" class="_box">
                     <h2>Truyện đã tiên hiệp</h2>
                     <div class="line">
                         <div x-show="line" x-transition:enter="transition ease-out duration-300"
@@ -292,4 +294,5 @@
             </div>
         </div>
     </div>
+</div>
 @endsection

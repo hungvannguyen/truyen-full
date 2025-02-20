@@ -18,18 +18,18 @@
     ._title{
         @apply pt-2;
         h3{
-            @apply text-[18px] line-clamp-2 font-semibold leading-[30px] dark:text-white11;
+            @apply text-[18px] line-clamp-2 font-semibold leading-[30px] dark:text-white12 hover:underline;
         }
     }
 
     ._storyGenre{
         @apply pt-2;
 
-        span{
-            @apply text-grayy dark:text-white11 text-[14px] pe-[5px] border-r border-grayy;
+        a{
+            @apply text-grayy dark:text-white11 text-[14px] pe-[5px] border-r border-grayy dark:border-white11 hover:underline;
         }
 
-        span:last-child{
+        a:last-child{
             @apply border-0;
         }
     }
@@ -41,12 +41,6 @@
         img{
             transform: scale(1.2);
             transition: transform 0.3s ease;
-        }
-    }
-
-    ._title{
-        h3{
-            @apply underline;
         }
     }
 }

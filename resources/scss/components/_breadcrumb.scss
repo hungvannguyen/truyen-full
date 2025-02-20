@@ -1,0 +1,19 @@
+.breadcrumb{
+    @apply py-[40px];
+
+    ol{
+        @apply flex items-center gap-2 text-[21px] leading-[30px];
+
+        li{
+            @apply text-gray02 dark:text-white11;
+
+            a{
+                @apply hover:underline
+            }
+
+            span{
+                @apply text-bluee dark:text-green09;
+            }
+        }
+    }
+}

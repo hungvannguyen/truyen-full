@@ -16,15 +16,31 @@ export default {
             },
             colors: {
                 'bgNavbar': '#2F2F2F',
+                // white
+                'white12': '#FCFDFD',
                 'white11': '#F7F9FD',
+                'white10': '#EEF0F5',
                 'white09': '#E6E9EE',
                 'white08': '#ĐDE1EA',
+
+                // gray
                 'grayy': '#5C6471',
                 'grayyLight': '#7C838F',
+                'gray01': '#404040',
                 'gray02': '#6D7177',
                 'gray08': '#B3BCCB',
                 'gray09': '#888D98',
+                'gray10': '#7C838F',
+                
+                // blue
                 'bluee': '#4C99F9',
+                'blue11': '#1C68BF',
+                'blue07': '#9ABCE8',
+
+                // yellow
+                'yellow09': '#FFCD07',
+
+
                 'tagHome': '#FBFEFD',
                 'greenTag': '#448C74',
                 'sectionTitle': '#1C68BF',

@@ -1,0 +1,259 @@
+.star-filled{
+    @apply fill-yellow09;
+}
+
+.star-empty{
+    @apply fill-transparent dark:stroke-white10 stroke-gray10;
+}
+
+.novel-container {
+    @apply relative h-[500px];
+}
+
+.novel-header {
+    @apply h-[75%] bg-cover bg-center bg-no-repeat;
+}
+
+.novel-footer {
+    @apply h-[25%];
+}
+
+.content-overlay {
+    @apply absolute bottom-8 left-0 right-0 px-4;
+
+    .image {
+        @apply w-[220px] h-[328px] rounded-lg overflow-hidden shadow-lg flex-shrink-0;
+
+        img {
+            @apply w-full h-full object-cover;
+        }
+    }
+
+    .info {
+        @apply flex-1 mb-4;
+
+        .title {
+            @apply text-[51px] leading-[70px] font-bold mb-4 text-white;
+        }
+
+        .author {
+            @apply flex items-center gap-2 text-[18px] text-white12;
+
+            span:first-child {
+                @apply font-semibold;
+            }
+        }
+
+        .genre_status {
+            @apply flex items-center gap-[30px];
+
+            .-genre {
+                @apply flex items-center gap-2 text-[18px] text-white12;
+
+                ._list {
+                    @apply flex gap-2;
+
+                    span {
+                        @apply py-1;
+                    }
+
+                    span:after {
+                        content: ", ";
+                    }
+
+                    span:last-child:after {
+                        content: "";
+                    }
+                }
+            }
+
+            ._status {
+                @apply flex items-center text-[18px] text-white12 gap-2;
+            }
+        }
+
+        .btn-read {
+            @apply bg-bluee hover:bg-blue11 dark:bg-green09 dark:hover:bg-green11 text-white px-6 py-2 rounded-md transition-colors;
+        }
+    }
+}
+
+.switch_tab {
+    @apply flex items-center gap-[15px] py-[50px];
+
+    .divide::after{
+        content: "";
+        @apply w-[1px] h-[30px] bg-white dark:bg-white11;
+    }
+
+    .tab {
+        @apply text-[26px] leading-[30px] font-semibold text-grayy dark:text-white11 cursor-pointer inline-block overflow-hidden;
+
+        ._box {
+            @apply flex flex-col;
+
+            h2 {
+                @apply text-grayy dark:text-white11;
+            }
+
+            .line {
+                @apply w-full h-[1px] relative;
+
+                .line-active {
+                    @apply w-full h-[1px] bg-grayy dark:bg-white11 absolute bottom-0;
+                }
+            }
+        }
+    }
+
+    .tab.active {
+       h2{
+        @apply text-bluee dark:text-green09;
+       }
+       .line{
+           .line-active{
+               @apply bg-bluee dark:bg-green09;
+           }
+       }
+    }
+    
+}
+
+.tab_content {
+
+    .-info_tab{
+        .novel_summary{
+            @apply mb-[40px] max-w-[740px] text-grayy dark:text-white11;
+
+            p{
+                @apply text-h5;
+            }
+
+            span{
+                @apply text-body;
+            }
+        }
+
+        .review{
+            @apply flex items-center gap-[17px] leading-[38px] text-grayy dark:text-white11;
+
+            .-count{
+                @apply text-h5;
+            }
+
+            .-star{
+                @apply flex items-center gap-[5px];
+
+                span{
+                    @apply text-h5;
+                }
+
+                svg{
+                    @apply w-[24px] h-[24px] fill-yellow09;
+                }
+            }
+        }
+
+        .comment{
+            @apply border rounded-2xl bg-white dark:bg-bgNavbar shadow-md dark:border-transparent;
+
+            .-wraper{
+                @apply max-w-[910px] mx-auto my-[30px];
+
+                h2{
+                    @apply text-body text-gray10 mb-2 dark:text-white10;
+                }
+
+                p{
+                    @apply text-subtitle text-gray01 mb-3 dark:text-white12;
+                }
+
+                .-star{
+                    @apply flex justify-center gap-1;
+    
+                    svg{
+                        @apply w-[24px] h-[24px] cursor-pointer;
+                    }
+                }
+
+                .-input_area{
+                    @apply mb-8;
+
+                    textarea{
+                        @apply w-full border border-gray-200 rounded-2xl p-4 min-h-[120px] mb-2;
+                    }
+                }
+            }
+
+        }
+    }
+
+    .-chapter_tab{
+
+        .header{
+            h1{
+                @apply text-body text-gray10 mb-[15px] dark:text-white10;
+            }
+
+            .lastest{
+                @apply flex items-center gap-2;
+
+                span:first-child{
+                    @apply text-subtitle text-gray02 dark:text-white11;
+                }
+
+                span:last-child{
+                    @apply text-caption text-gray09 dark:text-white09;
+                }
+            }
+
+            .sort{
+                @apply px-4 py-1 pr-8 border border-gray02 dark:border-white11 rounded-lg bg-white dark:bg-bgNavbar text-button2 text-gray02 dark:text-white11;
+            }
+        }
+
+        .chapter-grid{
+            @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[30px];
+
+            .-item{
+                @apply bg-white dark:bg-gray01 p-[10px] pe-[23px] rounded-lg flex items-center gap-4 hover:shadow-md transition-shadow border border-white09 dark:border-0 dark:shadow-[0_1px_6.6px_rgba(2,2,2,0.25)] dark:hover:shadow-[0_4px_10px_rgba(2,2,2,0.25)];
+
+                .mark_box{
+                    @apply w-[60px] h-[60px] bg-blue07 dark:bg-green09 rounded flex items-center justify-center text-body text-white;
+                }
+
+                .name{
+                    @apply flex-1 max-w-[250px];
+
+                    h3{
+                        @apply text-body text-gray01 line-clamp-1 dark:text-white12;
+                    }
+
+                    p{
+                        @apply text-caption text-gray10 dark:text-white10;
+                    }
+                }
+
+                .watch{
+                    @apply flex items-center gap-[2px] text-gray10 dark:text-white10;
+
+                    svg{
+                        @apply size-4;
+                    }
+
+                    span{
+                        @apply text-blockquote;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.may_like{
+    @apply pb-[70px];
+
+    ._container{
+        @apply grid md:grid-cols-6 grid-cols-1 gap-[27px];
+    } 
+}

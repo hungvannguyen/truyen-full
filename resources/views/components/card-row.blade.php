@@ -6,7 +6,7 @@
 
         <div class="-info flex flex-col justify-between py-[14px]">
             <div class="-title">
-                <span><a href="#">Sau Khi Ký Ức Bị Phơi Bày, Những Người Từng Bắt Nạt một hai</a></span>
+                <span><a href="/details">Sau Khi Ký Ức Bị Phơi Bày, Những Người Từng Bắt Nạt một hai</a></span>
                 <div class="_tag">
                     <div class="item bg-greenTag">Full</div>
                     <div class="item bg-Danger09">Hot</div>

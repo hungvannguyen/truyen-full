@@ -1,0 +1,25 @@
+.pagination{
+    @apply w-full flex justify-center;
+
+    ul{
+        @apply flex h-8 items-center -space-x-px text-sm;
+
+        li {
+            a{
+                @apply flex h-8 items-center justify-center border border-gray02 dark:border-white11 px-3 leading-tight text-gray02 hover:bg-gray-200 hover:text-gray-700 dark:text-white11 dark:hover:bg-grayyLight dark:hover:text-white;
+                &.active{
+                    @apply bg-bluee dark:bg-green09 text-white;
+                }
+            }
+
+        }
+
+        li:first-child a{
+            @apply ms-0 rounded-s-md border-e-0;
+        }
+
+        li:last-child a{
+            @apply rounded-e-md;
+        }
+    }
+}
