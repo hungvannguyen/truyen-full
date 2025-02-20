@@ -1,0 +1,61 @@
+<?php
+
+namespace App\Observers;
+
+use App\Models\Story;
+use Illuminate\Support\Str;
+
+class StoryObserver
+{
+	public function creating(Story $story): void
+	{
+		$story->slug = Str::slug($story->title);
+	}
+
+    /**
+     * Handle the Story "created" event.
+     */
+    public function created(Story $story): void
+    {
+        //
+    }
+
+	public function updating(Story $story): void
+	{
+		if ($story->isDirty('title')) {
+			$story->slug = Str::slug($story->title);
+		}
+	}
+
+    /**
+     * Handle the Story "updated" event.
+     */
+    public function updated(Story $story): void
+    {
+        //
+    }
+
+    /**
+     * Handle the Story "deleted" event.
+     */
+    public function deleted(Story $story): void
+    {
+        //
+    }
+
+    /**
+     * Handle the Story "restored" event.
+     */
+    public function restored(Story $story): void
+    {
+        //
+    }
+
+    /**
+     * Handle the Story "force deleted" event.
+     */
+    public function forceDeleted(Story $story): void
+    {
+        //
+    }
+}

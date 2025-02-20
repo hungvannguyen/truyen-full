@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\Story;
+use App\Observers\StoryObserver;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -20,5 +23,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         //
+	    Model::unguard();
+		Story::observe(StoryObserver::class);
     }
 }

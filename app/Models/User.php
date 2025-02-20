@@ -3,12 +3,17 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Enum\UserRole;
+use App\Enum\UserStatus;
+use Filament\Models\Contracts\FilamentUser;
+use Filament\Panel;
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
+class User extends Authenticatable implements FilamentUser
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable, HasUlids;
@@ -47,8 +52,24 @@ class User extends Authenticatable
     protected function casts(): array
     {
         return [
+			'avatar' => 'string',
+            'email' => 'string',
+	        'provider' => 'string',
+	        'provider_id' => 'string',
+	        'status' => UserStatus::class,
+	        'role' => UserRole::class,
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
     }
+
+	public function canAccessPanel(Panel $panel): bool
+	{
+		return strtolower($this->role->value) === UserRole::ADMIN->value || $this->email === 'admin@gmail.com';
+	}
+
+	public function stories(): belongsToMany
+	{
+		return $this->belongsToMany(Story::class, 'user_story', 'user_id', 'story_id');
+	}
 }
