@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Enum\StoryStatus;
 use App\Filament\Resources\ChapterResource\Pages;
 use App\Filament\Resources\ChapterResource\RelationManagers;
 use App\Models\Chapter;
@@ -12,6 +13,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Str;
 
 class ChapterResource extends Resource
 {
@@ -23,8 +25,32 @@ class ChapterResource extends Resource
     {
         return $form
             ->schema([
-                //
-            ]);
+				Forms\Components\Select::make('story_id')
+					->label('Truyện')
+					->searchable()
+                    ->relationship('story', 'title'),
+                Forms\Components\TextInput::make('title')
+					->label('Tên chương')
+					->maxLength(255)
+	                ->afterStateUpdated(function ($state, callable $set) {
+		                $set('slug', Str::slug($state));
+	                })
+					->placeholder('Nhập tên chương'),
+				Forms\Components\TextInput::make('slug')
+                    ->label('Slug'),
+				Forms\Components\RichEditor::make('content')
+					->label('Nội dung chương')
+					->required(),
+	            Forms\Components\Select::make('status')
+		            ->label('Trạng thái chương')
+		            ->required()
+		            ->options([
+			            collect(StoryStatus::cases())
+					            ->mapWithKeys(fn($status) => [$status->value => $status->getLabel()])
+					            ->toArray()
+	            ])
+		            ->default('draft'),
+            ])->columns(1);
     }
 
     public static function table(Table $table): Table

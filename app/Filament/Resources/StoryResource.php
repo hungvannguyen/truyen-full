@@ -6,6 +6,7 @@ use App\Enum\StoryStatus;
 use App\Filament\Resources\StoryResource\Pages;
 use App\Filament\Resources\StoryResource\RelationManagers;
 use App\Models\Story;
+use App\Models\TagGroup;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,6 +14,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Str;
 
 class StoryResource extends Resource
 {
@@ -31,8 +33,28 @@ class StoryResource extends Resource
 					->disk('s3'),
 				Forms\Components\TextInput::make('title')
 					->label('Tên truyện')
+					->maxLength(255)
 					->required()
-					->placeholder('Enter story title'),
+					->placeholder('Enter story title')
+					->afterStateUpdated(function ($state, callable $set) {
+							$set('slug', Str::slug($state));
+						}),
+				Forms\Components\TextInput::make('slug')
+					->label('Slug')
+					->placeholder('Enter story slug'),
+	            Forms\Components\Select::make('tag')
+	                 ->label('Tag truyện')
+	                 ->multiple()
+		             ->relationship('tags', 'name')
+	                 ->options(
+	                     TagGroup::all()
+	                         ->mapWithKeys(function ($tagGroup) {
+	                             return [
+	                                 $tagGroup->name => $tagGroup->tags->pluck('name', 'id')->toArray(),
+	                             ];
+	                         })
+	                 )
+		            ->preload(),
 				Forms\Components\Textarea::make('description')
 					->label('Mô tả truyện')
 					->placeholder('Enter story description'),
@@ -77,7 +99,12 @@ class StoryResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+				Tables\Actions\ViewAction::make()
+	                ->label('Xem'),
+                Tables\Actions\EditAction::make()
+	                ->label('Chỉnh sửa'),
+	            Tables\Actions\DeleteAction::make()
+		            ->label('Xóa'),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -91,6 +118,7 @@ class StoryResource extends Resource
         return [
             RelationManagers\UsersRelationManager::class,
 	        RelationManagers\ChaptersRelationManager::class,
+	        RelationManagers\ReviewsRelationManager::class,
         ];
     }
 

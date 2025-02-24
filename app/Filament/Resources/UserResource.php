@@ -7,6 +7,7 @@ use App\Enum\UserStatus;
 use App\Filament\Resources\UserResource\Pages;
 use App\Filament\Resources\UserResource\RelationManagers;
 use App\Models\User;
+use App\Trait\Image;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -18,27 +19,30 @@ use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 
 class UserResource extends Resource
 {
+	use Image;
     protected static ?string $model = User::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
     {
-        return $form
+	    return $form
             ->schema([
                 Forms\Components\FileUpload::make('avatar')
+                    ->label('Ảnh đại diện')
+	                ->avatar()
 	                ->disk('s3')
-	                ->getUploadedFileNameForStorageUsing(
-				                fn (TemporaryUploadedFile $file): string => (string) str($file->getClientOriginalName())
-						                ->prepend('custom-prefix-'),
-		                )
-	                ->visibility('private'),
+	                ->directory('avatars')
+	                ->getUploadedFileNameForStorageUsing(fn(TemporaryUploadedFile $file): string => (new UserResource)->generateImageName($file))
+	                ->visibility('public'),
 	            Forms\Components\TextInput::make('name')
 	                ->label('Tên người dùng')
+		            ->maxLength(255)
 	                ->required()
 	                ->placeholder('Enter user name'),
 	            Forms\Components\TextInput::make('email')
                     ->label('Email')
+		            ->maxLength(255)
 	                ->required()
 	                ->email()
 		            ->rules(function (callable $get, $record) {
@@ -47,9 +51,19 @@ class UserResource extends Resource
 	                ->placeholder('Enter user email'),
 	            Forms\Components\TextInput::make('password')
 	                ->label('Mật khẩu')
-	                ->required()
-	                ->password()
+		            ->maxLength(255)
+		            ->required(fn (string $context): bool => $context === 'create')
+		            ->password()
 	                ->placeholder('Enter user password'),
+	            Forms\Components\TextInput::make('password_confirmation')
+			            ->label('Xác nhận mật khẩu')
+			            ->maxLength(255)
+			            ->password()
+			            ->placeholder('Nhập lại mật khẩu')
+			            ->dehydrated(false)
+			            ->required(fn (string $context): bool => $context === 'create')
+			            ->same('password'),
+
 	            Forms\Components\Select::make('status')
 		            ->label('Trạng thái người dùng')
 		            ->required()
@@ -77,7 +91,9 @@ class UserResource extends Resource
             ->columns([
                 Tables\Columns\ImageColumn::make('avatar')
                         ->label('Ảnh đại diện')
-	                    ->disk('s3'),
+		                ->circular()
+	                    ->disk('s3')
+	                    ->visibility('public'),
                 Tables\Columns\TextColumn::make('name')
 						->label('Tên người dùng')
 						->searchable()

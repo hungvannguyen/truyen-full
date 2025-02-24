@@ -41,8 +41,18 @@ class Story extends Model
 		return $this->belongsToMany(User::class, 'user_story', 'story_id', 'user_id');
 	}
 
+	public function tags(): BelongsToMany
+	{
+		return $this->belongsToMany(Tag::class, 'story_tags', 'story_id', 'tag_id');
+	}
+
 	public function chapters(): HasMany
 	{
 		return $this->hasMany(Chapter::class);
+	}
+
+	public function reviews(): HasMany
+	{
+		return $this->hasMany(StoryReview::class);
 	}
 }

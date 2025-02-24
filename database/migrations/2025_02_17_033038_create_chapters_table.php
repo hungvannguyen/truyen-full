@@ -18,7 +18,7 @@ return new class extends Migration
 			$table->string('title')->nullable();
 			$table->string('slug')->nullable();
 			$table->longText('content');
-			$table->enum('status', ['draft', 'published'])->default('draft');
+			$table->enum('status', ['draft','pending','published'])->default('draft');
 			$table->bigInteger('view_count')->default(0);
             $table->timestamps();
         });

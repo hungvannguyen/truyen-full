@@ -7,10 +7,6 @@ use Illuminate\Support\Str;
 
 class StoryObserver
 {
-	public function creating(Story $story): void
-	{
-		$story->slug = Str::slug($story->title);
-	}
 
     /**
      * Handle the Story "created" event.
@@ -19,13 +15,6 @@ class StoryObserver
     {
         //
     }
-
-	public function updating(Story $story): void
-	{
-		if ($story->isDirty('title')) {
-			$story->slug = Str::slug($story->title);
-		}
-	}
 
     /**
      * Handle the Story "updated" event.

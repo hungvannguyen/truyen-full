@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('chapter_review', function (Blueprint $table) {
+        Schema::create('story_reviews', function (Blueprint $table) {
+			$table->id();
 	        $table->ulid('user_id');
-	        $table->ulid('chapter_id');
+	        $table->ulid('story_id');
 	        $table->ulid('parent_id')->nullable();
-	        $table->longText('content');
-	        $table->timestamps();
-	        $table->primary(['user_id', 'chapter_id']);
+			$table->longText('content');
+            $table->timestamps();
         });
     }
 
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('chapter_review');
+        Schema::dropIfExists('story_reviews');
     }
 };

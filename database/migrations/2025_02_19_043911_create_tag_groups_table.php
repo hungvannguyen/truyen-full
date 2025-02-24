@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('story_tag', function (Blueprint $table) {
-			$table->ulid('story_id');
-			$table->ulid('tag_id');
+        Schema::create('tag_groups', function (Blueprint $table) {
+            $table->ulid('id')->primary();
+			$table->string('name')->unique();
+			$table->string('slug');
+			$table->bigInteger('tag_count')->default(0);
             $table->timestamps();
-	        $table->primary(['story_id', 'tag_id']);
         });
     }
 
@@ -24,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('story_tag');
+        Schema::dropIfExists('tag_groups');
     }
 };

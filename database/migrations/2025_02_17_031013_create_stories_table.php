@@ -18,7 +18,8 @@ return new class extends Migration
 			$table->text('slug');
 	        $table->text('description')->nullable();
 			$table->float('rating')->default(0);
-			$table->enum('status', ['draft', 'published'])->default('draft');
+			$table->enum('status', ['draft','pending','published'])->default('draft');
+			$table->bigInteger('chapter_count')->default(0);
 			$table->bigInteger('view_count')->default(0);
 			$table->bigInteger('rating_count')->default(0);
 			$table->bigInteger('review_count')->default(0);
