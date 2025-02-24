@@ -9,6 +9,7 @@
 
             img{
                 @apply object-cover w-full h-full;
+                transition: transform 0.3s ease;
             }
         }
 
@@ -19,7 +20,7 @@
                 @apply flex;
 
                 span{
-                    @apply border-r border-grayy dark:border-white11 px-[18px];
+                    @apply border-r border-grayy dark:border-white11 px-[18px] text-body;
 
                     a{
                         @apply hover:underline;
@@ -27,22 +28,22 @@
                 }
 
                 span:first-child{
-                    @apply ps-0 pe-[10px] border-0 text-grayy text-[18px] w-auto dark:text-white11 leading-[28px] font-medium line-clamp-1 flex-1;
+                    @apply ps-0 pe-[10px] border-0 text-grayy w-auto dark:text-white11 font-medium line-clamp-1 flex-1;
                 }
 
                 span:nth-child(3){
-                    @apply text-bluee dark:text-green09 text-[18px] leading-[30px] font-normal;
+                    @apply text-bluee dark:text-green09 font-normal;
                 }
 
                 span:last-child{
-                    @apply border-0 pe-0 text-grayy dark:text-white11 text-[18px] leading-[30px];
+                    @apply border-0 pe-0 text-grayy dark:text-white11;
                 }
 
                 ._tag{
                     @apply flex items-center gap-[10px] border-r border-grayy dark:border-white11 pe-[18px];
 
                     .item{
-                        @apply px-[10px] py-[2px] rounded-md text-white text-[14px] leading-[20px];
+                        @apply px-[10px] py-[2px] rounded-md text-white text-caption;
                     }
                 }
             }
@@ -53,20 +54,29 @@
 
             ._cate{
                 @apply flex gap-[5px];
-                span{
-                    @apply text-grayyLight dark:text-white11 text-[16px] leading-[23px] font-medium;
+                a{
+                    @apply text-grayyLight dark:text-white11 text-button2 hover:underline;
                 }
 
-                span:after{
+                a:after{
                    content: ', ';
                 }
 
-                span:last-child:after{
+                a:last-child:after{
                     content: '';
                 }
             }
 
            
+        }
+    }
+
+    .-item:hover{
+        .image{
+            img{
+                transform: scale(1.2);
+                transition: transform 0.3s ease;
+            }
         }
     }
 }

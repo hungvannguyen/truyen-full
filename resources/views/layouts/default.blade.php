@@ -22,7 +22,7 @@
     </script>
 </head>
 
-<body x-data="{openModal: 'login' }" id="body">
+<body x-data="loginSwitcher()" id="body">
     @include('partials.navbar')
 
 
@@ -52,8 +52,10 @@
 @include('partials.footer')
 
 @yield('foot')
-  <!-- Swiper JS -->
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    {{-- gsap js --}}
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 </body>
 
 </html>

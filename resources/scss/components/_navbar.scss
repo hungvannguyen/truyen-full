@@ -44,6 +44,14 @@
                 }
             }
 
+            .-item.active{
+                @apply text-bluee dark:text-green09;
+
+                span{
+                    @apply text-bluee dark:text-green09;
+                }
+            }
+
             .-dropdownMenu{
                 @apply absolute inset-0 top-full z-[30] size-fit border-0 rounded-b-md;
 

@@ -1,0 +1,55 @@
+.comment_block{
+    @apply px-[50px] py-[30px];
+
+    .left{
+        
+    }
+
+    .right{
+        @apply flex flex-col gap-[15px];
+    }
+}
+
+.avatar{
+    @apply h-10 w-10 overflow-hidden rounded-full bg-gray-200;
+    
+    img{
+        @apply w-full h-full object-cover;
+    }
+}
+
+.name{
+    @apply font-medium text-gray02 dark:text-white12;
+}
+
+.star{
+    @apply flex gap-1;
+
+    svg{
+        @apply w-4 h-4;
+    }
+}
+
+.content{
+    @apply text-gray02 mb-3 text-caption dark:text-white12;
+}
+
+.show_more{
+    @apply text-grayyLight dark:text-white10 text-sm cursor-pointer flex items-center gap-1;
+
+    svg{
+        @apply w-4 h-4;
+    }
+}
+
+.interact-btn{
+    @apply flex items-center justify-between;
+
+    .button{
+        @apply flex items-center gap-1 text-gray02 dark:text-white11;
+
+        svg{
+            @apply w-[20px] h-[20px];
+        }
+    }
+}

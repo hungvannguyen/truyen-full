@@ -3,7 +3,7 @@
     @apply overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%)] max-h-full bg-gray-500/50;
     
     .background-container{
-        @apply z-[10] bg-white dark:bg-gray01 shadow-lg w-full px-[70px] py-[70px] max-w-[500px] mx-auto relative overflow-hidden rounded-md min-h-[732px];
+        @apply z-[10] bg-white dark:bg-gray01 shadow-lg w-full px-[70px] py-[60px] max-w-[500px] mx-auto relative overflow-hidden rounded-md min-h-[732px];
     
         .-form[x-show="true"]{
             @apply transition-all duration-300 ease-in-out opacity-100;

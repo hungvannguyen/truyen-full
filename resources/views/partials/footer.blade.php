@@ -15,17 +15,17 @@
 
         <div class="_right">
             <div class="-box">
-                <a href="#">Đam mỹ hài</a>
-                <a href="#">Truyện xuyên nhanh</a>
-                <a href="#">Ngôn tình sủng</a>
-                <a href="#">Ngôn tình hài</a>
-                <a href="#">Truyện đam mỹ</a>
-                <a href="#">Truyện ngôn tình</a>
-                <a href="#">Ngôn tình hài</a>
-                <a href="#">Ngôn tình ngược</a>
-                <a href="#">Truyện kiếm hiệp</a>
-                <a href="#">Truyện tiên hiệp</a>
-                <a href="#">Truyện hệ thống</a>
+                <a href="/category">Đam mỹ hài</a>
+                <a href="/category">Truyện xuyên nhanh</a>
+                <a href="/category">Ngôn tình sủng</a>
+                <a href="/category">Ngôn tình hài</a>
+                <a href="/category">Truyện đam mỹ</a>
+                <a href="/category">Truyện ngôn tình</a>
+                <a href="/category">Ngôn tình hài</a>
+                <a href="/category">Ngôn tình ngược</a>
+                <a href="/category">Truyện kiếm hiệp</a>
+                <a href="/category">Truyện tiên hiệp</a>
+                <a href="/category">Truyện hệ thống</a>
             </div>
         </div>
     </div>

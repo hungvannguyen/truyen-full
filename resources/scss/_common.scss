@@ -72,6 +72,43 @@ body{
     @apply text-[90px] leading-[130px] font-bold;
 }
 
+.commonBtnDropdown{
+    @apply px-[10px] py-1 border border-gray02 flex items-center gap-1 rounded-lg select-none text-gray02 dark:text-white11 dark:border-white11;
+
+    span{
+        @apply text-button2;
+    }
+
+    svg{
+        @apply w-5 h-5 font-bold;
+    }
+}
+
+.comonBtnDropdownBgColor{
+    @apply px-[10px] py-1 flex items-center gap-1 rounded-lg select-none bg-bluee text-white hover:bg-blue11 dark:bg-green09 dark:hover:bg-green11;
+
+    span{
+        @apply text-button2;
+    }
+
+    svg{
+        @apply w-5 h-5 font-bold;
+    }
+}
+
+.commonDropdown{
+    @apply z-10 w-[141px] border border-bluee dark:border-green09 rounded-lg bg-white shadow-sm dark:bg-bgNavbar;
+
+    ul{
+        @apply py-2 text-button2 text-gray02 dark:text-white11; 
+
+        a{
+            @apply block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 select-none;
+        }
+    }
+
+}
+
 .sectionTitle1{
     @apply mb-[30px];
 
@@ -91,7 +128,7 @@ body{
 }
 
 .sectionTitle{
-    @apply inline-block overflow-hidden;
+    @apply inline-block overflow-hidden select-none;
 
     ._box{
         @apply flex flex-col;
@@ -111,11 +148,6 @@ body{
     }
 }
 
-
-.subTitle{
-    @apply text-[21px] font-semibold;
-}
-
 ._sectionRight{
     @apply flex flex-col gap-[50px] w-[378px] pb-[24px];
 
@@ -126,7 +158,7 @@ body{
             @apply flex items-center justify-between gap-[15px] pb-[15px];
 
             span{
-                @apply text-[16px] leading-[23px] text-grayy dark:text-white11 py-[10px] px-[30px] bg-transparent rounded-full border border-grayy dark:border-white11 flex-auto text-center uppercase cursor-pointer;
+                @apply text-button2 text-grayy dark:text-white11 py-[10px] px-[30px] bg-transparent rounded-full border border-grayy dark:border-white11 flex-auto text-center uppercase cursor-pointer;
             }
 
             .active{
@@ -143,22 +175,26 @@ body{
                     @apply flex items-center gap-[18px] px-[18px] py-[24px] border-b border-[#b3b3b3];
     
                     .-circle{
-                        @apply text-[21px] font-semibold leading-[30px] py-[7px] px-[10px] rounded-full dark:text-white ;
+                        @apply text-h6 py-[7px] px-[10px] rounded-full dark:text-white ;
                     }
-    
-                    img{
-                        @apply w-[82px] h-[82px] rounded-md object-cover;
+                    
+                    .-image{
+                        @apply w-[82px] h-[82px] overflow-hidden rounded-md;
+                        img{
+                            @apply w-full h-full object-cover;
+                            transition: transform 0.3s ease;
+                        }
                     }
     
                     .-info{
-                        @apply flex flex-col gap-[15px];
+                        @apply flex flex-col gap-[15px] flex-1;
     
                         h3{
-                            @apply text-[21px] font-medium leading-[28px] text-grayy dark:text-white11 capitalize line-clamp-1;
+                            @apply text-subtitle text-grayy dark:text-white11 capitalize line-clamp-1;
                         }
     
                         .-chapter{
-                            @apply flex items-center justify-between text-[14px] leading-[20px] text-grayyLight dark:text-white11;
+                            @apply flex items-center justify-between text-caption text-grayyLight dark:text-white11;
     
                             .-watch{
                                 @apply flex items-center gap-1 italic;
@@ -173,6 +209,21 @@ body{
     
                 .-box:first-child{
                     @apply pt-0;
+                }
+
+                .-box:hover{
+                    .-image{
+                        img{
+                            transform: scale(1.2);
+                            transition: transform 0.3s ease;
+                        }
+                    }
+
+                    .-info{
+                        h3{
+                            @apply underline;
+                        }
+                    }
                 }
             }
 
@@ -189,9 +240,6 @@ body{
         ._title{
             @apply p-[10px] pb-[5px] border border-grayy dark:border-white11;
 
-            h3{
-                @apply text-[28px] leading-[40px] font-semibold text-bluee dark:text-green09 uppercase;
-            }
         }
 
         ._content{
@@ -205,7 +253,7 @@ body{
                         @apply border-b border-grayy border-dashed;
 
                         td{
-                            @apply text-grayy dark:text-white11 text-[21px] leading-[30px];
+                            @apply text-grayy dark:text-white11 text-body;
                         }
 
                         td:first-child{
@@ -234,17 +282,13 @@ body{
 
         ._title{
             @apply p-[10px] pb-[5px] border border-grayy dark:border-white11;
-
-            h3{
-                @apply text-[28px] leading-[40px] font-semibold text-bluee dark:text-green09 uppercase;
-            }
         }
 
         ._content{
             @apply p-[24px] px-[50px] grid grid-cols-2 gap-[15px] border border-grayy dark:border-white11 border-t-0;
 
             a{
-                @apply text-[18px] leading-[30px] text-Neutral10 dark:text-white11 line-clamp-1 capitalize hover:underline;
+                @apply text-body2 text-Neutral10 dark:text-white11 line-clamp-1 capitalize hover:underline;
             }
         }
     }

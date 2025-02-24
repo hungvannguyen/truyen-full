@@ -1,6 +1,8 @@
 <div class="card">
     <div class="_banner">
-        <img src="{{ asset('/images/home-hero/Home-hero-1.png') }}" alt="banner1">
+        <a href="/details">
+            <img src="{{ asset('/images/home-hero/Home-hero-1.png') }}" alt="banner1">
+        </a>
         {{-- tag --}}
         <div class="-tag bg-greenTag">Full</div>
     </div>
@@ -12,10 +14,10 @@
     </a>
     {{-- story genre --}}
     <div class="_storyGenre">
-        <a href="#">Ngôn tình</a>
-        <a href="#">Đô thị</a>
-        <a href="#">Điền văn</a>
-        <a href="#">Sủng</a>
-        <a href="#">Xuyên nhanh</a>
+        <a href="/category">Ngôn tình</a>
+        <a href="/category">Đô thị</a>
+        <a href="/category">Điền văn</a>
+        <a href="/category">Sủng</a>
+        <a href="/category">Xuyên nhanh</a>
     </div>
 </div>

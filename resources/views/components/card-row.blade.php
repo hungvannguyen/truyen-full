@@ -1,8 +1,8 @@
 <div class="card_row">
     <div class="-item">
-        <div class="image">
+        <a href="/details" class="image">
             <img src="{{ asset('/images/home-hero/Home-hero-2.png') }}" alt="">
-        </div>
+        </a>
 
         <div class="-info flex flex-col justify-between py-[14px]">
             <div class="-title">
@@ -18,8 +18,8 @@
 
             <div class="-bot">
                 <div class="_cate">
-                    <span>Truyện tranh</span>
-                    <span>Truyện tranh</span>
+                    <a href="/category">Truyện tranh</a>
+                    <a href="/category">Truyện tranh</a>
                 </div>
             </div>
         </div>

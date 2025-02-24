@@ -18,7 +18,7 @@
   @apply flex items-center justify-between pb-[30px];
 }
 .Section1 ._left .truyenMoi ._headSection .-sortBtn {
-  @apply px-[10px] py-1 flex items-center gap-1 rounded-lg bg-bluee text-white hover:bg-Accents11;
+  @apply px-[10px] py-1 flex items-center gap-1 rounded-lg bg-bluee text-white hover:bg-Accents11 dark:bg-green09 dark:hover:bg-green11 select-none;
 }
 .Section1 ._left .truyenMoi ._headSection .-sortBtn span {
   @apply text-[16px] leading-[23px] font-medium;
@@ -197,7 +197,7 @@
   @apply flex items-center text-[18px] text-white12 gap-2;
 }
 .content-overlay .info .btn-read {
-  @apply bg-bluee hover:bg-blue11 dark:bg-green09 dark:hover:bg-green11 text-white px-6 py-2 rounded-md transition-colors;
+  @apply w-fit bg-bluee hover:bg-blue11 dark:bg-green09 dark:hover:bg-green11 text-white px-6 py-2 rounded-md transition-colors select-none cursor-pointer;
 }
 
 .switch_tab {
@@ -275,7 +275,75 @@
   @apply mb-8;
 }
 .tab_content .-info_tab .comment .-wraper .-input_area textarea {
-  @apply w-full border border-gray-200 rounded-2xl p-4 min-h-[120px] mb-2;
+  @apply w-full border border-gray-200 rounded-2xl p-4 min-h-[120px] mb-2 outline-none shadow-none dark:bg-Neutral12 dark:text-white11;
+  box-shadow: none !important;
+}
+.tab_content .-info_tab .comment .-wraper .-input_area .check-input {
+  @apply flex flex-col justify-between text-caption mb-3;
+}
+.tab_content .-info_tab .comment .-wraper .-input_area .submit-btn {
+  @apply text-right;
+}
+.tab_content .-info_tab .comment .-wraper .-input_area .submit-btn button {
+  @apply bg-bluee text-white px-8 py-2 rounded-full hover:bg-blue11 dark:bg-green09 dark:hover:bg-green11;
+}
+.tab_content .-info_tab .number_of_cmt {
+  @apply flex justify-between items-center my-[30px];
+}
+.tab_content .-info_tab .number_of_cmt h3 {
+  @apply text-[21px] font-semibold text-gray02 dark:text-white11;
+}
+.tab_content .-info_tab .comment_card {
+  @apply border rounded-2xl bg-white dark:bg-bgNavbar dark:border-transparent mb-[30px] shadow-md;
+}
+.tab_content .-info_tab .comment_card .wrapper {
+  @apply max-w-[910px] mx-auto my-[30px];
+}
+.tab_content .-info_tab .comment_card .wrapper .user {
+  @apply flex items-start gap-3 mb-3;
+}
+.tab_content .-info_tab .comment_card .wrapper .user .avatar {
+  @apply w-10 h-10 bg-gray-200 rounded-full overflow-hidden;
+}
+.tab_content .-info_tab .comment_card .wrapper .user .avatar img {
+  @apply w-full h-full object-cover;
+}
+.tab_content .-info_tab .comment_card .wrapper .user .name {
+  @apply font-medium mb-1 text-gray02 dark:text-white12;
+}
+.tab_content .-info_tab .comment_card .wrapper .user .star {
+  @apply flex gap-1;
+}
+.tab_content .-info_tab .comment_card .wrapper .user .star svg {
+  @apply w-4 h-4;
+}
+.tab_content .-info_tab .subComment-modal {
+  @apply fixed bg-gray-500/50 dark:bg-gray-700/50 inset-0 left-0 right-0 top-0 z-50 max-h-full  w-full items-center overflow-y-scroll justify-center md:inset-0;
+}
+.tab_content .-info_tab .subComment-modal .wrapper {
+  @apply relative rounded-lg bg-white11 shadow-sm dark:bg-gray01;
+}
+.tab_content .-info_tab .subComment-modal .wrapper .header {
+  @apply bg-white dark:bg-bgNavbar px-[27px] py-[30px] border-b border-grayyLight dark:border-white11;
+}
+.tab_content .-info_tab .subComment-modal .wrapper .header h3 {
+  @apply text-subtitle text-gray02 dark:text-white11;
+}
+.tab_content .-info_tab .subComment-modal .wrapper .header .comment_block {
+  @apply pb-0;
+}
+.tab_content .-info_tab .subComment-modal .wrapper .body {
+  @apply px-[27px] py-[30px];
+}
+.tab_content .-info_tab .subComment-modal .wrapper .body h3 {
+  @apply pb-2 text-subtitle text-gray02 dark:text-white11;
+}
+.tab_content .-info_tab .subComment-modal .wrapper .bottom {
+  @apply bg-white dark:bg-bgNavbar px-[27px] pt-[15px] pb-[30px];
+}
+.tab_content .-info_tab .subComment-modal .wrapper .bottom input {
+  @apply w-full bg-transparent text-caption border-0 outline-none text-gray02 dark:text-white11;
+  box-shadow: none !important;
 }
 .tab_content .-chapter_tab .header h1 {
   @apply text-body text-gray10 mb-[15px] dark:text-white10;
@@ -362,6 +430,12 @@
 }
 .nav ._menu ._list .-item span {
   @apply transition ease-in-out duration-300;
+}
+.nav ._menu ._list .-item.active {
+  @apply text-bluee dark:text-green09;
+}
+.nav ._menu ._list .-item.active span {
+  @apply text-bluee dark:text-green09;
 }
 .nav ._menu ._list .-dropdownMenu {
   @apply absolute inset-0 top-full z-[30] size-fit border-0 rounded-b-md;
@@ -513,6 +587,7 @@
 }
 .card_row .-item .image img {
   @apply object-cover w-full h-full;
+  transition: transform 0.3s ease;
 }
 .card_row .-item .-info {
   @apply flex flex-col justify-between flex-1 py-[14px];
@@ -521,25 +596,25 @@
   @apply flex;
 }
 .card_row .-item .-info .-title span {
-  @apply border-r border-grayy dark:border-white11 px-[18px];
+  @apply border-r border-grayy dark:border-white11 px-[18px] text-body;
 }
 .card_row .-item .-info .-title span a {
   @apply hover:underline;
 }
 .card_row .-item .-info .-title span:first-child {
-  @apply ps-0 pe-[10px] border-0 text-grayy text-[18px] w-auto dark:text-white11 leading-[28px] font-medium line-clamp-1 flex-1;
+  @apply ps-0 pe-[10px] border-0 text-grayy w-auto dark:text-white11 font-medium line-clamp-1 flex-1;
 }
 .card_row .-item .-info .-title span:nth-child(3) {
-  @apply text-bluee dark:text-green09 text-[18px] leading-[30px] font-normal;
+  @apply text-bluee dark:text-green09 font-normal;
 }
 .card_row .-item .-info .-title span:last-child {
-  @apply border-0 pe-0 text-grayy dark:text-white11 text-[18px] leading-[30px];
+  @apply border-0 pe-0 text-grayy dark:text-white11;
 }
 .card_row .-item .-info .-title ._tag {
   @apply flex items-center gap-[10px] border-r border-grayy dark:border-white11 pe-[18px];
 }
 .card_row .-item .-info .-title ._tag .item {
-  @apply px-[10px] py-[2px] rounded-md text-white text-[14px] leading-[20px];
+  @apply px-[10px] py-[2px] rounded-md text-white text-caption;
 }
 .card_row .-item .-bot {
   @apply flex items-center gap-[24px];
@@ -547,14 +622,18 @@
 .card_row .-item .-bot ._cate {
   @apply flex gap-[5px];
 }
-.card_row .-item .-bot ._cate span {
-  @apply text-grayyLight dark:text-white11 text-[16px] leading-[23px] font-medium;
+.card_row .-item .-bot ._cate a {
+  @apply text-grayyLight dark:text-white11 text-button2 hover:underline;
 }
-.card_row .-item .-bot ._cate span:after {
+.card_row .-item .-bot ._cate a:after {
   content: ", ";
 }
-.card_row .-item .-bot ._cate span:last-child:after {
+.card_row .-item .-bot ._cate a:last-child:after {
   content: "";
+}
+.card_row .-item:hover .image img {
+  transform: scale(1.2);
+  transition: transform 0.3s ease;
 }
 
 .card_row:first-child {
@@ -604,7 +683,7 @@
   @apply overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%)] max-h-full bg-gray-500/50;
 }
 .modal_login .background-container {
-  @apply z-[10] bg-white dark:bg-gray01 shadow-lg w-full px-[70px] py-[70px] max-w-[500px] mx-auto relative overflow-hidden rounded-md min-h-[732px];
+  @apply z-[10] bg-white dark:bg-gray01 shadow-lg w-full px-[70px] py-[60px] max-w-[500px] mx-auto relative overflow-hidden rounded-md min-h-[732px];
 }
 .modal_login .background-container .-form[x-show=true] {
   @apply transition-all duration-300 ease-in-out opacity-100;
@@ -688,6 +767,52 @@
   @apply flex items-center justify-center rounded-lg border border-gray02 px-4 py-1 transition-colors hover:bg-gray-50 dark:text-white11 dark:hover:bg-grayyLight dark:border-white11;
 }
 
+.comment_block {
+  @apply px-[50px] py-[30px];
+}
+.comment_block .right {
+  @apply flex flex-col gap-[15px];
+}
+
+.avatar {
+  @apply h-10 w-10 overflow-hidden rounded-full bg-gray-200;
+}
+.avatar img {
+  @apply w-full h-full object-cover;
+}
+
+.name {
+  @apply font-medium text-gray02 dark:text-white12;
+}
+
+.star {
+  @apply flex gap-1;
+}
+.star svg {
+  @apply w-4 h-4;
+}
+
+.content {
+  @apply text-gray02 mb-3 text-caption dark:text-white12;
+}
+
+.show_more {
+  @apply text-grayyLight dark:text-white10 text-sm cursor-pointer flex items-center gap-1;
+}
+.show_more svg {
+  @apply w-4 h-4;
+}
+
+.interact-btn {
+  @apply flex items-center justify-between;
+}
+.interact-btn .button {
+  @apply flex items-center gap-1 text-gray02 dark:text-white11;
+}
+.interact-btn .button svg {
+  @apply w-[20px] h-[20px];
+}
+
 * {
   font-family: "Roboto", sans-serif;
 }
@@ -763,6 +888,36 @@ body {
   @apply text-[90px] leading-[130px] font-bold;
 }
 
+.commonBtnDropdown {
+  @apply px-[10px] py-1 border border-gray02 flex items-center gap-1 rounded-lg select-none text-gray02 dark:text-white11 dark:border-white11;
+}
+.commonBtnDropdown span {
+  @apply text-button2;
+}
+.commonBtnDropdown svg {
+  @apply w-5 h-5 font-bold;
+}
+
+.comonBtnDropdownBgColor {
+  @apply px-[10px] py-1 flex items-center gap-1 rounded-lg select-none bg-bluee text-white hover:bg-blue11 dark:bg-green09 dark:hover:bg-green11;
+}
+.comonBtnDropdownBgColor span {
+  @apply text-button2;
+}
+.comonBtnDropdownBgColor svg {
+  @apply w-5 h-5 font-bold;
+}
+
+.commonDropdown {
+  @apply z-10 w-[141px] border border-bluee dark:border-green09 rounded-lg bg-white shadow-sm dark:bg-bgNavbar;
+}
+.commonDropdown ul {
+  @apply py-2 text-button2 text-gray02 dark:text-white11;
+}
+.commonDropdown ul a {
+  @apply block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 select-none;
+}
+
 .sectionTitle1 {
   @apply mb-[30px];
 }
@@ -775,7 +930,7 @@ body {
 }
 
 .sectionTitle {
-  @apply inline-block overflow-hidden;
+  @apply inline-block overflow-hidden select-none;
 }
 .sectionTitle ._box {
   @apply flex flex-col;
@@ -790,10 +945,6 @@ body {
   @apply w-full h-[1px] bg-bluee dark:bg-green09 absolute bottom-0;
 }
 
-.subTitle {
-  @apply text-[21px] font-semibold;
-}
-
 ._sectionRight {
   @apply flex flex-col gap-[50px] w-[378px] pb-[24px];
 }
@@ -804,7 +955,7 @@ body {
   @apply flex items-center justify-between gap-[15px] pb-[15px];
 }
 ._sectionRight ._topStory .-selection span {
-  @apply text-[16px] leading-[23px] text-grayy dark:text-white11 py-[10px] px-[30px] bg-transparent rounded-full border border-grayy dark:border-white11 flex-auto text-center uppercase cursor-pointer;
+  @apply text-button2 text-grayy dark:text-white11 py-[10px] px-[30px] bg-transparent rounded-full border border-grayy dark:border-white11 flex-auto text-center uppercase cursor-pointer;
 }
 ._sectionRight ._topStory .-selection .active {
   @apply bg-grayy text-white border-transparent;
@@ -816,19 +967,23 @@ body {
   @apply flex items-center gap-[18px] px-[18px] py-[24px] border-b border-[#b3b3b3];
 }
 ._sectionRight ._topStory ._content .-tabCont .-box .-circle {
-  @apply text-[21px] font-semibold leading-[30px] py-[7px] px-[10px] rounded-full dark:text-white;
+  @apply text-h6 py-[7px] px-[10px] rounded-full dark:text-white;
 }
-._sectionRight ._topStory ._content .-tabCont .-box img {
-  @apply w-[82px] h-[82px] rounded-md object-cover;
+._sectionRight ._topStory ._content .-tabCont .-box .-image {
+  @apply w-[82px] h-[82px] overflow-hidden rounded-md;
+}
+._sectionRight ._topStory ._content .-tabCont .-box .-image img {
+  @apply w-full h-full object-cover;
+  transition: transform 0.3s ease;
 }
 ._sectionRight ._topStory ._content .-tabCont .-box .-info {
-  @apply flex flex-col gap-[15px];
+  @apply flex flex-col gap-[15px] flex-1;
 }
 ._sectionRight ._topStory ._content .-tabCont .-box .-info h3 {
-  @apply text-[21px] font-medium leading-[28px] text-grayy dark:text-white11 capitalize line-clamp-1;
+  @apply text-subtitle text-grayy dark:text-white11 capitalize line-clamp-1;
 }
 ._sectionRight ._topStory ._content .-tabCont .-box .-info .-chapter {
-  @apply flex items-center justify-between text-[14px] leading-[20px] text-grayyLight dark:text-white11;
+  @apply flex items-center justify-between text-caption text-grayyLight dark:text-white11;
 }
 ._sectionRight ._topStory ._content .-tabCont .-box .-info .-chapter .-watch {
   @apply flex items-center gap-1 italic;
@@ -839,6 +994,13 @@ body {
 ._sectionRight ._topStory ._content .-tabCont .-box:first-child {
   @apply pt-0;
 }
+._sectionRight ._topStory ._content .-tabCont .-box:hover .-image img {
+  transform: scale(1.2);
+  transition: transform 0.3s ease;
+}
+._sectionRight ._topStory ._content .-tabCont .-box:hover .-info h3 {
+  @apply underline;
+}
 ._sectionRight ._topStory ._content > .-tabCont[x-show=true] {
   display: block;
 }
@@ -847,9 +1009,6 @@ body {
 }
 ._sectionRight ._readingStory ._title {
   @apply p-[10px] pb-[5px] border border-grayy dark:border-white11;
-}
-._sectionRight ._readingStory ._title h3 {
-  @apply text-[28px] leading-[40px] font-semibold text-bluee dark:text-green09 uppercase;
 }
 ._sectionRight ._readingStory ._content {
   @apply border border-grayy border-t-0 dark:border-white11;
@@ -861,7 +1020,7 @@ body {
   @apply border-b border-grayy border-dashed;
 }
 ._sectionRight ._readingStory ._content table tbody tr td {
-  @apply text-grayy dark:text-white11 text-[21px] leading-[30px];
+  @apply text-grayy dark:text-white11 text-body;
 }
 ._sectionRight ._readingStory ._content table tbody tr td:first-child {
   @apply py-2 px-4 border-r border-dashed border-gray-400 hover:underline w-7/12;
@@ -881,14 +1040,11 @@ body {
 ._sectionRight ._storyCategory ._title {
   @apply p-[10px] pb-[5px] border border-grayy dark:border-white11;
 }
-._sectionRight ._storyCategory ._title h3 {
-  @apply text-[28px] leading-[40px] font-semibold text-bluee dark:text-green09 uppercase;
-}
 ._sectionRight ._storyCategory ._content {
   @apply p-[24px] px-[50px] grid grid-cols-2 gap-[15px] border border-grayy dark:border-white11 border-t-0;
 }
 ._sectionRight ._storyCategory ._content a {
-  @apply text-[18px] leading-[30px] text-Neutral10 dark:text-white11 line-clamp-1 capitalize hover:underline;
+  @apply text-body2 text-Neutral10 dark:text-white11 line-clamp-1 capitalize hover:underline;
 }
 
 @custom-variant dark (&:where(.dark, .dark *));/*# sourceMappingURL=style.css.map */

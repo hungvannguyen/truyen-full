@@ -12,7 +12,7 @@
         <div class="_menu">
             <ul class="_list">
                 <li x-data="{ dropDown: false }" class="relative">
-                    <div @mouseenter="dropDown = true" @mouseleave="dropDown = false" class="-item">
+                    <div @mouseenter="dropDown = true" @mouseleave="dropDown = false" :class="{'active': dropDown === true}" class="-item">
                         <span class="name">Danh sách</span>
                         <svg class="" :class="{ 'rotate-180': dropDown }" aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
@@ -51,12 +51,7 @@
                     </svg>
                 </li>
                 <li class="-item">
-                    <a href="#" class="">Đọc nhiểu nhất</a>
-                    <svg class="h-5 w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
-                        height="24" fill="none" viewBox="0 0 24 24">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="m19 9-7 7-7-7" />
-                    </svg>
+                    <a href="#" class="">Lịch sử đọc</a>
                 </li>
             </ul>
         </div>
@@ -96,11 +91,11 @@
             </div> --}}
 
             <div class="_notLogin">
-                <div data-modal-target="login-modal" data-modal-toggle="login-modal" class="_loginBtn" @click="openModal = 'login'">
+                <div data-modal-target="login-modal" data-modal-toggle="login-modal" class="_loginBtn" @click="switchLogin('login', $event)">
                     <a href="#">Đăng Nhập</a>
                 </div>
 
-                <div data-modal-target="login-modal" data-modal-toggle="login-modal" class="_regisBtn" @click="openModal = 'register'">
+                <div data-modal-target="login-modal" data-modal-toggle="login-modal" class="_regisBtn" @click="switchLogin('register', $event)">
                     <a href="#">Đăng Ký</a>
                 </div>
             </div>
@@ -129,237 +124,254 @@
                 alt="Story-verse-Logo" />
         </div>
 
-        <div class="swiper loginSwiper">
-            <div class="swiper-wrapper">
-                <!-- Login form -->
-                <div x-show="openModal === 'login'"
-                class="-form swiper-slide">
-                    <h2 class="head_title">Đăng nhập</h2>
-        
-                    <div class="logged_yet">
-                        <span class="">Bạn chưa có tài khoản?</span>
-                        <p @click="openModal = 'register'" class="swiper-next">Đăng ký tại đây!</p>
-                    </div>
-        
-                    <form action="" method="" autocomplete="off" class="space-y-4" id="login_form">
-                        <div class="input">
-                            <label for="login_email" class="">Email</label>
-                            <div class="_box">
-                                <svg class="me-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="1.5" stroke="currentColor" class="size-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
-                                </svg>
-                                <input type="email" id="login_email" placeholder="Địa chỉ email" style="box-shadow: none;"
-                                    class="w-full">
-                            </div>
-                        </div>
-        
-                        <div class="input">
-                            <label for="login_pass" class="">Mật khẩu</label>
-                            <div class="_box">
-                                <svg class="me-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="1.5" stroke="currentColor" class="size-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
-                                </svg>
-        
-                                <input type="password" id="login_pass" placeholder="Mật khẩu" style="box-shadow: none;"
-                                    class="w-full">
-        
-                                <button type="button" class="togglePassword">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke-width="1.5" stroke="currentColor" class="size-6">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                                    </svg>
-                                </button>
-        
-                            </div>
-                        </div>
-        
-                        <div class="forgot_pass">
-                            <label class="flex items-center">
-                                <input type="checkbox" style="box-shadow: none;"
-                                    class="">
-                                <span class="">Lưu lại đăng nhập</span>
-                            </label>
-                            <a href="#" class="">Quên mật khẩu?</a>
-                        </div>
-        
-                        <button type="submit"
-                            class="submit_btn">
-                            Đăng nhập
-                        </button>
-                    </form>
-        
-                    <div class="relative">
-                        <div class="absolute inset-0 flex items-center">
-                            <div class="w-full border-t border-gray-200"></div>
-                        </div>
-                        <div class="relative flex justify-center text-[12px]">
-                            <span class="bg-white dark:bg-gray01 px-2 text-gray02 dark:text-white11">
-                                Hoặc đăng nhập bằng tài khoản mạng xã hội của bạn
-                            </span>
-                        </div>
-                    </div>
-        
-                    <div class="social_login">
-                        <button class="">
-                            <img src="https://www.google.com/favicon.ico" alt="Google" class="mr-2 h-5 w-5">
-                            Google
-                        </button>
-                        <button class="">
-                            <img src="https://www.facebook.com/favicon.ico" alt="Facebook" class="mr-2 h-5 w-5">
-                            Facebook
-                        </button>
+        <!-- Login form -->
+        <div x-ref="login"class="-form">
+            <h2 class="head_title">Đăng nhập</h2>
+
+            <div class="logged_yet">
+                <span class="">Bạn chưa có tài khoản?</span>
+                <p @click="switchLogin('register', $event)" class="">Đăng ký tại đây!</p>
+            </div>
+
+            <form action="" method="" autocomplete="off" class="space-y-4" id="login_form">
+                <div class="input">
+                    <label for="login_email" class="">Email</label>
+                    <div class="_box">
+                        <svg class="me-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke-width="1.5" stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                        </svg>
+                        <input type="email" id="login_email" placeholder="Địa chỉ email" style="box-shadow: none;"
+                            class="w-full">
                     </div>
                 </div>
-                <!-- register form -->
-                <div x-show="openModal === 'register'"
-                class="-form swiper-slide">
-                    <h2 class="head_title">Không có tài khoản? Đăng ký</h2>
-        
-                    <div class="logged_yet">
-                        <span class="">Bạn đã có tài khoản?</span>
-                        <p @click="openModal = 'login'" class="swiper-prev">Đăng nhập tại đây!</p>
-                    </div>
-        
-                    <form action="" method="" autocomplete="off" class="space-y-4" id="register_form">
-                        <div class="flex justify-between gap-[10px]">
-                            <div class="input">
-                                <label for="register_name" class="">Tên tài khoản</label>
-                                <div class="_box">
-                                    <svg class="me-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke-width="1.5" stroke="currentColor" class="size-6">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
-                                    </svg>
-                                    <input type="text" id="register_name" placeholder="Nhập tên" style="box-shadow: none;"
-                                        class="w-full">
-                                </div>
-                            </div>
-        
-                            <div class="input">
-                                <label for="register_email" class="">Email</label>
-                                <div class="_box">
-                                    <svg class="me-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke-width="1.5" stroke="currentColor" class="size-6">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
-                                    </svg>
-                                    <input type="email" id="register_email" placeholder="Địa chỉ email" style="box-shadow: none;"
-                                        class="w-full">
-                                </div>
-                            </div>
-                        </div>
-        
-                        <div class="input">
-                            <label for="register_pass" class="">Mật khẩu</label>
-                            <div class="_box">
-                                <svg class="me-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="1.5" stroke="currentColor" class="size-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
-                                </svg>
-        
-                                <input type="password" id="register_pass" placeholder="Mật khẩu" style="box-shadow: none;"
-                                    class="w-full">
-        
-                                <button type="button" class="togglePassword">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke-width="1.5" stroke="currentColor" class="size-6">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                                    </svg>
-                                </button>
-        
-                            </div>
-                        </div>
-        
-                        <div class="input">
-                            <label for="register_pass2" class="">Xác nhận mật khẩu</label>
-                            <div class="_box">
-                                <svg class="me-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="1.5" stroke="currentColor" class="size-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
-                                </svg>
-        
-                                <input type="password" id="register_pass2" placeholder="Xác nhận mật khẩu" style="box-shadow: none;"
-                                    class="w-full">
-        
-                                <button type="button" class="togglePassword">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke-width="1.5" stroke="currentColor" class="size-6">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                                    </svg>
-                                </button>
-        
-                            </div>
-                        </div>
-        
-                        <div class="forgot_pass">
-                            <label class="flex items-center">
-                                <input type="checkbox" style="box-shadow: none;"
-                                    class="">
-                                <span class="pe-1">Tôi đồng ý với </span>
-                                <a href="#" class="">Điều khoản & Điều kiện</a>
-                            </label>
-                        </div>
-        
-                        <button type="submit"
-                            class="submit_btn">
-                            Đăng Ký
+
+                <div class="input">
+                    <label for="login_pass" class="">Mật khẩu</label>
+                    <div class="_box">
+                        <svg class="me-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke-width="1.5" stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
+                        </svg>
+
+                        <input type="password" id="login_pass" placeholder="Mật khẩu" style="box-shadow: none;"
+                            class="w-full">
+
+                        <button type="button" class="togglePassword">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="currentColor" class="size-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                            </svg>
                         </button>
-                    </form>
-        
-                    <div class="relative">
-                        <div class="absolute inset-0 flex items-center">
-                            <div class="w-full border-t border-gray-200"></div>
-                        </div>
-                        <div class="relative flex justify-center text-[12px]">
-                            <span class="bg-white dark:bg-gray01 px-2 text-gray02 dark:text-white11">
-                                Hoặc đăng nhập bằng tài khoản mạng xã hội của bạn
-                            </span>
-                        </div>
+
                     </div>
-        
-                    <div class="social_login">
-                        <button class="">
-                            <img src="https://www.google.com/favicon.ico" alt="Google" class="mr-2 h-5 w-5">
-                            Google
-                        </button>
-                        <button class="">
-                            <img src="https://www.facebook.com/favicon.ico" alt="Facebook" class="mr-2 h-5 w-5">
-                            Facebook
-                        </button>
-                    </div>
+                </div>
+
+                <div class="forgot_pass">
+                    <label class="flex items-center">
+                        <input type="checkbox" style="box-shadow: none;"
+                            class="">
+                        <span class="">Lưu lại đăng nhập</span>
+                    </label>
+                    <a href="#" class="">Quên mật khẩu?</a>
+                </div>
+
+                <button type="submit"
+                    class="submit_btn">
+                    Đăng nhập
+                </button>
+            </form>
+
+            <div class="relative">
+                <div class="absolute inset-0 flex items-center">
+                    <div class="w-full border-t border-gray-200"></div>
+                </div>
+                <div class="relative flex justify-center text-[12px]">
+                    <span class="bg-white dark:bg-gray01 px-2 text-gray02 dark:text-white11">
+                        Hoặc đăng nhập bằng tài khoản mạng xã hội của bạn
+                    </span>
                 </div>
             </div>
+
+            <div class="social_login">
+                <button class="">
+                    <img src="https://www.google.com/favicon.ico" alt="Google" class="mr-2 h-5 w-5">
+                    Google
+                </button>
+                <button class="">
+                    <img src="https://www.facebook.com/favicon.ico" alt="Facebook" class="mr-2 h-5 w-5">
+                    Facebook
+                </button>
+            </div>
         </div>
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                var swiper = new Swiper(".loginSwiper", {
-                    spaceBetween: 30,
-                    navigation: {
-                        nextEl: ".swiper-next",
-                        prevEl: ".swiper-prev",
-                    },
-                });
-            });
-          </script>
+        <!-- register form -->
+        <div x-ref="register"class="-form hidden">
+            <h2 class="head_title">Không có tài khoản? Đăng ký</h2>
+
+            <div class="logged_yet">
+                <span class="">Bạn đã có tài khoản?</span>
+                <p @click="switchLogin('login', $event)" class="">Đăng nhập tại đây!</p>
+            </div>
+
+            <form action="" method="" autocomplete="off" class="space-y-4" id="register_form">
+                <div class="flex justify-between gap-[10px]">
+                    <div class="input">
+                        <label for="register_name" class="">Tên tài khoản</label>
+                        <div class="_box">
+                            <svg class="me-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="currentColor" class="size-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                            </svg>
+                            <input type="text" id="register_name" placeholder="Nhập tên" style="box-shadow: none;"
+                                class="w-full">
+                        </div>
+                    </div>
+
+                    <div class="input">
+                        <label for="register_email" class="">Email</label>
+                        <div class="_box">
+                            <svg class="me-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="currentColor" class="size-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                            </svg>
+                            <input type="email" id="register_email" placeholder="Địa chỉ email" style="box-shadow: none;"
+                                class="w-full">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="input">
+                    <label for="register_pass" class="">Mật khẩu</label>
+                    <div class="_box">
+                        <svg class="me-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke-width="1.5" stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
+                        </svg>
+
+                        <input type="password" id="register_pass" placeholder="Mật khẩu" style="box-shadow: none;"
+                            class="w-full">
+
+                        <button type="button" class="togglePassword">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="currentColor" class="size-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                            </svg>
+                        </button>
+
+                    </div>
+                </div>
+
+                <div class="input">
+                    <label for="register_pass2" class="">Xác nhận mật khẩu</label>
+                    <div class="_box">
+                        <svg class="me-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke-width="1.5" stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
+                        </svg>
+
+                        <input type="password" id="register_pass2" placeholder="Xác nhận mật khẩu" style="box-shadow: none;"
+                            class="w-full">
+
+                        <button type="button" class="togglePassword">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="currentColor" class="size-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                            </svg>
+                        </button>
+
+                    </div>
+                </div>
+
+                <div class="forgot_pass">
+                    <label class="flex items-center">
+                        <input type="checkbox" style="box-shadow: none;"
+                            class="">
+                        <span class="pe-1">Tôi đồng ý với </span>
+                        <a href="#" class="">Điều khoản & Điều kiện</a>
+                    </label>
+                </div>
+
+                <button type="submit"
+                    class="submit_btn">
+                    Đăng Ký
+                </button>
+            </form>
+
+            <div class="relative">
+                <div class="absolute inset-0 flex items-center">
+                    <div class="w-full border-t border-gray-200"></div>
+                </div>
+                <div class="relative flex justify-center text-[12px]">
+                    <span class="bg-white dark:bg-gray01 px-2 text-gray02 dark:text-white11">
+                        Hoặc đăng nhập bằng tài khoản mạng xã hội của bạn
+                    </span>
+                </div>
+            </div>
+
+            <div class="social_login">
+                <button class="">
+                    <img src="https://www.google.com/favicon.ico" alt="Google" class="mr-2 h-5 w-5">
+                    Google
+                </button>
+                <button class="">
+                    <img src="https://www.facebook.com/favicon.ico" alt="Facebook" class="mr-2 h-5 w-5">
+                    Facebook
+                </button>
+            </div>
+        </div>
     </div>
 </div>
 
 <script>
+    document.addEventListener("alpine:init", () => {
+            Alpine.data("loginSwitcher", () => ({
+                activeTab: "login",
+                switchLogin(newTab, event) {
+                    if (newTab === this.activeTab) return;
+
+                    let currentTab = this.$refs[this.activeTab];
+                    let nextTab = this.$refs[newTab];
+
+                    gsap.to(currentTab, {
+                        opacity: 0,
+                        x: 10,
+                        duration: 0.3,
+                        onComplete: () => {
+                            currentTab.classList.add("hidden");
+                            nextTab.classList.remove("hidden");
+
+                            gsap.fromTo(nextTab, {
+                                opacity: 0,
+                                x: 10
+                            }, {
+                                opacity: 1,
+                                x: 0,
+                                duration: 0.4
+                            });
+                        }
+                    });
+
+                    this.activeTab = newTab;
+                }
+            }));
+        });
+    // Toggle password visibility
+
     document.querySelectorAll('.togglePassword').forEach(button => {
             button.addEventListener('click', function() {
                 const input = this.previousElementSibling;

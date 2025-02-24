@@ -17,3 +17,7 @@ Route::get('/category', function () {
 Route::get('/details', function () {
     return view('details');
 });
+
+Route::get('/chapter', function () {
+    return view('chapter');
+});

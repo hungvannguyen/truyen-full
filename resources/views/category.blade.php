@@ -2,13 +2,7 @@
 
 @section('content')
     <div class="category">
-        <div class="breadcrumb my_container">
-            <ol>
-                <li><a href="#">Home</a></li>
-                <li>&gt;</li>
-                <li><span>Danh sách</span></li>
-            </ol>
-        </div>
+        @include('components/breadcrumb')
 
         <div class="cat_info">
             <div class="-container">
