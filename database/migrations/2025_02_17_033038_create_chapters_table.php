@@ -14,13 +14,14 @@ return new class extends Migration
         Schema::create('chapters', function (Blueprint $table) {
             $table->ulid('id')->primary();
 			$table->ulid('story_id');
-			$table->string('chapter_number');
+			$table->integer('chapter_number');
 			$table->string('title')->nullable();
 			$table->string('slug')->nullable();
 			$table->longText('content');
 			$table->enum('status', ['draft','pending','published'])->default('draft');
 			$table->bigInteger('view_count')->default(0);
             $table->timestamps();
+			$table->softDeletes();
         });
     }
 

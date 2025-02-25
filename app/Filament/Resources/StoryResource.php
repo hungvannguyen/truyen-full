@@ -85,8 +85,14 @@ class StoryResource extends Resource
 					->label('Mô tả truyện')
 					->searchable()
 					->sortable(),
+				Tables\Columns\TextColumn::make('chapter_count')
+					->label('Số chương')
+					->badge()
+					->searchable()
+					->sortable(),
 				Tables\Columns\TextColumn::make('status')
 					->label('Trạng thái truyện')
+					->badge()
 					->sortable(),
 	            Tables\Columns\TextColumn::make('created_at')
 		            ->label('Ngày tạo')
@@ -96,7 +102,7 @@ class StoryResource extends Resource
                     ->sortable(),
             ])
             ->filters([
-                //
+	            Tables\Filters\TrashedFilter::make(),
             ])
             ->actions([
 				Tables\Actions\ViewAction::make()
@@ -105,10 +111,20 @@ class StoryResource extends Resource
 	                ->label('Chỉnh sửa'),
 	            Tables\Actions\DeleteAction::make()
 		            ->label('Xóa'),
+	            Tables\Actions\RestoreAction::make()
+			            ->label('Khôi phục'),
+	            Tables\Actions\ForceDeleteAction::make()
+			            ->label('Xóa Vĩnh Viễn')
+			            ->requiresConfirmation(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
+	                Tables\Actions\ForceDeleteBulkAction::make()
+			                ->label('Xóa Vĩnh Viễn')
+			                ->requiresConfirmation(),
+	                Tables\Actions\RestoreBulkAction::make()
+			                ->label('Khôi Phục'),
                 ]),
             ]);
     }

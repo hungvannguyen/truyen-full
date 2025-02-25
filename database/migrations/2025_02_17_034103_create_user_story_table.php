@@ -12,10 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('user_story', function (Blueprint $table) {
-			$table->id();
 			$table->ulid('user_id');
 			$table->ulid('story_id');
             $table->timestamps();
+			$table->primary(['user_id', 'story_id']);
         });
     }
 

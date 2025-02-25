@@ -4,9 +4,19 @@ namespace App\Observers;
 
 use App\Models\Tag;
 use App\Models\TagGroup;
+use Illuminate\Support\Str;
 
 class TagObserver
+
 {
+
+	public function creating(Tag $tag): void
+	{
+		if (empty($tag->slug)) {
+			$tag->slug = Str::slug($tag->name);
+		}
+	}
+
     /**
      * Handle the Tag "created" event.
      */
@@ -14,6 +24,13 @@ class TagObserver
     {
         $tag->tagGroup()->increment('tag_count');
     }
+
+	public function updating(Tag $tag): void
+	{
+		if (empty($tag->slug) || $tag->isDirty('name')) {
+			$tag->slug = Str::slug($tag->name);
+		}
+	}
 
     /**
      * Handle the Tag "updated" event.

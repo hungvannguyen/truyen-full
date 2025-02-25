@@ -69,7 +69,7 @@ class TagResource extends Resource
                     ->searchable(),
             ])
             ->filters([
-                //
+	            Tables\Filters\TrashedFilter::make(),
             ])
             ->actions([
 				Tables\Actions\ViewAction::make()
@@ -78,10 +78,21 @@ class TagResource extends Resource
 	                ->label('Sửa'),
 				Tables\Actions\DeleteAction::make()
 	                ->label('Xóa'),
+	            Tables\Actions\RestoreAction::make()
+	                ->label('Khôi phục'),
+	            Tables\Actions\ForceDeleteAction::make()
+		            ->label('Xóa Vĩnh Viễn')
+		            ->requiresConfirmation(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                    Tables\Actions\DeleteBulkAction::make()
+                            ->label('Xóa Tất Cả'),
+	                Tables\Actions\ForceDeleteBulkAction::make()
+			                ->label('Xóa Vĩnh Viễn')
+			                ->requiresConfirmation(),
+	                Tables\Actions\RestoreBulkAction::make()
+			                ->label('Khôi Phục'),
                 ]),
             ]);
     }

@@ -16,8 +16,10 @@ return new class extends Migration
 	        $table->ulid('user_id');
 	        $table->ulid('story_id');
 	        $table->ulid('parent_id')->nullable();
-			$table->longText('content');
+			$table->tinyInteger('rating')->default(0);
+			$table->longText('content')->nullable();
             $table->timestamps();
+			$table->softDeletes();
         });
     }
 

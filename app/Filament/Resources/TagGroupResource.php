@@ -51,6 +51,7 @@ class TagGroupResource extends Resource
 					->sortable(),
 				Tables\Columns\TextColumn::make('tag_count')
 					->label('Số lượng tag')
+					->badge()
 					->searchable()
 					->sortable(),
 	            Tables\Columns\TextColumn::make('created_at')
@@ -63,17 +64,30 @@ class TagGroupResource extends Resource
                     ->sortable(),
             ])
             ->filters([
-                //
+	            Tables\Filters\TrashedFilter::make(),
             ])
             ->actions([
 				Tables\Actions\ViewAction::make()
 					->label('Xem'),
                 Tables\Actions\EditAction::make()
 	                ->label('Chỉnh sửa'),
+	            Tables\Actions\DeleteAction::make()
+			            ->label('Xóa'),
+	            Tables\Actions\RestoreAction::make()
+			            ->label('Khôi phục'),
+	            Tables\Actions\ForceDeleteAction::make()
+			            ->label('Xóa Vĩnh Viễn')
+			            ->requiresConfirmation(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+	                Tables\Actions\DeleteBulkAction::make()
+			                ->label('Xóa Tất Cả'),
+	                Tables\Actions\ForceDeleteBulkAction::make()
+			                ->label('Xóa Vĩnh Viễn')
+			                ->requiresConfirmation(),
+	                Tables\Actions\RestoreBulkAction::make()
+			                ->label('Khôi Phục'),
                 ]),
             ]);
     }

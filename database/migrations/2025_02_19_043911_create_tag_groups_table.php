@@ -17,6 +17,7 @@ return new class extends Migration
 			$table->string('slug');
 			$table->bigInteger('tag_count')->default(0);
             $table->timestamps();
+			$table->softDeletes();
         });
     }
 

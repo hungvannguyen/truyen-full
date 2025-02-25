@@ -24,6 +24,7 @@ return new class extends Migration
 			$table->bigInteger('rating_count')->default(0);
 			$table->bigInteger('review_count')->default(0);
             $table->timestamps();
+			$table->softDeletes();
         });
     }
 

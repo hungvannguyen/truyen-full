@@ -118,18 +118,45 @@ class UserResource extends Resource
 			            ->sortable(),
             ])
             ->filters([
-                //
+	            Tables\Filters\TrashedFilter::make(),
             ])
             ->actions([
+	            Tables\Actions\ViewAction::make()
+			            ->label('Xem'),
                 Tables\Actions\EditAction::make()
 	                ->label('Chỉnh sửa'),
+				Tables\Actions\Action::make('promote')
+	                ->label('Nâng quyền')
+	                ->action(fn (User $user) => $user->update(['role' => UserRole::CONTRIBUTOR]))
+					->requiresConfirmation()
+	                ->visible(
+		                fn (User $user) => $user->role === UserRole::USER
+	                ),
+				Tables\Actions\Action::make('demote')
+	                ->label('Hạ quyền')
+	                ->action(fn (User $user) => $user->update(['role' => UserRole::USER]))
+					->requiresConfirmation()
+	                ->visible(
+		                fn (User $user) => $user->role === UserRole::CONTRIBUTOR
+	                ),
 				Tables\Actions\DeleteAction::make()
-                    ->label('Xóa'),
+                    ->label('Xóa')
+	                ->visible(fn (User $user) => $user->role !== UserRole::ADMIN),
+	            Tables\Actions\RestoreAction::make()
+	                ->label('Khôi phục'),
+	            Tables\Actions\ForceDeleteAction::make()
+		            ->label('Xóa Vĩnh Viễn')
+		            ->requiresConfirmation(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make()
 	                    ->label('Xóa Tất Cả'),
+	                Tables\Actions\ForceDeleteBulkAction::make()
+	                    ->label('Xóa Vĩnh Viễn')
+	                    ->requiresConfirmation(),
+	                Tables\Actions\RestoreBulkAction::make()
+	                    ->label('Khôi Phục'),
                 ])
 	            ->label('Hành động'),
             ]);

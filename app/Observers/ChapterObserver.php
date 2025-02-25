@@ -3,21 +3,25 @@
 namespace App\Observers;
 
 use App\Models\Chapter;
+use Illuminate\Support\Str;
 
 class ChapterObserver
 {
 
 	public function creating(Chapter $chapter): void
 	{
-		$chapter->chapter_number = $chapter->story->chapter_count + 1;
-		$chapter->story->increment('chapter_count');
+		if(!empty($chapter->title))
+		{
+			$chapter->slug = Str::slug($chapter->title);
+		}
 	}
     /**
      * Handle the Chapter "created" event.
      */
     public function created(Chapter $chapter): void
     {
-        //
+	    $chapter->chapter_number = $chapter->story->chapter_count + 1;
+	    $chapter->story->increment('chapter_count');
     }
 
     /**
@@ -33,7 +37,7 @@ class ChapterObserver
      */
     public function deleted(Chapter $chapter): void
     {
-        //
+        $chapter->story->decrement('chapter_count');
     }
 
     /**
