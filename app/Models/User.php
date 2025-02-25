@@ -73,4 +73,9 @@ class User extends Authenticatable implements FilamentUser
 	{
 		return $this->belongsToMany(Story::class, 'user_story', 'user_id', 'story_id');
 	}
+
+	public function follow(): belongsToMany
+	{
+		return $this->belongsToMany(Story::class, 'user_follow', 'user_id', 'story_id');
+	}
 }
