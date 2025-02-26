@@ -9,6 +9,7 @@ enum StoryStatus: string implements HasLabel
 	case DRAFT = 'draft';
 	case PENDING = 'pending';
 	case PUBLISHED = 'published';
+	case BAN = 'ban';
 
 	public function getLabel(): ?string
 	{
@@ -16,6 +17,7 @@ enum StoryStatus: string implements HasLabel
 			self::DRAFT => 'Bản nháp',
 			self::PENDING => 'Đang chờ',
 			self::PUBLISHED => 'Đã xuất bản',
+			self::BAN => 'Bị cấm',
 		};
 	}
 }

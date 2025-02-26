@@ -18,8 +18,11 @@ return new class extends Migration
 			$table->string('title')->nullable();
 			$table->string('slug')->nullable();
 			$table->longText('content');
-			$table->enum('status', ['draft','pending','published'])->default('draft');
+			$table->enum('status', ['draft','pending','published','ban'])->default('draft');
 			$table->bigInteger('view_count')->default(0);
+	        $table->float('rating')->default(0);
+	        $table->bigInteger('rating_count')->default(0);
+	        $table->bigInteger('report_count')->default(0);
             $table->timestamps();
 			$table->softDeletes();
         });

@@ -90,6 +90,18 @@ class StoryResource extends Resource
 					->badge()
 					->searchable()
 					->sortable(),
+				Tables\Columns\TextColumn::make('rating')
+					->label('Đánh giá')
+					->badge()
+					->sortable(),
+				Tables\Columns\TextColumn::make('rating_count')
+					->label('Số lượt đánh giá')
+					->badge()
+					->sortable(),
+				Tables\Columns\TextColumn::make('view_count')
+					->label('Lượt xem')
+					->badge()
+					->sortable(),
 				Tables\Columns\TextColumn::make('status')
 					->label('Trạng thái truyện')
 					->badge()
