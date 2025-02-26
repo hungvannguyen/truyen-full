@@ -24,7 +24,7 @@ class ChapterReviewObserver
      */
     public function created(ChapterReview $chapterReview): void
     {
-	    $chapter = $chapterReview->story;
+	    $chapter = $chapterReview->chapter;
 	    $chapter->rating = $this->ratingService->getRating($chapter, $chapterReview->rating);
 	    $chapter->increment('rating_count');
 	    $chapter->save();
@@ -35,7 +35,7 @@ class ChapterReviewObserver
      */
     public function updated(ChapterReview $chapterReview): void
     {
-	    $chapter = $chapterReview->story;
+	    $chapter = $chapterReview->chapter;
 	    $oldRating = $chapterReview->getOriginal('rating');
 	    $newRating = $chapterReview->rating;
 	    $chapter->rating = $this->ratingService->updateRating($chapter, $oldRating, $newRating);
@@ -46,7 +46,7 @@ class ChapterReviewObserver
      */
     public function deleted(ChapterReview $chapterReview): void
     {
-	    $chapter = $chapterReview->story;
+	    $chapter = $chapterReview->chapter;
 	    $chapter->rating = $this->ratingService->removeRating($chapter, $chapterReview->rating);
     }
 
@@ -55,7 +55,7 @@ class ChapterReviewObserver
      */
     public function restored(ChapterReview $chapterReview): void
     {
-	    $chapter = $chapterReview->story;
+	    $chapter = $chapterReview->chapter;
 	    $chapter->rating = $this->ratingService->getRating($chapter, $chapterReview->rating);
 	    $chapter->increment('rating_count');
 	    $chapter->save();
@@ -66,7 +66,7 @@ class ChapterReviewObserver
      */
     public function forceDeleted(ChapterReview $chapterReview): void
     {
-	    $chapter = $chapterReview->story;
+	    $chapter = $chapterReview->chapter;
 	    $chapter->rating = $this->ratingService->removeRating($chapter, $chapterReview->rating);
     }
 }

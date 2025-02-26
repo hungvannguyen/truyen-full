@@ -3,11 +3,13 @@
 namespace App\Providers;
 
 use App\Models\Chapter;
+use App\Models\ChapterReview;
 use App\Models\Story;
 use App\Models\StoryReview;
 use App\Models\Tag;
 use App\Models\TagGroup;
 use App\Observers\ChapterObserver;
+use App\Observers\ChapterReviewObserver;
 use App\Observers\StoryObserver;
 use App\Observers\StoryReviewObserver;
 use App\Observers\TagGroupObserver;
@@ -40,5 +42,6 @@ class AppServiceProvider extends ServiceProvider
 		Tag::observe(TagObserver::class);
 		TagGroup::observe(TagGroupObserver::class);
 		StoryReview::observe(StoryReviewObserver::class);
+		ChapterReview::observe(ChapterReviewObserver::class);
     }
 }

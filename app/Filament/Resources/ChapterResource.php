@@ -70,10 +70,19 @@ class ChapterResource extends Resource
 					->label('Tên chương')
 					->searchable()
 					->sortable(),
+	            Tables\Columns\TextColumn::make('rating')
+			            ->label('Đánh giá')
+			            ->badge()
+			            ->sortable(),
+	            Tables\Columns\TextColumn::make('rating_count')
+			            ->label('Số lượt đánh giá')
+			            ->badge()
+			            ->sortable(),
 				Tables\Columns\TextColumn::make('slug')
 					->label('Slug')
 					->searchable()
 					->sortable(),
+
 				Tables\Columns\TextColumn::make('status')
 					->label('Trạng thái')
 					->badge()
