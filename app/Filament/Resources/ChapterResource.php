@@ -123,4 +123,19 @@ class ChapterResource extends Resource
             'edit' => Pages\EditChapter::route('/{record}/edit'),
         ];
     }
+
+	public static function getLabel(): string
+	{
+		return 'Chương';
+	}
+
+	public static function getPluralLabel(): string
+	{
+		return 'Danh sách chương';
+	}
+
+	public static function getNavigationLabel(): string
+	{
+		return 'Chương';
+	}
 }

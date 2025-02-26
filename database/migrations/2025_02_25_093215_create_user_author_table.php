@@ -16,6 +16,9 @@ return new class extends Migration
 	        $table->ulid('user_id');
 	        $table->ulid('author_id');
 	        $table->timestamps();
+
+	        $table->index('user_id');
+	        $table->index('author_id');
         });
     }
 

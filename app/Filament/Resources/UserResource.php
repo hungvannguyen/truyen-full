@@ -13,8 +13,6 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 
 class UserResource extends Resource
@@ -177,4 +175,19 @@ class UserResource extends Resource
             'edit' => Pages\EditUser::route('/{record}/edit'),
         ];
     }
+
+	public static function getLabel(): string
+	{
+		return 'Người dùng';
+	}
+
+	public static function getPluralLabel(): string
+	{
+		return 'Danh sách người dùng';
+	}
+
+	public static function getNavigationLabel(): string
+	{
+		return 'Người dùng';
+	}
 }

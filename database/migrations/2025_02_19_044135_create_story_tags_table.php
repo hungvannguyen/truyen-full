@@ -16,6 +16,9 @@ return new class extends Migration
 			$table->ulid('tag_id');
             $table->timestamps();
 	        $table->primary(['story_id', 'tag_id']);
+
+			$table->index('story_id');
+			$table->index('tag_id');
         });
     }
 

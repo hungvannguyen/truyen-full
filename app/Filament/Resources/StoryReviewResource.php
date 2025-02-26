@@ -156,4 +156,19 @@ class StoryReviewResource extends Resource
             'edit' => Pages\EditStoryReview::route('/{record}/edit'),
         ];
     }
+
+	public static function getLabel(): string
+	{
+		return 'Đánh giá truyện';
+	}
+
+	public static function getPluralLabel(): string
+	{
+		return 'Danh sách đánh giá truyện';
+	}
+
+	public static function getNavigationLabel(): string
+	{
+		return 'Đánh giá truyện';
+	}
 }

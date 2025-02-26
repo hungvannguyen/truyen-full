@@ -18,6 +18,8 @@ return new class extends Migration
 			$table->string('slug');
             $table->timestamps();
 			$table->softDeletes();
+
+			$table->index('tag_group_id');
         });
     }
 

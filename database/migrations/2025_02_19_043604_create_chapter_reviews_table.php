@@ -21,6 +21,9 @@ return new class extends Migration
 	        $table->longText('content')->nullable();
 	        $table->timestamps();
 			$table->softDeletes();
+
+	        $table->index('user_id');
+	        $table->index('story_id');
         });
     }
 

@@ -158,4 +158,19 @@ class StoryResource extends Resource
             'edit' => Pages\EditStory::route('/{record}/edit'),
         ];
     }
+
+	public static function getLabel(): string
+	{
+		return 'Truyện';
+	}
+
+	public static function getPluralLabel(): string
+	{
+		return 'Danh sách truyện';
+	}
+
+	public static function getNavigationLabel(): string
+	{
+		return 'Truyện';
+	}
 }

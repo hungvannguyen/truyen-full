@@ -14,10 +14,16 @@ return new class extends Migration
         Schema::create('reports', function (Blueprint $table) {
             $table->id();
 			$table->ulid('user_id');
-			$table->ulid('story_id');
+			$table->ulid('story_id')->nullable();
+	        $table->ulid('chapter_id')->nullable();
 			$table->string('reason');
 			$table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
             $table->timestamps();
+			$table->softDeletes();
+
+			$table->index('user_id');
+			$table->index('story_id');
+			$table->index('chapter_id');
         });
     }
 

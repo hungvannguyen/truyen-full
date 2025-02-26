@@ -112,4 +112,19 @@ class TagResource extends Resource
             'edit' => Pages\EditTag::route('/{record}/edit'),
         ];
     }
+
+	public static function getLabel(): string
+	{
+		return 'Tags';
+	}
+
+	public static function getPluralLabel(): string
+	{
+		return 'Danh sách Tag';
+	}
+
+	public static function getNavigationLabel(): string
+	{
+		return 'Tag';
+	}
 }

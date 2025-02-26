@@ -194,4 +194,19 @@ class ChapterReviewResource extends Resource
             'edit' => Pages\EditChapterReview::route('/{record}/edit'),
         ];
     }
+
+	public static function getLabel(): string
+	{
+		return 'Đánh giá Chap';
+	}
+
+	public static function getPluralLabel(): string
+	{
+		return 'Danh sách đánh giá Chap';
+	}
+
+	public static function getNavigationLabel(): string
+	{
+		return 'Đánh giá Chap';
+	}
 }

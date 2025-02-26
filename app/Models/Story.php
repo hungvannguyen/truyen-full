@@ -56,4 +56,9 @@ class Story extends Model
 	{
 		return $this->hasMany(StoryReview::class);
 	}
+
+	public function reports(): HasMany
+	{
+		return $this->hasMany(Report::class);
+	}
 }
