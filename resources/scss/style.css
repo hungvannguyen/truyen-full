@@ -21,7 +21,7 @@
   @apply px-[10px] py-1 flex items-center gap-1 rounded-lg bg-bluee text-white hover:bg-Accents11 dark:bg-green09 dark:hover:bg-green11 select-none;
 }
 .Section1 ._left .truyenMoi ._headSection .-sortBtn span {
-  @apply text-[16px] leading-[23px] font-medium;
+  @apply text-button2;
 }
 .Section1 ._left .truyenMoi ._headSection .-sortBtn svg {
   @apply w-5 h-5 font-bold;
@@ -123,6 +123,9 @@
 .category .cat_content .-item ._info .-storyinfo ._author {
   @apply flex items-center gap-[5px] text-gray10 dark:text-white10 text-[14px] leading-[20px] line-clamp-1;
 }
+.category .cat_content .-item ._info .-storyinfo ._author span {
+  @apply line-clamp-1;
+}
 .category .cat_content .-item ._info .-storyinfo ._chapter {
   @apply flex items-center justify-between gap-[5px] text-gray10 dark:text-white10 text-[16px] leading-[23px];
 }
@@ -198,6 +201,9 @@
 }
 .content-overlay .info .btn-read {
   @apply w-fit bg-bluee hover:bg-blue11 dark:bg-green09 dark:hover:bg-green11 text-white px-6 py-2 rounded-md transition-colors select-none cursor-pointer;
+}
+.content-overlay .info .btn-read.followed svg {
+  @apply fill-Danger09;
 }
 
 .switch_tab {
@@ -395,6 +401,172 @@
   @apply grid md:grid-cols-6 grid-cols-1 gap-[27px];
 }
 
+.chapterPage .title {
+  @apply text-h4 text-bluee dark:text-green09 text-center mb-8 font-medium;
+}
+.chapterPage .chapter_navigation {
+  @apply flex justify-center items-center gap-[15px] mb-8;
+}
+.chapterPage .chapter_navigation .navigation_btn {
+  @apply p-2 text-gray02 dark:text-white11 bg-white dark:bg-bgNavbar hover:bg-gray-100 rounded-lg border border-gray02 dark:border-white11 dark:hover:bg-gray-700;
+}
+.chapterPage .chapter_navigation .navigation_btn svg {
+  @apply w-4 h-4;
+}
+.chapterPage .chapter_navigation .navigation_btn.disable {
+  @apply p-2 text-gray02 dark:text-white11 bg-white dark:bg-bgNavbar rounded-lg border border-gray02 dark:border-white11;
+}
+.chapterPage .chapter_navigation .chapter_selection {
+  @apply border rounded-lg px-[8px] py-[4px] bg-white text-gray02;
+}
+.chapterPage .reading_setting {
+  @apply mb-4 text-gray02 bg-white border border-gray02 hover:bg-white09 focus:outline-none font-medium rounded-lg text-sm p-[6px] text-center inline-flex items-center dark:bg-bgNavbar dark:hover:bg-gray-700 dark:border-white11 dark:text-white11 cursor-pointer select-none;
+}
+.chapterPage .reading_setting svg {
+  @apply ease-in-out transition-transform;
+}
+.chapterPage .reading_setting.active {
+  @apply text-bluee dark:text-green09 border-bluee dark:border-green09;
+}
+.chapterPage .reading_setting.active svg {
+  @apply rotate-180 ease-in-out transition-transform;
+}
+.chapterPage .reading_setting-dropdown {
+  @apply absolute top-[100%] left-0 w-fit mb-6 text-sm text-gray02 border border-gray02 rounded-lg overflow-hidden bg-white dark:bg-bgNavbar dark:border-green09 dark:text-white11;
+}
+.chapterPage .reading_setting-dropdown .wrapper {
+  @apply space-y-[10px] p-4 bg-white dark:bg-bgNavbar;
+}
+.chapterPage .reading_setting-dropdown .wrapper .item {
+  @apply flex items-center gap-[24px];
+}
+.chapterPage .reading_setting-dropdown .wrapper .item label {
+  @apply w-[120px] text-gray02 text-button2 dark:text-white11;
+}
+.chapterPage .reading_setting-dropdown .wrapper .item select {
+  @apply border border-gray02 text-caption rounded-lg text-gray02 px-2 py-1 w-full flex-1 bg-transparent dark:text-white11 dark:border-white11 line-clamp-1;
+}
+
+.page_title {
+  @apply text-h5 text-bluee dark:text-green09;
+}
+
+.follow_count {
+  @apply text-blockquote text-gray01 dark:text-white12 font-light;
+}
+
+.sort_by {
+  @apply flex gap-4 mb-8;
+}
+.sort_by button {
+  @apply bg-bluee hover:bg-blue11 dark:bg-green09 dark:hover:bg-green11 text-button2 text-white px-4 py-2 rounded-md flex items-center gap-2 select-none;
+}
+.sort_by button svg {
+  @apply w-5 h-5;
+}
+
+.card-follow {
+  @apply flex flex-col;
+}
+.card-follow ._banner {
+  @apply rounded-md h-[260px] relative overflow-hidden;
+}
+.card-follow ._banner img {
+  @apply w-full h-full object-cover rounded-md;
+  transition: transform 0.3s ease;
+}
+.card-follow ._banner .-overlay {
+  @apply absolute inset-0 text-[14px] px-[10px] py-[2px] bg-gradient-to-t from-gray-700 rounded-md;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.card-follow ._banner .-overlay ._boxContent {
+  @apply absolute bottom-0 left-0 right-0 p-4 flex justify-between gap-2;
+}
+.card-follow ._banner .-overlay ._boxContent button {
+  @apply text-white px-1 py-1 rounded text-sm flex-1 transition-colors;
+}
+.card-follow ._banner .-overlay ._boxContent button:first-child {
+  @apply bg-bluee hover:bg-blue11 dark:bg-green09 dark:hover:bg-green11;
+}
+.card-follow ._banner .-overlay ._boxContent button:last-child {
+  @apply bg-red-500 hover:bg-red-600;
+}
+.card-follow ._title {
+  @apply pt-2;
+}
+.card-follow ._title h3 {
+  @apply text-[18px] line-clamp-2 font-semibold leading-[30px] dark:text-white12 hover:underline;
+}
+.card-follow ._author {
+  @apply flex items-center gap-[5px] text-gray10 dark:text-white10 text-[14px] leading-[20px] hover:underline line-clamp-1;
+}
+.card-follow ._author span {
+  @apply line-clamp-1;
+}
+.card-follow ._storyGenre {
+  @apply pt-2;
+}
+.card-follow ._storyGenre a {
+  @apply text-grayy dark:text-white11 text-caption pe-[5px] border-r border-grayy dark:border-white11 hover:underline;
+}
+.card-follow ._storyGenre a:last-child {
+  @apply border-0;
+}
+.card-follow ._status {
+  @apply text-grayy dark:text-white11 text-caption pt-2;
+}
+.card-follow ._status span:first-child {
+  @apply text-grayy dark:text-white11;
+}
+.card-follow ._status span:last-child {
+  @apply text-bluee dark:text-green09;
+}
+
+.card-follow:hover ._banner img {
+  transform: scale(1.2);
+  transition: transform 0.3s ease;
+}
+
+.card-follow:hover ._banner .-overlay {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.authorPage .avatar {
+  @apply w-[158px] h-[158px] rounded-full overflow-hidden;
+}
+.authorPage .avatar img {
+  @apply w-full h-full object-cover;
+}
+.authorPage .nameNJoinDate {
+  @apply flex flex-col justify-between py-[9px] h-full;
+}
+.authorPage .nameNJoinDate .name {
+  @apply text-body font-normal text-gray02 dark:text-white11;
+}
+.authorPage .nameNJoinDate .joinDate {
+  @apply text-body font-normal text-gray02 dark:text-white11;
+}
+.authorPage .nameNJoinDate .btnFollow {
+  @apply w-fit flex items-center gap-[5px] bg-bluee hover:bg-blue11 dark:bg-green09 dark:hover:bg-green11 text-white px-6 py-2 rounded-md transition-colors select-none cursor-pointer;
+}
+.authorPage .nameNJoinDate .btnFollow.followed svg {
+  @apply fill-Danger09;
+}
+.authorPage .novelParameter {
+  @apply flex flex-col justify-between py-[13px];
+}
+.authorPage .novelParameter .novelUploaded {
+  @apply text-body text-gray02 dark:text-white11;
+}
+.authorPage .novelParameter .follower {
+  @apply text-body text-gray02 dark:text-white11;
+}
+.authorPage .novelParameter .authorRating {
+  @apply text-body flex gap-2 items-center text-gray02 dark:text-white11;
+}
+
 .nav {
   @apply fixed left-0 right-0 top-0 z-[50] bg-white dark:bg-bgNavbar;
 }
@@ -537,7 +709,7 @@
   @apply pt-2;
 }
 .card ._storyGenre a {
-  @apply text-grayy dark:text-white11 text-[14px] pe-[5px] border-r border-grayy dark:border-white11 hover:underline;
+  @apply text-grayy dark:text-white11 text-caption pe-[5px] border-r border-grayy dark:border-white11 hover:underline;
 }
 .card ._storyGenre a:last-child {
   @apply border-0;
@@ -813,16 +985,13 @@
   @apply w-[20px] h-[20px];
 }
 
-* {
-  font-family: "Roboto", sans-serif;
-}
-
 [x-cloak] {
   display: none !important;
 }
 
 body {
   @apply bg-white11 dark:bg-Neutral12 relative;
+  font-family: "Roboto", sans-serif;
 }
 
 .my_container {
@@ -889,33 +1058,53 @@ body {
 }
 
 .commonBtnDropdown {
-  @apply px-[10px] py-1 border border-gray02 flex items-center gap-1 rounded-lg select-none text-gray02 dark:text-white11 dark:border-white11;
+  @apply px-[10px] py-1 border border-gray02 flex items-center gap-1 rounded-lg select-none text-gray02 dark:text-white11 dark:border-white11 cursor-pointer;
 }
 .commonBtnDropdown span {
   @apply text-button2;
 }
 .commonBtnDropdown svg {
-  @apply w-5 h-5 font-bold;
+  @apply w-5 h-5 font-bold ease-in-out transition-transform;
 }
 
-.comonBtnDropdownBgColor {
+.commonBtnDropdown.active {
+  @apply bg-white dark:bg-bgNavbar border-bluee dark:border-green09;
+}
+.commonBtnDropdown.active span {
+  @apply text-bluee dark:text-green09;
+}
+.commonBtnDropdown.active svg {
+  @apply text-bluee dark:text-green09 rotate-180 ease-in-out transition-transform;
+}
+
+.commonBtnDropdownBgColor {
   @apply px-[10px] py-1 flex items-center gap-1 rounded-lg select-none bg-bluee text-white hover:bg-blue11 dark:bg-green09 dark:hover:bg-green11;
 }
-.comonBtnDropdownBgColor span {
+.commonBtnDropdownBgColor span {
   @apply text-button2;
 }
-.comonBtnDropdownBgColor svg {
+.commonBtnDropdownBgColor svg {
   @apply w-5 h-5 font-bold;
 }
 
 .commonDropdown {
-  @apply z-10 w-[141px] border border-bluee dark:border-green09 rounded-lg bg-white shadow-sm dark:bg-bgNavbar;
+  @apply z-10 absolute right-0 top-[130%] border border-bluee dark:border-green09 rounded-lg bg-white shadow-sm dark:bg-bgNavbar;
 }
 .commonDropdown ul {
-  @apply py-2 text-button2 text-gray02 dark:text-white11;
+  @apply p-[5px] text-button2 w-full text-gray02 dark:text-white11;
 }
 .commonDropdown ul a {
-  @apply block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 select-none;
+  @apply block rounded-md w-full px-2 py-2 hover:text-bluee dark:hover:text-green09 select-none;
+}
+
+.commonDropdownBgColor {
+  @apply z-10 absolute right-0 top-[130%] border border-bluee dark:border-green09 rounded-lg overflow-hidden bg-bluee dark:bg-green09 shadow-sm;
+}
+.commonDropdownBgColor ul {
+  @apply text-button2 text-white w-full p-[5px];
+}
+.commonDropdownBgColor ul a {
+  @apply block rounded-md w-full px-2 py-2 hover:bg-blue11 dark:hover:bg-green11 select-none;
 }
 
 .sectionTitle1 {
@@ -943,6 +1132,10 @@ body {
 }
 .sectionTitle ._box .line .line-active {
   @apply w-full h-[1px] bg-bluee dark:bg-green09 absolute bottom-0;
+}
+
+.toolTipCustom {
+  @apply absolute z-10 inline-block px-3 py-2 text-caption text-gray02 bg-white09 rounded-lg shadow tooltip dark:bg-gray09 dark:text-white11;
 }
 
 ._sectionRight {

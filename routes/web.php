@@ -21,3 +21,11 @@ Route::get('/details', function () {
 Route::get('/chapter', function () {
     return view('chapter');
 });
+
+Route::get('/follow', function () {
+    return view('follow');
+});
+
+Route::get('/author', function () {
+    return view('author');
+});

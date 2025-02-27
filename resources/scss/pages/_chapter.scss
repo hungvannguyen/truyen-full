@@ -1,0 +1,61 @@
+.chapterPage{
+    .title{
+        @apply text-h4 text-bluee dark:text-green09 text-center mb-8 font-medium;
+    }  
+    
+    .chapter_navigation{
+        @apply flex justify-center items-center gap-[15px] mb-8;
+    
+        .navigation_btn{
+            @apply p-2 text-gray02 dark:text-white11 bg-white dark:bg-bgNavbar hover:bg-gray-100 rounded-lg border border-gray02 dark:border-white11 dark:hover:bg-gray-700;
+    
+            svg{
+                @apply w-4 h-4;
+            }
+        }
+    
+        .navigation_btn.disable{
+            @apply p-2 text-gray02 dark:text-white11 bg-white dark:bg-bgNavbar rounded-lg border border-gray02 dark:border-white11;
+        }
+    
+        .chapter_selection{
+            @apply border rounded-lg px-[8px] py-[4px] bg-white text-gray02;
+        }
+    }
+    
+    .reading_setting{
+        @apply mb-4 text-gray02 bg-white border border-gray02 hover:bg-white09 focus:outline-none font-medium rounded-lg text-sm p-[6px] text-center inline-flex items-center dark:bg-bgNavbar dark:hover:bg-gray-700 dark:border-white11 dark:text-white11 cursor-pointer select-none;
+    
+        svg{
+            @apply ease-in-out transition-transform;
+        }
+    }
+    
+    .reading_setting.active{
+        @apply text-bluee dark:text-green09 border-bluee dark:border-green09;
+    
+        svg{
+            @apply rotate-180 ease-in-out transition-transform;
+        }
+    }
+    
+    .reading_setting-dropdown{
+        @apply absolute top-[100%] left-0 w-fit mb-6 text-sm text-gray02 border border-gray02 rounded-lg overflow-hidden bg-white dark:bg-bgNavbar dark:border-green09 dark:text-white11;
+    
+        .wrapper{
+            @apply space-y-[10px] p-4 bg-white dark:bg-bgNavbar;
+    
+            .item{
+                @apply flex items-center gap-[24px];
+    
+                label{
+                    @apply w-[120px] text-gray02 text-button2 dark:text-white11;
+                }
+    
+                select{
+                    @apply border border-gray02 text-caption rounded-lg text-gray02 px-2 py-1 w-full flex-1 bg-transparent dark:text-white11 dark:border-white11 line-clamp-1;
+                }
+            }
+        }
+    }
+}

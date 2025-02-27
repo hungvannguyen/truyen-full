@@ -45,25 +45,27 @@
                                 </div>
                             </a>
                         </div>
-                        <div class="-sortBtn" id="sortTruyenMoiBtn" data-dropdown-toggle="sortTruyenMoi">
-                            <span>Sắp xếp</span>
-                            <svg class="h-6 w-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
-                                height="24" fill="none" viewBox="0 0 24 24">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="m19 9-7 7-7-7" />
-                            </svg>
-                        </div>
-
-                        <!-- Dropdown menu -->
-                        <div id="sortTruyenMoi" class="commonDropdown hidden">
-                            <ul class="" aria-labelledby="sortTruyenMoiBtn">
-                                <li>
-                                    <a href="#" class="">Mới nhất</a>
-                                </li>
-                                <li>
-                                    <a href="#" class=""">Cũ nhất</a>
-                                </li>
-                            </ul>
+                        <div x-data="{openDD: false}" @click.outside="openDD = false" class="relative">
+                            <div x-ref="sortTruyenMoiBtn" @click="openDD = !openDD" class="-sortBtn" id="sortTruyenMoiBtn">
+                                <span>Sắp xếp</span>
+                                <svg class="h-6 w-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
+                                    height="24" fill="none" viewBox="0 0 24 24">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="m19 9-7 7-7-7" />
+                                </svg>
+                            </div>
+    
+                            <!-- Dropdown menu -->
+                            <div x-show="openDD" x-bind:style="'min-width: ' + $refs.sortTruyenMoiBtn.offsetWidth + 'px;'" id="sortTruyenMoi" class="commonDropdownBgColor">
+                                <ul class="">
+                                    <li>
+                                        <a href="#" class="">Mới nhất</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class=""">Cũ nhất</a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
 
                     </div>

@@ -1,0 +1,50 @@
+.authorPage{
+
+    .avatar{
+        @apply w-[158px] h-[158px] rounded-full overflow-hidden;
+
+        img{
+            @apply w-full h-full object-cover;
+        }
+    }
+
+    .nameNJoinDate{
+        @apply flex flex-col justify-between py-[9px] h-full;
+
+        .name{
+            @apply text-body font-normal text-gray02 dark:text-white11;
+        }
+
+        .joinDate{
+            @apply text-body font-normal text-gray02 dark:text-white11;
+        }
+
+        .btnFollow{
+            @apply w-fit flex items-center gap-[5px] bg-bluee hover:bg-blue11 dark:bg-green09 dark:hover:bg-green11 text-white px-6 py-2 rounded-md transition-colors select-none cursor-pointer;
+        }
+
+        .btnFollow.followed{
+            svg{
+                @apply fill-Danger09;
+            }
+        }
+    }
+
+    .novelParameter{
+        @apply flex flex-col justify-between py-[13px];
+
+        .novelUploaded{
+            @apply text-body text-gray02 dark:text-white11;
+        }
+
+        .follower{
+            @apply text-body text-gray02 dark:text-white11
+        }
+
+        .authorRating{
+            @apply text-body flex gap-2 items-center text-gray02 dark:text-white11;
+        }
+    }
+
+
+}

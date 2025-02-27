@@ -74,6 +74,10 @@
 
                     ._author{
                         @apply flex items-center gap-[5px] text-gray10 dark:text-white10 text-[14px] leading-[20px] line-clamp-1;
+
+                        span{
+                            @apply line-clamp-1;
+                        }
                     }
 
                     ._chapter{

@@ -26,7 +26,7 @@
         @apply pt-2;
 
         a{
-            @apply text-grayy dark:text-white11 text-[14px] pe-[5px] border-r border-grayy dark:border-white11 hover:underline;
+            @apply text-grayy dark:text-white11 text-caption pe-[5px] border-r border-grayy dark:border-white11 hover:underline;
         }
 
         a:last-child{

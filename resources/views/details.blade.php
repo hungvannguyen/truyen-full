@@ -49,6 +49,17 @@
                                 <span class="">Trạng thái:</span>
                                 <span class="">Full</span>
                             </div>
+
+                            <button class="text-white12">
+                                <svg data-tooltip-target="reportNovel" data-tooltip-placement="right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                                    <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12ZM12 8.25a.75.75 0 0 1 .75.75v3.75a.75.75 0 0 1-1.5 0V9a.75.75 0 0 1 .75-.75Zm0 8.25a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z" clip-rule="evenodd" />
+                                </svg>
+                                
+                                <div id="reportNovel" role="tooltip" class="toolTipCustom opacity-0 invisible">
+                                    Báo cáo lạm dụng
+                                    <div class="tooltip-arrow" data-popper-arrow></div>
+                                </div>
+                            </button>
                         </div>
                     </div>
 
@@ -180,25 +191,27 @@
                 <div class="number_of_cmt">
                     <h3 class="">000 Đánh giá</h3>
 
-                    <div class="commonBtnDropdown" id="sortCommnetBtn" data-dropdown-toggle="sortComment">
-                        <span>Sắp xếp</span>
-                        <svg class="h-6 w-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
-                            height="24" fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="m19 9-7 7-7-7" />
-                        </svg>
-                    </div>
-
-                    <!-- Dropdown menu -->
-                    <div id="sortComment" class="commonDropdown hidden">
-                        <ul class="" aria-labelledby="sortCommnetBtn">
-                            <li>
-                                <a href="#" class="">Mới nhất</a>
-                            </li>
-                            <li>
-                                <a href="#" class=""">Cũ nhất</a>
-                            </li>
-                        </ul>
+                    <div x-data="{openDD: false}" class="relative w-fit">
+                        <div x-ref="sortCommentBtn" @click="openDD = !openDD" class="commonBtnDropdown" :class="{'active': openDD === true }">
+                            <span>Sắp xếp</span>
+                            <svg class="h-6 w-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
+                                height="24" fill="none" viewBox="0 0 24 24">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="m19 9-7 7-7-7" />
+                            </svg>
+                        </div>
+    
+                        <!-- Dropdown menu -->
+                        <div x-show="openDD" x-bind:style="'min-width: ' + $refs.sortCommentBtn.offsetWidth + 'px;'" id="sortComment" class="commonDropdown">
+                            <ul class="">
+                                <li>
+                                    <a href="#" class="">Mới nhất</a>
+                                </li>
+                                <li>
+                                    <a href="#" class=""">Cũ nhất</a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
 
@@ -299,8 +312,7 @@
                                     </svg>
                                 </a>
                                 <!-- Tooltip -->
-                                <div id="commentReport{{ $i }}" role="tooltip"
-                                    class="text-caption shadow-xs tooltip invisible absolute z-10 inline-block rounded-lg bg-white09 px-3 py-2 text-gray01 opacity-0 transition-opacity duration-300">
+                                <div id="commentReport{{ $i }}" role="tooltip" class="toolTipCustom opacity-0 invisible">
                                     Báo cáo lạm dụng
                                     <div class="tooltip-arrow" data-popper-arrow></div>
                                 </div>
@@ -395,8 +407,7 @@
                                                             </svg>
                                                         </a>
                                                         <!-- Dropdown menu -->
-                                                        <div id="subCommentReport{{$j}}" role="tooltip"
-                                                            class="text-caption shadow-xs tooltip invisible absolute z-10 inline-block rounded-lg bg-white09 px-3 py-2 text-gray01 opacity-0 transition-opacity duration-300">
+                                                        <div id="subCommentReport{{$j}}" role="tooltip" class="toolTipCustom opacity-0 invisible">
                                                             Báo cáo lạm dụng
                                                             <div class="tooltip-arrow" data-popper-arrow></div>
                                                         </div>
@@ -431,10 +442,27 @@
                             <span class="">Chương 000</span>
                             <span class="">12 giờ trước</span>
                         </div>
-                        <div class="relative">
-                            <select class="sort">
-                                <option>Mới nhất</option>
-                            </select>
+                        <div x-data="{openDD: false}" @click.outside="openDD = false" class="relative">
+                            <div x-ref="sortChapterBtn" id="sortChapterBtn" @click="openDD = !openDD" class="commonBtnDropdown" :class="{'active': openDD === true }">
+                                <span>Sắp xếp</span>
+                                <svg class="h-6 w-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
+                                    height="24" fill="none" viewBox="0 0 24 24">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="m19 9-7 7-7-7" />
+                                </svg>
+                            </div>
+        
+                            <!-- Dropdown menu -->
+                            <div x-show="openDD" x-bind:style="'min-width: ' + $refs.sortChapterBtn.offsetWidth + 'px;'" id="sortChapter" class="commonDropdown">
+                                <ul class="">
+                                    <li>
+                                        <a href="#" class="">Mới nhất</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class=""">Cũ nhất</a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -443,7 +471,7 @@
                 <div class="chapter-grid mb-8">
                     <!-- Chapter items - repeated 24 times -->
                     @for ($i = 0; $i < 24; $i++)
-                        <a href="#" class="-item">
+                        <a href="/chapter" class="-item">
                             <div class="mark_box">
                                 00
                             </div>

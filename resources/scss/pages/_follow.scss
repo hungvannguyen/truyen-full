@@ -1,0 +1,108 @@
+.page_title{
+    @apply text-h5 text-bluee dark:text-green09;
+}
+
+.follow_count{
+    @apply text-blockquote text-gray01 dark:text-white12 font-light;
+}
+
+.sort_by{
+    @apply flex gap-4 mb-8;
+
+    button{
+        @apply bg-bluee hover:bg-blue11 dark:bg-green09 dark:hover:bg-green11 text-button2 text-white px-4 py-2 rounded-md flex items-center gap-2 select-none;
+
+        svg{
+            @apply w-5 h-5;
+        }
+    }
+}
+
+.card-follow{
+    @apply flex flex-col;
+
+    ._banner{
+        @apply rounded-md h-[260px] relative overflow-hidden;
+
+
+        img{
+            @apply w-full h-full object-cover rounded-md;
+            transition: transform 0.3s ease;
+        }
+
+        .-overlay{
+            @apply absolute inset-0 text-[14px] px-[10px] py-[2px] bg-gradient-to-t from-gray-700 rounded-md;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+
+            ._boxContent{
+                @apply absolute bottom-0 left-0 right-0 p-4 flex justify-between gap-2;
+
+                button{
+                    @apply text-white px-1 py-1 rounded text-sm flex-1 transition-colors;
+                }
+
+                button:first-child{
+                    @apply bg-bluee hover:bg-blue11 dark:bg-green09 dark:hover:bg-green11;
+                }
+
+                button:last-child{
+                    @apply bg-red-500 hover:bg-red-600;
+                }
+            }
+        }
+    }
+
+    ._title{
+        @apply pt-2;
+        h3{
+            @apply text-[18px] line-clamp-2 font-semibold leading-[30px] dark:text-white12 hover:underline;
+        }
+    }
+
+    ._author{
+        @apply flex items-center gap-[5px] text-gray10 dark:text-white10 text-[14px] leading-[20px] hover:underline line-clamp-1;
+
+        span{
+            @apply line-clamp-1;
+        }
+    }
+
+    ._storyGenre{
+        @apply pt-2;
+
+        a{
+            @apply text-grayy dark:text-white11 text-caption pe-[5px] border-r border-grayy dark:border-white11 hover:underline;
+        }
+
+        a:last-child{
+            @apply border-0;
+        }
+    }
+
+    ._status{
+        @apply text-grayy dark:text-white11 text-caption pt-2;
+
+        span:first-child{
+            @apply text-grayy dark:text-white11;
+        }
+
+        span:last-child{
+            @apply text-bluee dark:text-green09;
+        }
+    }
+}
+
+.card-follow:hover{
+    ._banner{
+        img{
+            transform: scale(1.2);
+            transition: transform 0.3s ease;
+        }
+    }
+}
+
+.card-follow:hover ._banner .-overlay{
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
