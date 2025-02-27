@@ -8,6 +8,8 @@ enum StoryStatus: string implements HasLabel
 {
 	case DRAFT = 'draft';
 	case PENDING = 'pending';
+
+	case APPROVED = 'approved';
 	case PUBLISHED = 'published';
 	case BAN = 'ban';
 
@@ -16,6 +18,7 @@ enum StoryStatus: string implements HasLabel
 		return match ($this) {
 			self::DRAFT => 'Bản nháp',
 			self::PENDING => 'Đang chờ',
+			self::APPROVED => 'Đã duyệt',
 			self::PUBLISHED => 'Đã xuất bản',
 			self::BAN => 'Bị cấm',
 		};

@@ -8,12 +8,14 @@ use App\Models\Story;
 use App\Models\StoryReview;
 use App\Models\Tag;
 use App\Models\TagGroup;
+use App\Models\User;
 use App\Observers\ChapterObserver;
 use App\Observers\ChapterReviewObserver;
 use App\Observers\StoryObserver;
 use App\Observers\StoryReviewObserver;
 use App\Observers\TagGroupObserver;
 use App\Observers\TagObserver;
+use App\Observers\UserObserver;
 use App\Services\RatingService;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\ServiceProvider;
@@ -37,6 +39,7 @@ class AppServiceProvider extends ServiceProvider
     {
         //
 	    Model::unguard();
+		User::observe(UserObserver::class);
 		Story::observe(StoryObserver::class);
 		Chapter::observe(ChapterObserver::class);
 		Tag::observe(TagObserver::class);

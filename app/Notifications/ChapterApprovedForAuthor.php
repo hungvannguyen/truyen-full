@@ -3,21 +3,21 @@
 namespace App\Notifications;
 
 use App\Models\Chapter;
-use App\Models\Story;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class NewChapter extends Notification
+class ChapterApprovedForAuthor extends Notification
 {
     use Queueable;
 
     /**
      * Create a new notification instance.
      */
-    public function __construct(public Chapter $chapter, public Story $story)
+    public function __construct(public Chapter $chapter)
     {
+        //
     }
 
     /**
@@ -33,14 +33,11 @@ class NewChapter extends Notification
 	public function toDatabase(object $notifiable): array
 	{
 		return [
-				'title'         => $this->story->title . ' đã có chương mới',
-				'chapter_title' => $this->chapter->title,
-				'body'          => 'Truyện "' . $this->story->title . '" vừa cập nhật chương "' . $this->chapter->title . '".',
-				'url'           => url('/stories/' . $this->story->slug . '/chapters/' . $this->chapter->id)
+				'title' => 'Truyện' .$this->chapter->title .  'của bạn đã được duyệt',
+				'body' => 'Hãy nhấn nút Xuất bản để truyện của bạn được hiển thị trên trang chủ.',
+				'url' => url('/stories/' . $this->chapter->slug ?? $this->chapter->id)
 		];
 	}
-
-
 
     /**
      * Get the array representation of the notification.

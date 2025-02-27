@@ -2,6 +2,9 @@
 
 namespace App\Observers;
 
+use App\Enum\StoryStatus;
+use App\Jobs\SendStoryApprovedNotificationJob;
+use App\Jobs\SendStoryBanNotificationJob;
 use App\Models\Story;
 use Illuminate\Support\Str;
 
@@ -35,7 +38,13 @@ class StoryObserver
      */
     public function updated(Story $story): void
     {
-        //
+        if ($story->isDirty('status') && $story->status->value === StoryStatus::APPROVED->value) {
+			dispatch(new SendStoryApprovedNotificationJob($story));
+		}
+
+		if ($story->isDirty('status') && $story->status->value === StoryStatus::BAN->value) {
+			dispatch(new SendStoryBanNotificationJob($story));
+		}
     }
 
     /**

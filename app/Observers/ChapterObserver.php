@@ -3,6 +3,8 @@
 namespace App\Observers;
 
 use App\Enum\StoryStatus;
+use App\Jobs\SendChapterApprovedNotificationJob;
+use App\Jobs\SendChapterBanNotificationJob;
 use App\Jobs\SendNewChapterNotificationJob;
 use App\Models\Chapter;
 use Illuminate\Support\Str;
@@ -41,6 +43,16 @@ class ChapterObserver
 		    $story = $chapter->story;
 		    dispatch(new SendNewChapterNotificationJob($chapter, $story));
 	    }
+
+	    if($chapter->isDirty('status') && $chapter->status->value === StoryStatus::APPROVED->value)
+	    {
+		    dispatch(new SendChapterApprovedNotificationJob($chapter));
+	    }
+
+		if($chapter->isDirty('status') && $chapter->status->value === StoryStatus::BAN->value)
+		{
+			dispatch(new SendChapterBanNotificationJob($chapter));
+		}
     }
 
     /**
