@@ -61,4 +61,9 @@ class Story extends Model
 	{
 		return $this->hasMany(Report::class);
 	}
+
+	public function follows(): BelongsToMany
+	{
+		return $this->belongsToMany(User::class, 'user_follow', 'story_id', 'user_id');
+	}
 }

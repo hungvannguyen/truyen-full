@@ -15,47 +15,50 @@ class Create extends TestCase
     /**
      * A basic feature test example.
      */
-    public function slug_generate(): void
-    {
-        Story::factory()->create([
-			'title' => 'Hello World',
+
+	public function test_slug_generate(): void
+	{
+		$story = Story::factory()->create([
+				'title' => 'Hello World',
 		]);
 
 		$this->assertDatabaseHas('stories', [
-			'slug' => 'hello-world',
+				'slug' => 'hello-world',
 		]);
 
 		Chapter::factory()->create([
-			'title' => 'Hello World',
+				'title' => 'Hello World',
+				'story_id' => $story->id,
 		]);
 
 		$this->assertDatabaseHas('chapters', [
-			'slug' => 'hello-world',
+				'slug' => 'hello-world',
 		]);
 
-		TagGroup::factory()->create([
-			'name' => 'Hello World',
+		$tagGroup = TagGroup::factory()->create([
+				'name' => 'Hello World',
 		]);
 
 		$this->assertDatabaseHas('tag_groups', [
-			'slug' => 'hello-world',
+				'slug' => 'hello-world',
 		]);
 
 		Tag::factory()->create([
-			'name' => 'Hello World',
+				'name' => 'Hello World',
+				'tag_group_id' => $tagGroup->id,
 		]);
 
 		$this->assertDatabaseHas('tags', [
-			'slug' => 'hello-world',
+				'slug' => 'hello-world',
 		]);
-    }
+	}
 
 	public function test_count(): void
 	{
 		$story = Story::factory()->create();
 
 		$story->chapters()->createMany(
-			Chapter::factory()->count(5)->make()->toArray()
+				Chapter::factory()->count(5)->make()->toArray()
 		);
 
 		$story->refresh();
@@ -65,7 +68,7 @@ class Create extends TestCase
 		$tagGroup = TagGroup::factory()->create();
 
 		$tagGroup->tags()->createMany(
-			Tag::factory()->count(5)->make()->toArray()
+				Tag::factory()->count(5)->make()->toArray()
 		);
 
 		$tagGroup->refresh();

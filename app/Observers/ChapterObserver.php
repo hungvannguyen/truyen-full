@@ -2,6 +2,8 @@
 
 namespace App\Observers;
 
+use App\Enum\StoryStatus;
+use App\Jobs\SendNewChapterNotificationJob;
 use App\Models\Chapter;
 use Illuminate\Support\Str;
 
@@ -24,12 +26,21 @@ class ChapterObserver
 	    $chapter->story->increment('chapter_count');
     }
 
+	public function updating(Chapter $chapter): void
+	{
+
+	}
+
     /**
      * Handle the Chapter "updated" event.
      */
     public function updated(Chapter $chapter): void
     {
-        //
+	    if($chapter->isDirty('status') && $chapter->status->value === StoryStatus::PUBLISHED->value && $chapter->story->status->value === StoryStatus::PUBLISHED->value)
+	    {
+		    $story = $chapter->story;
+		    dispatch(new SendNewChapterNotificationJob($chapter, $story));
+	    }
     }
 
     /**

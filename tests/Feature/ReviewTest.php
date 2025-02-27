@@ -17,33 +17,38 @@ class ReviewTest extends TestCase
     /**
      * A basic feature test example.
      */
-    public function review_test(): void
-    {
-	    $user = User::factory()->create();
 
-	    $storiesData = Story::factory()->count(10)->make()->each(function ($story) {
-		    $story->chapters = Chapter::factory()->count(5)->make()->toArray();
-	    })->toArray();
+	public function test_review(): void
+	{
+		$user = User::factory()->create();
 
-	    $user->stories()->createMany($storiesData);
+		$stories = Story::factory()->count(10)->create();
 
-	    $stories = $user->stories()->with('chapters')->get();
+		$user->stories()->attach($stories);
 
-	    $stories->each(function ($story) {
-		    StoryReview::factory()->count(3)->create([
-				    'story_id'     => $story->id,
-			        'user_id'      => $story->user_id,
-		    ]);
+		foreach ($stories as $story) {
+			$chaptersData = Chapter::factory()->count(5)->make()->toArray();
+			$story->chapters()->createMany($chaptersData);
+		}
 
-		    $story->chapters->each(function ($chapter) {
-			    ChapterReview::factory()->count(3)->create([
-					    'chapter_id'   => $chapter->id,
-				        'user_id'      => $chapter->user_id,
-			    ]);
-		    });
-	    });
+		$stories = $user->stories()->with('chapters')->get();
 
-	    $this->assertDatabaseCount('story_reviews', 30);
-	    $this->assertDatabaseCount('chapter_reviews', 150);
-    }
+		$stories->each(function ($story) use ($user) {
+			StoryReview::factory()->count(3)->create([
+					'story_id' => $story->id,
+					'user_id'  => $user->id,
+			]);
+
+			$story->chapters->each(function ($chapter) use ($user) {
+				ChapterReview::factory()->count(3)->create([
+						'story_id'   => $chapter->story->id,
+						'chapter_id' => $chapter->id,
+						'user_id'    => $user->id,
+				]);
+			});
+		});
+
+		$this->assertDatabaseCount('story_reviews', 30);
+		$this->assertDatabaseCount('chapter_reviews', 150);
+	}
 }
