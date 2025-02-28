@@ -26,7 +26,7 @@ class UserObserver
 			dispatch(new UserApprovedContributorJob($user));
 		}
 
-		if ($user->isDirty('role') && $user->getOriginal('role') === UserRole::CONTRIBUTOR->value && $user->role->value !== UserRole::CONTRIBUTOR->value) {
+		if ($user->isDirty('role') && $user->getOriginal('role')->value === UserRole::CONTRIBUTOR->value && $user->role->value !== UserRole::CONTRIBUTOR->value) {
 			dispatch(new UserRevokeContributorJob($user));
 		}
     }

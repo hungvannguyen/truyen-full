@@ -25,7 +25,7 @@ class SendChapterBanNotificationJob implements ShouldQueue
      */
     public function handle(): void
     {
-        $author = $this->chapter->story->users();
+        $author = $this->chapter->story->users;
 
 		Notification::send($author, new ChapterBanForAuthor($this->chapter));
     }

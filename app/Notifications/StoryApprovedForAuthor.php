@@ -33,7 +33,7 @@ class StoryApprovedForAuthor extends Notification
 	public function toDatabase(object $notifiable): array
 	{
 			return [
-				'title' => 'Truyện' .$this->story->title .  'của bạn đã được duyệt',
+				'title' => 'Truyện ' .$this->story->title .  ' của bạn đã được duyệt',
 				'body' => 'Hãy nhấn nút Xuất bản để truyện của bạn được hiển thị trên trang chủ.',
 				'url' => url('/stories/' . $this->story->slug)
 			];

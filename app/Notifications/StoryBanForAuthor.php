@@ -33,7 +33,7 @@ class StoryBanForAuthor extends Notification
 	public function toDatabase(object $notifiable): array
 	{
 		return [
-				'title' => 'Truyện' .$this->story->title .  'của bạn đã bị khóa',
+				'title' => 'Truyện ' .$this->story->title .  ' của bạn đã bị khóa',
 				'body' => 'Do vi phạm một số điều khoản của chúng tôi, truyện của bạn đã bị khóa. Hãy liên hệ với chúng tôi để biết thêm chi tiết.',
 				'url' => url('/stories/' . $this->story->slug)
 		];

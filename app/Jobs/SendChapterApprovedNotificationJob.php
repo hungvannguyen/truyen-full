@@ -2,8 +2,11 @@
 
 namespace App\Jobs;
 
+use App\Models\Chapter;
+use App\Notifications\ChapterApprovedForAuthor;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
+use Illuminate\Support\Facades\Notification;
 
 class SendChapterApprovedNotificationJob implements ShouldQueue
 {
@@ -12,7 +15,7 @@ class SendChapterApprovedNotificationJob implements ShouldQueue
     /**
      * Create a new job instance.
      */
-    public function __construct()
+    public function __construct(public Chapter $chapter)
     {
         //
     }
@@ -22,6 +25,8 @@ class SendChapterApprovedNotificationJob implements ShouldQueue
      */
     public function handle(): void
     {
-        //
+	    $author = $this->chapter->story->users;
+
+		Notification::send($author, new ChapterApprovedForAuthor($this->chapter));
     }
 }

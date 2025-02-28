@@ -25,7 +25,7 @@ class SendStoryApprovedNotificationJob implements ShouldQueue
      */
     public function handle(): void
     {
-        $author = $this->story->users();
+        $author = $this->story->users;
 
 		Notification::send($author, new StoryApprovedForAuthor($this->story));
     }

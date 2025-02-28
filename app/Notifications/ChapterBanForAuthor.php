@@ -33,7 +33,7 @@ class ChapterBanForAuthor extends Notification
 	public function toDatabase(object $notifiable): array
 	{
 		return [
-				'title' => 'Chương' .$this->chapter->title .  'của bạn đã bị khóa',
+				'title' => 'Chương ' .$this->chapter->chapter_number .' của truyện' .$this->chapter->story->title .  'của bạn đã bị khóa',
 				'body' => 'Do vi phạm một số điều khoản của chúng tôi, chương của bạn đã bị khóa. Hãy liên hệ với chúng tôi để biết thêm chi tiết.',
 				'url' => url('/stories/' . $this->chapter->story->slug . '/chapters/' . $this->chapter->id)
 		];
