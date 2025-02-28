@@ -2,6 +2,7 @@
 
 namespace App\Observers;
 
+use App\Jobs\ReplyNotificationJob;
 use App\Models\StoryReview;
 use App\Services\RatingService;
 
@@ -26,10 +27,16 @@ class StoryReviewObserver
 	 */
 	public function created(StoryReview $storyReview): void
 	{
-		$story = $storyReview->story;
-		$story->rating = $this->ratingService->getRating($story, $storyReview->rating);
-		$story->increment('rating_count');
-		$story->save();
+		if ($storyReview->rating > 0)
+		{
+			$story = $storyReview->story;
+			$story->rating = $this->ratingService->getRating($story, $storyReview->rating);
+			$story->increment('rating_count');
+			$story->save();
+		}
+		if (!empty($storyReview->parent_id)) {
+			dispatch(new ReplyNotificationJob($storyReview));
+		}
 	}
 
 	/**

@@ -2,6 +2,7 @@
 
 namespace App\Observers;
 
+use App\Jobs\ReplyNotificationJob;
 use App\Models\ChapterReview;
 use App\Services\RatingService;
 
@@ -24,10 +25,16 @@ class ChapterReviewObserver
      */
     public function created(ChapterReview $chapterReview): void
     {
-	    $chapter = $chapterReview->chapter;
-	    $chapter->rating = $this->ratingService->getRating($chapter, $chapterReview->rating);
-	    $chapter->increment('rating_count');
-	    $chapter->save();
+		if ($chapterReview->rating > 0){
+		    $chapter = $chapterReview->chapter;
+		    $chapter->rating = $this->ratingService->getRating($chapter, $chapterReview->rating);
+		    $chapter->increment('rating_count');
+		    $chapter->save();
+        }
+
+	    if (!empty($chapterReview->parent_id)) {
+		    dispatch(new ReplyNotificationJob($chapterReview));
+	    }
     }
 
     /**
