@@ -23,7 +23,6 @@ class NotificationResource extends Resource
     {
         return $form
             ->schema([
-                //
             ]);
     }
 

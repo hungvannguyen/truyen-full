@@ -22,6 +22,7 @@ return new class extends Migration
 			$table->string('provider_id')->nullable();
 			$table->enum('status', ['active', 'inactive', 'restricted'])->default('active');
 			$table->enum('role', ['admin', 'user', 'contributor'])->default('user');
+	        $table->bigInteger('report_count')->default(0);
             $table->rememberToken();
             $table->timestamps();
 			$table->softDeletes();
