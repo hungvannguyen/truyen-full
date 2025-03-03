@@ -90,16 +90,16 @@ return [
 
     'domain' => null,
 
-    /*
-    |--------------------------------------------------------------------------
-    | Fortify Routes Middleware
-    |--------------------------------------------------------------------------
-    |
-    | Here you may specify which middleware Fortify will assign to the routes
-    | that it registers with the application. If necessary, you may change
-    | these middleware but typically this provided default is preferred.
-    |
-    */
+	/*
+	|--------------------------------------------------------------------------
+	| Fortify Routes Middleware
+	|--------------------------------------------------------------------------
+	|
+	| Here you may specify which middleware Fortify will assign to the routes
+	| that it registers with the application. If necessary, you may change
+	| these middleware but typically this provided default is preferred.
+	|
+	*/
 
     'middleware' => ['web'],
 
@@ -130,7 +130,7 @@ return [
     |
     */
 
-    'views' => true,
+    'views' => false,
 
     /*
     |--------------------------------------------------------------------------

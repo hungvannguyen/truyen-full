@@ -55,6 +55,7 @@ class User extends Authenticatable implements FilamentUser
     {
         return [
 			'avatar' => 'string',
+            'name' => 'string',
             'email' => 'string',
 	        'provider' => 'string',
 	        'provider_id' => 'string',
