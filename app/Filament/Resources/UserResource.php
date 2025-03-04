@@ -30,6 +30,7 @@ class UserResource extends Resource
                     ->label('Ảnh đại diện')
 	                ->avatar()
 	                ->disk('s3')
+	                ->rules(['nullable', 'image', 'max:2024'])
 	                ->directory('avatars')
 	                ->getUploadedFileNameForStorageUsing(fn(TemporaryUploadedFile $file): string => (new UserResource)->generateImageName($file)),
 	            Forms\Components\TextInput::make('name')

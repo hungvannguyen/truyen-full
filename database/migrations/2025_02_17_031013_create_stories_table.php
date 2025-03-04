@@ -25,6 +25,10 @@ return new class extends Migration
 			$table->bigInteger('report_count')->default(0);
             $table->timestamps();
 			$table->softDeletes();
+
+	        $table->index('rating');
+	        $table->index('view_count');
+	        $table->index('chapter_count');
         });
     }
 

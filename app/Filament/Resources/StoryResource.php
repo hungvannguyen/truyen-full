@@ -29,8 +29,9 @@ class StoryResource extends Resource
                 Forms\Components\FileUpload::make('cover_image')
 	                ->label('Ảnh bìa')
 					->image()
-					->rules(['nullable', 'image', 'max:1024'])
-					->disk('s3'),
+					->rules(['nullable', 'image', 'max:2024'])
+					->disk('s3')
+	                ->directory('stories-cover'),
 				Forms\Components\TextInput::make('title')
 					->label('Tên truyện')
 					->maxLength(255)

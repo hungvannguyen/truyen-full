@@ -25,7 +25,7 @@ trait Image
 	{
 		$imageName = $this->generateImageName($image);
 
-		Storage::disk('s3')->put($path . $imageName, file_get_contents($image));
+		Storage::disk('s3')->put($path.$imageName, file_get_contents($image));
 
 		return $imageName;
 	}
