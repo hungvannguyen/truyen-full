@@ -76,7 +76,8 @@ class StoryResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\ImageColumn::make('cover_image')
-					->label('Ảnh bìa'),
+					->label('Ảnh bìa')
+	                ->disk('s3'),
 				Tables\Columns\TextColumn::make('title')
 					->label('Tên truyện')
 					->searchable()

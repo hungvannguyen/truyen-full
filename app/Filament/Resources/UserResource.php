@@ -31,8 +31,7 @@ class UserResource extends Resource
 	                ->avatar()
 	                ->disk('s3')
 	                ->directory('avatars')
-	                ->getUploadedFileNameForStorageUsing(fn(TemporaryUploadedFile $file): string => (new UserResource)->generateImageName($file))
-	                ->visibility('public'),
+	                ->getUploadedFileNameForStorageUsing(fn(TemporaryUploadedFile $file): string => (new UserResource)->generateImageName($file)),
 	            Forms\Components\TextInput::make('name')
 	                ->label('Tên người dùng')
 		            ->maxLength(255)
@@ -90,8 +89,7 @@ class UserResource extends Resource
                 Tables\Columns\ImageColumn::make('avatar')
                         ->label('Ảnh đại diện')
 		                ->circular()
-	                    ->disk('s3')
-	                    ->visibility('public'),
+	                    ->disk('s3'),
                 Tables\Columns\TextColumn::make('name')
 						->label('Tên người dùng')
 						->searchable()
