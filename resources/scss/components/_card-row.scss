@@ -2,10 +2,10 @@
     @apply flex flex-col gap-[15px] py-[20px] border-b border-grayy dark:border-white11;
 
     .-item{
-        @apply flex gap-[15px];
+        @apply flex flex-wrap gap-[15px];
 
         .image{
-            @apply w-[90px] h-[110px] rounded-md overflow-hidden;
+            @apply w-[90px] h-[110px] max-sm:h-[130px] rounded-md overflow-hidden;
 
             img{
                 @apply object-cover w-full h-full;
@@ -14,13 +14,13 @@
         }
 
         .-info{
-            @apply flex flex-col justify-between flex-1 py-[14px];
+            @apply flex flex-col flex-wrap justify-between flex-1 py-[14px] max-sm:py-0;
 
             .-title{
-                @apply flex;
+                @apply flex flex-wrap;
 
                 span{
-                    @apply border-r border-grayy dark:border-white11 px-[18px] text-body;
+                    @apply border-r border-grayy dark:border-white11 px-[18px] text-body max-sm:border-0 max-sm:px-[5px] max-sm:py-[5px];
 
                     a{
                         @apply hover:underline;
@@ -28,7 +28,7 @@
                 }
 
                 span:first-child{
-                    @apply ps-0 pe-[10px] border-0 text-grayy w-auto dark:text-white11 font-medium line-clamp-1 flex-1;
+                    @apply ps-0 pe-[10px] border-0 text-grayy w-auto dark:text-white11 font-medium line-clamp-1 md:flex-1 lg:flex-1 xl:flex-1;
                 }
 
                 span:nth-child(3){
@@ -40,7 +40,7 @@
                 }
 
                 ._tag{
-                    @apply flex items-center gap-[10px] border-r border-grayy dark:border-white11 pe-[18px];
+                    @apply flex items-center gap-[10px] border-r border-grayy dark:border-white11 pe-[18px] max-sm:border-0;
 
                     .item{
                         @apply px-[10px] py-[2px] rounded-md text-white text-caption;
@@ -56,6 +56,7 @@
                 @apply flex gap-[5px];
                 a{
                     @apply text-grayyLight dark:text-white11 text-button2 hover:underline;
+                    font-weight: 400 !important;
                 }
 
                 a:after{

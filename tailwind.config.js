@@ -16,12 +16,14 @@ export default {
             },
             colors: {
                 'bgNavbar': '#2F2F2F',
+                'bgLight': '#F7f7f7',
                 // white
                 'white12': '#FCFDFD',
                 'white11': '#F7F9FD',
                 'white10': '#EEF0F5',
                 'white09': '#E6E9EE',
                 'white08': '#ĐDE1EA',
+
 
                 // gray
                 'grayy': '#5C6471',
@@ -40,11 +42,12 @@ export default {
                 // yellow
                 'yellow09': '#FFCD07',
 
+                //red
+                'Danger09':'#FF4D4F',
 
                 'tagHome': '#FBFEFD',
                 'greenTag': '#448C74',
                 'sectionTitle': '#1C68BF',
-                'Danger09':'#ED5050',
                 'Accents11': '#1C68BF',
                 'Neutral12': '#404040',
                 'Neutral10': '#7C838F',

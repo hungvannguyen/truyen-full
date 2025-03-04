@@ -20,7 +20,7 @@
         }
 
         .btnFollow{
-            @apply w-fit flex items-center gap-[5px] bg-bluee hover:bg-blue11 dark:bg-green09 dark:hover:bg-green11 text-white px-6 py-2 rounded-md transition-colors select-none cursor-pointer;
+            @apply w-fit flex items-center gap-[8px] bg-bluee hover:bg-blue11 dark:bg-green09 dark:hover:bg-green11 text-white px-[16px] py-[8px] rounded-md transition-colors select-none cursor-pointer;
         }
 
         .btnFollow.followed{

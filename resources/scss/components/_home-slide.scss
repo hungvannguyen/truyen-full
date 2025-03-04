@@ -1,8 +1,8 @@
 .carousel{
-    @apply flex items-center justify-center py-[80px];
+    @apply flex items-center justify-center py-[80px] max-sm:py-[20px];
 
     ._container{
-        @apply relative w-full max-w-[1280px] mx-auto h-[403px] overflow-visible;
+        @apply relative w-full max-w-[1280px] mx-auto h-[403px] max-sm:h-[250px] overflow-visible;
     }
 
     ._slide-container{
@@ -14,10 +14,10 @@
     }
 
     .prev-btn{
-        @apply absolute left-10 top-1/2 -translate-y-1/2 translate-x-[-35%] z-[15] w-10 h-10 flex items-center justify-center text-white bg-white/30 rounded-full hover:bg-bluee transition-colors;
+        @apply absolute left-10 top-1/2 -translate-y-1/2 translate-x-[-35%] z-[20] w-10 h-10 flex items-center justify-center text-white bg-white/30 rounded-full hover:bg-bluee transition-colors;
     }
 
     .next-btn{
-        @apply absolute right-10 top-1/2 -translate-y-1/2 -translate-x-[-35%] z-[15] w-10 h-10 flex items-center justify-center text-white  bg-white/30 rounded-full hover:bg-bluee transition-colors;
+        @apply absolute right-10 top-1/2 -translate-y-1/2 -translate-x-[-35%] z-[20] w-10 h-10 flex items-center justify-center text-white  bg-white/30 rounded-full hover:bg-bluee transition-colors;
     }
 }

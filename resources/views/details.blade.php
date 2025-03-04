@@ -10,6 +10,7 @@
 @endsection
 
 @section('content')
+<div  x-data="alpineDetailPage">
     <div class="novel-container">
         <!-- Phần header với ảnh nền -->
         <div class="novel-header"></div>
@@ -50,7 +51,7 @@
                                 <span class="">Full</span>
                             </div>
 
-                            <button class="text-white12">
+                            <button @click="openReportModal()" class="text-white12">
                                 <svg data-tooltip-target="reportNovel" data-tooltip-placement="right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
                                     <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12ZM12 8.25a.75.75 0 0 1 .75.75v3.75a.75.75 0 0 1-1.5 0V9a.75.75 0 0 1 .75-.75Zm0 8.25a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z" clip-rule="evenodd" />
                                 </svg>
@@ -69,7 +70,7 @@
                                 Bắt đầu đọc
                             </a>
                         </div>
-                        <div class="btn-read ms-2 flex items-center gap-[5px]">
+                        <div class="btn-read ms-2 flex items-center gap-[8px]">
                             <span>Theo dõi</span>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
                                 <path
@@ -84,7 +85,7 @@
     </div>
 
     <!-- Novel Description -->
-    <div x-data="tabSwitcher()" class="my_container">
+    <div class="my_container">
         <div class="switch_tab">
             <div x-data="{ line: false }" @click="switchTab('tab1', $event)" :class="{ 'active': activeTab === 'tab1' }"
                 class="tab">
@@ -520,13 +521,19 @@
             @endfor
         </div>
     </div>
+
+    {{-- report modal --}}
+    @include('components/report-modal')
+
+</div>
 @endsection
 
 @section('foot')
     <script>
         document.addEventListener("alpine:init", () => {
-            Alpine.data("tabSwitcher", () => ({
+            Alpine.data("alpineDetailPage", () => ({
                 activeTab: "tab1",
+                isReportModalOpen: false,
                 switchTab(newTab, event) {
                     if (newTab === this.activeTab) return;
 
@@ -553,6 +560,29 @@
                     });
 
                     this.activeTab = newTab;
+                },
+                openReportModal(){
+                    this.isReportModalOpen = true;
+                    gsap.fromTo(this.$refs.report, {
+                        opacity: 0,
+                        scale: 0
+                    }, {
+                        opacity: 1,
+                        scale: 1,
+                        duration: 0.4,
+                        ease: "power3.out"
+                    });
+                },
+                closeReportModal(){
+                    gsap.to(this.$refs.report, {
+                        opacity: 0,
+                        scale: 0,
+                        duration: 0.4,
+                        ease: "power3.in",
+                        onComplete: () => {
+                            this.isReportModalOpen = false;
+                        }
+                    });
                 }
             }));
         });

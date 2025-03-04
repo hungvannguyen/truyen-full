@@ -70,9 +70,9 @@
         @apply flex hidden items-center gap-[20px] md:flex;
 
         .wrapper{
-            @apply flex items-center gap-[14px];
+            @apply flex items-center gap-[18px];
             .-themeToggle{
-                @apply text-grayy dark:text-white11 rounded-lg text-sm p-2.5;
+                @apply text-grayy dark:text-white11 rounded-lg text-sm;
     
                 svg{
                     @apply hover:text-bluee dark:hover:text-green09 w-[24px] h-[24px];
@@ -92,6 +92,18 @@
     
                 svg{
                     @apply h-[24px] w-[24px] text-grayy dark:text-white11 hover:text-bluee dark:hover:text-green09;
+                }
+            }
+
+            ._nofication{
+                @apply relative cursor-pointer;
+    
+                svg{
+                    @apply h-[24px] w-[24px] text-grayy dark:text-white11 hover:text-bluee dark:hover:text-green09;
+                }
+
+                .-badge{
+                    @apply absolute -top-1 -right-1 bg-Danger09 text-white text-xs font-bold w-4 h-4 flex items-center justify-center rounded-full shadow-md select-none;
                 }
             }
         }

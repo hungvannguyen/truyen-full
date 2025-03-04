@@ -1,0 +1,64 @@
+.notification-modal{
+    @apply fixed inset-0 z-50 max-h-full w-full items-center justify-center overflow-y-auto overflow-x-hidden md:inset-0;
+
+    .notifi-absolute{
+        @apply absolute inset-0 top-[20%] z-[10] max-h-full mx-auto overflow-hidden max-w-[500px];
+
+        .content-wrapper{
+            @apply overflow-hidden mx-auto min-h-[400px] max-h-[560px] rounded-md bg-bgLight dark:bg-gray01 shadow-lg dark:bg-gray01;
+
+            .header{
+                @apply flex items-center justify-between px-[30px] py-4 shadow-md bg-white dark:bg-bgNavbar dark:shadow-lg;
+
+
+                p{
+                    @apply text-h6 text-gray01 dark:text-white12;
+                }
+
+                .close-btn{
+                    @apply text-gray01 dark:text-white12 border-0 p-0;
+                }
+            }
+
+            .filter-btn{
+                @apply flex gap-2 px-[30px] pt-[35px] pb-[23px];
+            }
+
+            .notifi-list{
+                @apply h-[390px] overflow-y-scroll flex flex-col gap-[15px] px-[30px] mb-[30px];
+
+                .item{
+                    @apply flex items-center justify-between gap-[45px];
+
+                    h2{
+                        @apply text-caption font-medium text-gray01 dark:text-white11;
+                    }
+
+                    p{
+                        @apply text-caption text-gray02 dark:text-white11 line-clamp-2;
+                    }
+
+                    span{
+                        @apply text-caption2 text-gray09 dark:text-white09;
+                    }
+                }
+            }
+
+            .no-notifi{
+                @apply flex flex-col items-center justify-center text-caption gap-[15px] text-gray02 dark:text-white12 h-[350px];
+            }
+        }
+    }
+
+    .overlay{
+        @apply inset-0 z-[9] h-full w-full bg-black bg-opacity-50;
+    }
+
+    button{
+        @apply py-[5px] px-[15px] text-button2 text-gray02 border border-gray02 dark:text-white11 dark:border-white11 rounded-md;
+    }
+    
+    button.active{
+        @apply bg-bluee dark:bg-green09 border-0 text-white12;
+    }
+}

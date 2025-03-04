@@ -73,7 +73,7 @@
                     }
 
                     ._author{
-                        @apply flex items-center gap-[5px] text-gray10 dark:text-white10 text-[14px] leading-[20px] line-clamp-1;
+                        @apply flex items-center gap-[5px] text-gray09 dark:text-white10 text-caption line-clamp-1;
 
                         span{
                             @apply line-clamp-1;
@@ -81,10 +81,14 @@
                     }
 
                     ._chapter{
-                        @apply flex items-center justify-between gap-[5px] text-gray10 dark:text-white10 text-[16px] leading-[23px];
+                        @apply flex items-center justify-between gap-[5px] text-gray10 dark:text-white10 ;
+
+                        a{
+                            @apply text-gray10 dark:text-white10 hover:underline text-caption font-normal m-0;
+                        }
 
                         .-view{
-                            @apply flex items-center gap-[5px];
+                            @apply flex items-center gap-[5px] italic text-caption;
                         }
                     }
                 }

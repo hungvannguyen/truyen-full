@@ -13,7 +13,7 @@
     @media (max-width: 768px) {
             .slide {
                 width: 100% !important;
-                height: 100% !important;
+                height: 250px !important;
                 left: 0 !important;
                 transform: none !important;
                 opacity: 1 !important;

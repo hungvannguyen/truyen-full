@@ -73,7 +73,7 @@
         }
 
         .btn-read {
-            @apply w-fit bg-bluee hover:bg-blue11 dark:bg-green09 dark:hover:bg-green11 text-white px-6 py-2 rounded-md transition-colors select-none cursor-pointer;
+            @apply w-fit bg-bluee hover:bg-blue11 dark:bg-green09 dark:hover:bg-green11 text-white px-[16px] py-[8px] rounded-md transition-colors select-none cursor-pointer;
         }
 
         .btn-read.followed{

@@ -4,7 +4,7 @@
             <img src="{{ asset('/images/home-hero/Home-hero-2.png') }}" alt="">
         </a>
 
-        <div class="-info flex flex-col justify-between py-[14px]">
+        <div class="-info">
             <div class="-title">
                 <span><a href="/details">Sau Khi Ký Ức Bị Phơi Bày, Những Người Từng Bắt Nạt một hai</a></span>
                 <div class="_tag">

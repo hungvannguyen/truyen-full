@@ -1,0 +1,51 @@
+.drawerHome{
+    @apply fixed right-0 top-0 z-[52] h-screen w-[390px] overflow-y-auto bg-white dark:bg-bgNavbar p-[30px];
+
+    ._closeDrawer{
+        @apply relative;
+
+        button{
+            @apply absolute right-0 top-0 text-gray02 dark:text-white11 hover:text-bluee dark:hover:text-green09;
+        }
+    }
+
+    ._user{
+        @apply mt-[50px] mb-[30px] flex items-center gap-[16px];
+
+        .-avatar{
+            @apply w-[52px] h-[52px] rounded-full overflow-hidden;
+
+            img{
+                @apply w-full h-full object-cover;
+            }
+        }
+
+        .-NameId{
+            @apply flex flex-col justify-between;
+
+            p{
+                @apply text-subtitle2 text-gray01 dark:text-white11;
+            }
+
+            span{
+                @apply text-caption text-gray02 dark:text-white12;
+            }
+        }
+    }
+
+    ._menu{
+        @apply border-y border-gray02 dark:border-white11;
+
+        .-item{
+            @apply py-[12px] text-gray02 dark:text-white11 flex items-center justify-between border-b border-gray02 dark:border-white11 hover:text-bluee dark:hover:text-green09 cursor-pointer;
+
+            a{
+                @apply text-body2;
+            }
+        }
+
+        .-item:last-child{
+            @apply border-b-0;
+        }
+    }
+}

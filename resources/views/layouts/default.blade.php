@@ -22,9 +22,8 @@
     </script>
 </head>
 
-<body x-data="loginSwitcher()" id="body">
+<body x-data="alpineFunction" id="body">
     @include('partials.navbar')
-
 
 <!-- Page loading spinner -->
 <div class="page-loading active">

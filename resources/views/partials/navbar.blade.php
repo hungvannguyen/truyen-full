@@ -1,3 +1,7 @@
+@section('head')
+  
+@endsection
+
 <nav class="nav">
     <div class="_container my_container">
         <div class="_logo">
@@ -12,7 +16,8 @@
         <div class="_menu">
             <ul class="_list">
                 <li x-data="{ dropDown: false }" class="relative">
-                    <div @mouseenter="dropDown = true" @mouseleave="dropDown = false" :class="{'active': dropDown === true}" class="-item">
+                    <div @mouseenter="dropDown = true" @mouseleave="dropDown = false"
+                        :class="{ 'active': dropDown === true }" class="-item">
                         <span class="name">Danh sách</span>
                         <svg class="" :class="{ 'rotate-180': dropDown }" aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
@@ -58,6 +63,16 @@
 
         <div class="_user">
             <div class="wrapper">
+                <div class="_search cursor-pointer">
+                    <a href="/search" class="">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                            stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                        </svg>
+                    </a>
+                </div>
+
                 <button id="theme-toggle" type="button" class="-themeToggle">
                     <svg id="theme-toggle-dark-icon" class="hidden h-5 w-5" fill="currentColor" viewBox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg">
@@ -71,19 +86,25 @@
                     </svg>
                 </button>
 
-                <div class="_search cursor-pointer">
-                    <a href="/search" class="">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
-                            stroke="currentColor" class="size-6">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
-                        </svg>
-                    </a>
+                <div @click="openNofication()" class="_nofication">
+                    <svg width="24" height="25" viewBox="0 0 24 25" fill="none" stroke="currentColor"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M11.9996 2.89966C8.0232 2.89966 4.79964 6.12321 4.79964 10.0997V14.4026L3.95112 15.2511C3.60792 15.5943 3.50525 16.1105 3.69099 16.5589C3.87673 17.0073 4.31429 17.2997 4.79964 17.2997H19.1996C19.685 17.2997 20.1226 17.0073 20.3083 16.5589C20.494 16.1105 20.3914 15.5943 20.0482 15.2511L19.1996 14.4026V10.0997C19.1996 6.12321 15.9761 2.89966 11.9996 2.89966Z"
+                            fill="currentColor" />
+                        <path
+                            d="M11.9996 22.0997C10.0114 22.0997 8.39961 20.4879 8.39961 18.4997H15.5996C15.5996 20.4879 13.9878 22.0997 11.9996 22.0997Z"
+                            fill="currentColor" />
+                    </svg>
+
+                    <span class="-badge">3</span>
                 </div>
 
-                {{-- <div class="_avatar cursor-pointer">
-                    <img src="{{ asset('/images/home-hero/Home-hero-1.png') }}" alt="" class="w-[28px] h-[28px] rounded-full object-cover">
+                {{-- <div @click="openDrawer()" class="_avatar cursor-pointer">
+                    <img src="{{ asset('/images/home-hero/Home-hero-1.png') }}" alt=""
+                        class="h-[28px] w-[28px] rounded-full object-cover">
                 </div> --}}
+
             </div>
 
             {{-- <div class="_postBtn">
@@ -103,296 +124,119 @@
     </div>
 </nav>
 
+<!-- Notification modal -->
+@include('components/notification-modal')
+
 <!-- Login modal -->
-<div id="login-modal" tabindex="-1" aria-hidden="true" class="modal_login hidden">
+@include('components/login-modal')
 
-    <!-- Modal content -->
-    <div class="background-container">
-        <!-- Close button -->
-        <button data-modal-hide="login-modal" class="close_btn">
-            <svg class="h-[24px] w-[24px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                stroke-width="1.5" stroke="currentColor" class="size-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-            </svg>
-        </button>
-
-        <!-- Logo -->
-        <div class="-logo">
-            <img class="block dark:hidden" src="{{ asset('/images/logo-light.png') }}" class=""
-                alt="Story-verse-Logo" />
-            <img class="hidden dark:block" src="{{ asset('/images/logo-dark.png') }}" class=""
-                alt="Story-verse-Logo" />
-        </div>
-
-        <!-- Login form -->
-        <div x-ref="login"class="-form">
-            <h2 class="head_title">Đăng nhập</h2>
-
-            <div class="logged_yet">
-                <span class="">Bạn chưa có tài khoản?</span>
-                <p @click="switchLogin('register', $event)" class="">Đăng ký tại đây!</p>
-            </div>
-
-            <form action="" method="" autocomplete="off" class="space-y-4" id="login_form">
-                <div class="input">
-                    <label for="login_email" class="">Email</label>
-                    <div class="_box">
-                        <svg class="me-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                            stroke-width="1.5" stroke="currentColor" class="size-6">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
-                        </svg>
-                        <input type="email" id="login_email" placeholder="Địa chỉ email" style="box-shadow: none;"
-                            class="w-full">
-                    </div>
-                </div>
-
-                <div class="input">
-                    <label for="login_pass" class="">Mật khẩu</label>
-                    <div class="_box">
-                        <svg class="me-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                            stroke-width="1.5" stroke="currentColor" class="size-6">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
-                        </svg>
-
-                        <input type="password" id="login_pass" placeholder="Mật khẩu" style="box-shadow: none;"
-                            class="w-full">
-
-                        <button type="button" class="togglePassword">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                stroke-width="1.5" stroke="currentColor" class="size-6">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                            </svg>
-                        </button>
-
-                    </div>
-                </div>
-
-                <div class="forgot_pass">
-                    <label class="flex items-center">
-                        <input type="checkbox" style="box-shadow: none;"
-                            class="">
-                        <span class="">Lưu lại đăng nhập</span>
-                    </label>
-                    <a href="#" class="">Quên mật khẩu?</a>
-                </div>
-
-                <button type="submit"
-                    class="submit_btn">
-                    Đăng nhập
-                </button>
-            </form>
-
-            <div class="relative">
-                <div class="absolute inset-0 flex items-center">
-                    <div class="w-full border-t border-gray-200"></div>
-                </div>
-                <div class="relative flex justify-center text-[12px]">
-                    <span class="bg-white dark:bg-gray01 px-2 text-gray02 dark:text-white11">
-                        Hoặc đăng nhập bằng tài khoản mạng xã hội của bạn
-                    </span>
-                </div>
-            </div>
-
-            <div class="social_login">
-                <button class="">
-                    <img src="https://www.google.com/favicon.ico" alt="Google" class="mr-2 h-5 w-5">
-                    Google
-                </button>
-                <button class="">
-                    <img src="https://www.facebook.com/favicon.ico" alt="Facebook" class="mr-2 h-5 w-5">
-                    Facebook
-                </button>
-            </div>
-        </div>
-        <!-- register form -->
-        <div x-ref="register"class="-form hidden">
-            <h2 class="head_title">Không có tài khoản? Đăng ký</h2>
-
-            <div class="logged_yet">
-                <span class="">Bạn đã có tài khoản?</span>
-                <p @click="switchLogin('login', $event)" class="">Đăng nhập tại đây!</p>
-            </div>
-
-            <form action="" method="" autocomplete="off" class="space-y-4" id="register_form">
-                <div class="flex justify-between gap-[10px]">
-                    <div class="input">
-                        <label for="register_name" class="">Tên tài khoản</label>
-                        <div class="_box">
-                            <svg class="me-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                stroke-width="1.5" stroke="currentColor" class="size-6">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
-                            </svg>
-                            <input type="text" id="register_name" placeholder="Nhập tên" style="box-shadow: none;"
-                                class="w-full">
-                        </div>
-                    </div>
-
-                    <div class="input">
-                        <label for="register_email" class="">Email</label>
-                        <div class="_box">
-                            <svg class="me-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                stroke-width="1.5" stroke="currentColor" class="size-6">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
-                            </svg>
-                            <input type="email" id="register_email" placeholder="Địa chỉ email" style="box-shadow: none;"
-                                class="w-full">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="input">
-                    <label for="register_pass" class="">Mật khẩu</label>
-                    <div class="_box">
-                        <svg class="me-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                            stroke-width="1.5" stroke="currentColor" class="size-6">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
-                        </svg>
-
-                        <input type="password" id="register_pass" placeholder="Mật khẩu" style="box-shadow: none;"
-                            class="w-full">
-
-                        <button type="button" class="togglePassword">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                stroke-width="1.5" stroke="currentColor" class="size-6">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                            </svg>
-                        </button>
-
-                    </div>
-                </div>
-
-                <div class="input">
-                    <label for="register_pass2" class="">Xác nhận mật khẩu</label>
-                    <div class="_box">
-                        <svg class="me-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                            stroke-width="1.5" stroke="currentColor" class="size-6">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
-                        </svg>
-
-                        <input type="password" id="register_pass2" placeholder="Xác nhận mật khẩu" style="box-shadow: none;"
-                            class="w-full">
-
-                        <button type="button" class="togglePassword">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                stroke-width="1.5" stroke="currentColor" class="size-6">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                            </svg>
-                        </button>
-
-                    </div>
-                </div>
-
-                <div class="forgot_pass">
-                    <label class="flex items-center">
-                        <input type="checkbox" style="box-shadow: none;"
-                            class="">
-                        <span class="pe-1">Tôi đồng ý với </span>
-                        <a href="#" class="">Điều khoản & Điều kiện</a>
-                    </label>
-                </div>
-
-                <button type="submit"
-                    class="submit_btn">
-                    Đăng Ký
-                </button>
-            </form>
-
-            <div class="relative">
-                <div class="absolute inset-0 flex items-center">
-                    <div class="w-full border-t border-gray-200"></div>
-                </div>
-                <div class="relative flex justify-center text-[12px]">
-                    <span class="bg-white dark:bg-gray01 px-2 text-gray02 dark:text-white11">
-                        Hoặc đăng nhập bằng tài khoản mạng xã hội của bạn
-                    </span>
-                </div>
-            </div>
-
-            <div class="social_login">
-                <button class="">
-                    <img src="https://www.google.com/favicon.ico" alt="Google" class="mr-2 h-5 w-5">
-                    Google
-                </button>
-                <button class="">
-                    <img src="https://www.facebook.com/favicon.ico" alt="Facebook" class="mr-2 h-5 w-5">
-                    Facebook
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
+<!-- drawer component -->
+@include('components/home-drawer')
 
 <script>
     document.addEventListener("alpine:init", () => {
-            Alpine.data("loginSwitcher", () => ({
-                activeTab: "login",
-                switchLogin(newTab, event) {
-                    if (newTab === this.activeTab) return;
+        Alpine.data("alpineFunction", () => ({
+            activeTab: "login",
+            isDrawerOpen: false,
+            isNoficationOpen: false,
+            switchLogin(newTab, event) {
+                if (newTab === this.activeTab) return;
 
-                    let currentTab = this.$refs[this.activeTab];
-                    let nextTab = this.$refs[newTab];
+                let currentTab = this.$refs[this.activeTab];
+                let nextTab = this.$refs[newTab];
 
-                    gsap.to(currentTab, {
-                        opacity: 0,
-                        x: 10,
-                        duration: 0.3,
-                        onComplete: () => {
-                            currentTab.classList.add("hidden");
-                            nextTab.classList.remove("hidden");
+                gsap.to(currentTab, {
+                    opacity: 0,
+                    x: 10,
+                    duration: 0.3,
+                    onComplete: () => {
+                        currentTab.classList.add("hidden");
+                        nextTab.classList.remove("hidden");
 
-                            gsap.fromTo(nextTab, {
-                                opacity: 0,
-                                x: 10
-                            }, {
-                                opacity: 1,
-                                x: 0,
-                                duration: 0.4
-                            });
-                        }
-                    });
+                        gsap.fromTo(nextTab, {
+                            opacity: 0,
+                            x: 10
+                        }, {
+                            opacity: 1,
+                            x: 0,
+                            duration: 0.4
+                        });
+                    }
+                });
+                this.activeTab = newTab;
+            },
 
-                    this.activeTab = newTab;
-                }
-            }));
-        });
+            openDrawer() {
+                this.isDrawerOpen = true;
+                gsap.fromTo(this.$refs.drawer, {
+                    x: "100%"
+                }, {
+                    x: "0%",
+                    duration: 0.4,
+                    ease: "power3.out"
+                });
+            },
+
+            closeDrawer() {
+                gsap.to(this.$refs.drawer, {
+                    x: "100%",
+                    duration: 0.3,
+                    ease: "power3.in",
+                    onComplete: () => {
+                        this.isDrawerOpen = false;
+                    }
+                });
+            },
+
+            openNofication() {
+                this.isNoficationOpen = true;
+                gsap.fromTo(this.$refs.nofication, {
+                    opacity: 0,
+                    scale: 0
+                }, {
+                    opacity: 1,
+                    scale: 1,
+                    duration: 0.4,
+                    ease: "power3.out"
+                });
+            },
+
+            closeNofication() {
+                gsap.to(this.$refs.nofication, {
+                    opacity: 0,
+                    scale: 0,
+                    duration: 0.3,
+                    ease: "power3.in",
+                    onComplete: () => {
+                        this.isNoficationOpen = false;
+                    }
+                });
+            }
+        }));
+    });
     // Toggle password visibility
 
     document.querySelectorAll('.togglePassword').forEach(button => {
-            button.addEventListener('click', function() {
-                const input = this.previousElementSibling;
-                const type = input.getAttribute('type') === 'password' ? 'text' : 'password';
-                input.setAttribute('type', type);
-                
-                // Thay đổi biểu tượng SVG
-                if (type === 'password') {
-                    this.innerHTML = `
+        button.addEventListener('click', function() {
+            const input = this.previousElementSibling;
+            const type = input.getAttribute('type') === 'password' ? 'text' : 'password';
+            input.setAttribute('type', type);
+
+            // Thay đổi biểu tượng SVG
+            if (type === 'password') {
+                this.innerHTML = `
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
                             <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                         </svg>
                     `;
-                } else {
-                    this.innerHTML = `
+            } else {
+                this.innerHTML = `
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M3.98 8.223A10.477 10.477 0 001.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.45 10.45 0 0112 4.5c4.756 0 8.773 3.162 10.065 7.498a10.523 10.523 0 01-4.293 5.774M6.228 6.228L3 3m3.228 3.228l3.65 3.65m7.894 7.894L21 21m-3.228-3.228l-3.65-3.65m0 0a3 3 0 10-4.243-4.243m4.242 4.242L9.88 9.88" />
                         </svg>
                     `;
-                }
-            });
+            }
         });
+    });
 </script>

@@ -7,21 +7,70 @@
     <div class="my_container">
         @include ('components.home-slide')
 
+        <div class="flex flex-row-reverse pb-[50px] pt-[10px]">
+            <div x-data="{openDD: false}" @click.outside="openDD = false" class="relative w-fit">
+                <div x-ref="sortAllHomeBtn" @click="openDD = !openDD" class="commonBtnDropdownBgColor" :class="{ 'active': openDD === true }" id="sortAllHomeBtn">
+                    <span>Sắp xếp</span>
+                    <svg class="h-6 w-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
+                        height="24" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m19 9-7 7-7-7" />
+                    </svg>
+                </div>
+
+                <!-- Dropdown menu -->
+                <div x-show="openDD" x-bind:style="'min-width: ' + $refs.sortAllHomeBtn.offsetWidth + 'px;'" id="sortAllHome" class="commonDropdownBgColor">
+                    <ul class="">
+                        <li>
+                            <a href="#" class="">Mới nhất</a>
+                        </li>
+                        <li>
+                            <a href="#" class=""">Cũ nhất</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
         <div class="Section1">
             <div class="_left">
                 {{-- truyen hot --}}
                 <div class="truyenHot">
-                    <div x-data="{ line: false }" class="sectionTitle1 sectionTitle">
-                        <a href="#" @mouseover="line = true" @mouseleave="line = false" class="_box">
-                            <h2>Truyện Hot</h2>
-                            <div class="line">
-                                <div x-show="line" x-transition:enter="transition ease-out duration-300"
-                                    x-transition:enter-start="-translate-x-full" x-transition:enter-end="translate-x-0"
-                                    x-transition:leave="transition ease-in duration-300"
-                                    x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full"
-                                    class="line-active"></div>
+                    <div class="flex items-center justify-between pb-[30px]">
+                        <div x-data="{ line: false }" class="sectionTitle1 sectionTitle" style="margin: 0;">
+                            <a href="#" @mouseover="line = true" @mouseleave="line = false" class="_box">
+                                <h2>Truyện Hot</h2>
+                                <div class="line">
+                                    <div x-show="line" x-transition:enter="transition ease-out duration-300"
+                                        x-transition:enter-start="-translate-x-full" x-transition:enter-end="translate-x-0"
+                                        x-transition:leave="transition ease-in duration-300"
+                                        x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full"
+                                        class="line-active"></div>
+                                </div>
+                            </a>
+                        </div>
+                        <div x-data="{openDD: false}" @click.outside="openDD = false" class="relative">
+                            <div x-ref="sortTruyenHotBtn" @click="openDD = !openDD" class="commonBtnDropdownBgColor" :class="{ 'active': openDD === true }" id="sortTruyenHotBtn">
+                                <span>Phân loại</span>
+                                <svg class="h-6 w-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
+                                    height="24" fill="none" viewBox="0 0 24 24">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="m19 9-7 7-7-7" />
+                                </svg>
                             </div>
-                        </a>
+    
+                            <!-- Dropdown menu -->
+                            <div x-show="openDD" x-bind:style="'min-width: ' + $refs.sortTruyenHotBtn.offsetWidth + 'px;'" id="sortTruyenHot" class="commonDropdownBgColor">
+                                <ul class="">
+                                    <li>
+                                        <a href="#" class="">Mới nhất</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class=""">Cũ nhất</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                     <div class="_container">
                         @for ($i = 0; $i < 8; $i++)
@@ -46,8 +95,8 @@
                             </a>
                         </div>
                         <div x-data="{openDD: false}" @click.outside="openDD = false" class="relative">
-                            <div x-ref="sortTruyenMoiBtn" @click="openDD = !openDD" class="-sortBtn" id="sortTruyenMoiBtn">
-                                <span>Sắp xếp</span>
+                            <div x-ref="sortTruyenMoiBtn" @click="openDD = !openDD" class="-sortBtn" :class="{ 'active': openDD === true }" id="sortTruyenMoiBtn">
+                                <span>Phân loại</span>
                                 <svg class="h-6 w-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
                                     height="24" fill="none" viewBox="0 0 24 24">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -67,9 +116,8 @@
                                 </ul>
                             </div>
                         </div>
-
                     </div>
-                    @for ($i = 0; $i < 8; $i++)
+                    @for ($i = 0; $i < 6; $i++)
                         @include('components.card-row')
                     @endfor
                 </div>
@@ -171,12 +219,22 @@
                         <a href="/category">kiếm hiệp</a>
                         <a href="/category">tiên hiệp</a>
                         <a href="/category">hệ thống</a>
+                        <a href="/category">Đam mỹ</a>
+                        <a href="/category">xuyên nhanh</a>
+                        <a href="/category">Ngôn tình</a>
+                        <a href="/category">Bách hợp</a>
+                        <a href="/category">đam mỹ</a>
+                        <a href="/category">ngôn tình</a>
+                        <a href="/category">Ngược</a>
+                        <a href="/category">kiếm hiệp</a>
+                        <a href="/category">tiên hiệp</a>
+                        <a href="/category">hệ thống</a>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="Section2 pt-[90px]">
+        <div class="Section2">
             <div class="truyenFull">
                 <div x-data="{ line: false }" class="sectionTitle1 sectionTitle">
                     <a href="/category" @mouseover="line = true" @mouseleave="line = false" class="_box">
@@ -192,7 +250,7 @@
                 </div>
 
                 <div class="_container">
-                    @for ($i = 0; $i < 6; $i++)
+                    @for ($i = 0; $i < 12; $i++)
                         @include('components.card')
                     @endfor
                 </div>
@@ -213,28 +271,7 @@
                 </div>
 
                 <div class="_container">
-                    @for ($i = 0; $i < 6; $i++)
-                        @include('components.card')
-                    @endfor
-                </div>
-            </div>
-
-            <div class="truyenFull">
-                <div x-data="{ line: false }" class="sectionTitle1 sectionTitle">
-                    <a href="/category" @mouseover="line = true" @mouseleave="line = false" class="_box">
-                        <h2>Truyện đã tiên hiệp</h2>
-                        <div class="line">
-                            <div x-show="line" x-transition:enter="transition ease-out duration-300"
-                                x-transition:enter-start="-translate-x-full" x-transition:enter-end="translate-x-0"
-                                x-transition:leave="transition ease-in duration-300"
-                                x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full"
-                                class="line-active"></div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="_container">
-                    @for ($i = 0; $i < 6; $i++)
+                    @for ($i = 0; $i < 12; $i++)
                         @include('components.card')
                     @endfor
                 </div>

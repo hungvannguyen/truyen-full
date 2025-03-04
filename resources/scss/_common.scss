@@ -4,8 +4,24 @@
 [x-cloak] { display: none !important; }
 
 body{
-    @apply bg-white11 dark:bg-Neutral12 relative;
+    @apply bg-bgLight dark:bg-gray01 relative;
     font-family: 'Roboto', sans-serif;
+}
+
+::-webkit-scrollbar{
+    @apply w-[8px] rounded-full;
+}
+
+::-webkit-scrollbar-thumb{
+    @apply bg-[#7A7A7A] rounded-full;
+}
+
+::-webkit-scrollbar-track{
+    @apply bg-[#E8E8E8] rounded-full; 
+}
+
+::-webkit-scrollbar-thumb:hover{
+    @apply bg-[#555];
 }
 
 .my_container{
@@ -21,6 +37,10 @@ body{
 
 .text-caption{
     @apply text-[14px] leading-[20px];
+}
+
+.text-caption2{
+    @apply text-[12px] leading-[16px];
 }
 
 .text-blockquote{
@@ -45,6 +65,10 @@ body{
 
 .text-subtitle{
     @apply text-[21px] leading-[28px] font-medium;
+}
+
+.text-subtitle2{
+    @apply text-[18px] leading-[28px] font-medium;
 }
 
 .text-h6{
@@ -72,7 +96,7 @@ body{
 }
 
 .commonBtnDropdown{
-    @apply px-[10px] py-1 border border-gray02 flex items-center gap-1 rounded-lg select-none text-gray02 dark:text-white11 dark:border-white11 cursor-pointer;
+    @apply px-[16px] py-[8px] border border-gray02 flex items-center gap-1 rounded-lg select-none text-gray02 dark:text-white11 dark:border-white11 cursor-pointer;
 
     span{
         @apply text-button2;
@@ -96,14 +120,21 @@ body{
 }
 
 .commonBtnDropdownBgColor{
-    @apply px-[10px] py-1 flex items-center gap-1 rounded-lg select-none bg-bluee text-white hover:bg-blue11 dark:bg-green09 dark:hover:bg-green11;
+    @apply px-[16px] py-[8px] flex items-center gap-1 rounded-lg select-none bg-bluee text-white hover:bg-blue11 dark:bg-green09 dark:hover:bg-green11;
 
     span{
         @apply text-button2;
     }
 
     svg{
-        @apply w-5 h-5 font-bold;
+        @apply w-5 h-5 font-bold ease-in-out transition-transform;
+    }
+}
+
+.commonBtnDropdownBgColor.active{
+
+    svg{
+        @apply rotate-180 ease-in-out transition-transform;
     }
 }
 
@@ -146,7 +177,7 @@ body{
 .sectionTitle2{
     ._box{
         h2{
-            @apply text-[28px] font-semibold leading-[40px] uppercase;
+            @apply text-h6 font-semibold uppercase;
         }
     }
 }
@@ -177,7 +208,7 @@ body{
 }
 
 ._sectionRight{
-    @apply flex flex-col gap-[50px] w-[378px] pb-[24px];
+    @apply flex flex-col gap-[50px] w-[378px] max-sm:w-full pb-[24px] max-sm:pt-[15px];
 
     ._topStory{
         @apply flex flex-col;
@@ -186,7 +217,7 @@ body{
             @apply flex items-center justify-between gap-[15px] pb-[15px];
 
             span{
-                @apply text-button2 text-grayy dark:text-white11 py-[10px] px-[30px] bg-transparent rounded-full border border-grayy dark:border-white11 flex-auto text-center uppercase cursor-pointer;
+                @apply text-button2 text-grayy dark:text-white11 py-[10px] px-[30px] max-sm:py-[10px] max-sm:px-[15px] bg-transparent rounded-full border border-grayy dark:border-white11 flex-auto text-center uppercase cursor-pointer;
             }
 
             .active{
@@ -200,7 +231,7 @@ body{
             .-tabCont{
 
                 .-box{
-                    @apply flex items-center gap-[18px] px-[18px] py-[24px] border-b border-[#b3b3b3];
+                    @apply flex items-center gap-[18px] px-[18px] max-sm:px-0 py-[24px] border-b border-[#b3b3b3];
     
                     .-circle{
                         @apply text-h6 py-[7px] px-[10px] rounded-full dark:text-white ;
@@ -267,7 +298,6 @@ body{
 
         ._title{
             @apply p-[10px] pb-[5px] border border-grayy dark:border-white11;
-
         }
 
         ._content{
@@ -313,7 +343,7 @@ body{
         }
 
         ._content{
-            @apply p-[24px] px-[50px] grid grid-cols-2 gap-[15px] border border-grayy dark:border-white11 border-t-0;
+            @apply p-[24px] px-[50px] grid grid-cols-2 gap-[24px] border border-grayy dark:border-white11 border-t-0;
 
             a{
                 @apply text-body2 text-Neutral10 dark:text-white11 line-clamp-1 capitalize hover:underline;

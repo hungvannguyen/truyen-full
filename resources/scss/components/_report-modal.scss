@@ -1,0 +1,28 @@
+.report-modal{
+    @apply fixed inset-0 z-50 max-h-full w-full items-center justify-center overflow-y-auto overflow-x-hidden md:inset-0;
+
+    .report-absolute{
+        @apply absolute inset-0 top-[20%] z-[10] max-h-full mx-auto overflow-hidden max-w-[364px];
+
+        .report-wrapper{
+            @apply overflow-hidden mx-auto min-h-[400px] max-h-[560px] rounded-md bg-bgLight dark:bg-gray01 shadow-lg dark:bg-gray01 p-[30px];
+    
+            .close-btn{
+                @apply flex items-center gap-[10px] text-body dark:text-white11 text-gray02;
+            }
+    
+            .title{
+    
+            }
+    
+            .report-form{
+    
+            }
+        }
+    }
+
+    .overlay{
+        @apply inset-0 z-[9] h-full w-full bg-black bg-opacity-50;
+    }
+
+}
